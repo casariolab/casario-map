@@ -467,9 +467,9 @@ export const layersStylePropFn = {
       return propertyValue;
     }
   },
-  epa_refineries: {
-    iconScaleFn: propertyValue => {
-      return getIconScaleValue(propertyValue, 0.0000001, 0.2, 1.2);
+  regiones2: {
+    fillColor: propertyValue => {
+      return propertyValue;
     }
   },
   coal_global2: {
