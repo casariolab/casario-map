@@ -16,10 +16,10 @@ exports.users_get = (req, res) => {
       res.status(200);
       res.json(users);
     })
-    .catch((err) => {
-      res.status(500);
-      res.send(err);
-    });
+      .catch((err) => {
+        res.status(500);
+        res.send(err);
+      });
   });
 };
 
@@ -42,6 +42,18 @@ exports.user_patch = (req, res) => {
         }
       )
         .then((updatedUser) => {
+          // Update login
+          Logins.update(
+            {
+              userName: req.body.userName,
+              relatedRoleID: req.body.relatedRoleID
+            },
+            {
+              where: {
+                relatedUserID: req.params.id,
+              },
+            }
+          )
           res.status(204);
           return res.json({});
         })
@@ -59,28 +71,36 @@ exports.user_patch = (req, res) => {
 
 exports.user_delete = (req, res) => {
   permissionController.hasPermission(req, res, "delete_user", () => {
-    if (req.params.id) {
+    if (req.body.userID) {
       // Delete login row if user is already logged
       Logins.destroy({
         where: {
-          relatedUserID: req.params.id
+          relatedUserID: req.body.userID
         }
       })
+
+      // Delete html posts created by the user (optional parameter) 
+      if (req.body.deletePosts) {
+        let sql = `DELETE FROM html_posts WHERE "createdBy" = $$${req.body.userID}$$;`;
+        sequelize
+          .query(sql);
+      }
+
       // Delete user row. 
       Users.destroy({
         where: {
-          userID: req.params.id,
+          userID: req.body.userID
         },
       })
-      .then((deleted) => {
-        res.status(204);
-        res.json();
-      })
-      .catch((err) => {
-        console.log(err);
-        res.status(500);
-        res.json();
-      });
+        .then((deleted) => {
+          res.status(204);
+          res.json();
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500);
+          res.json();
+        });
     } else {
       res.status(400);
       res.json();

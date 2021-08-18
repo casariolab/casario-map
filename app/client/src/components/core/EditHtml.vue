@@ -7,7 +7,7 @@
         @click="openHtmlEditor(icon)"
       >
         <v-list-item-avatar>
-          <v-img :src="icon.iconUrl"></v-img>
+          <v-img :src="icon.iconUrl" max-height="50" contain></v-img>
         </v-list-item-avatar>
 
         <v-list-item-content>
@@ -268,7 +268,10 @@ export default {
           group: this.activeLayerGroup.navbarGroup,
           title: this.postIconTitle,
           html: this.htmlContent,
-          createdBy: null // The value is added from the api.
+          createdBy: null, // The value is added from the api
+          updatedBy: null, // The value is added from the api,
+          createdAt: null, // The value is added from the api,
+          updatedAt: null // The value is added from the api,
         };
       }
       const formData = new FormData();
@@ -332,7 +335,7 @@ export default {
             timeout: 2000,
             state: true
           });
-          if (this.type === 'layer') {
+          if (type === 'layer') {
             const layers = this.sidebarHtml.layers;
             addProps(layers, `${this.lastSelectedLayer}.type`, 'layer');
             addProps(

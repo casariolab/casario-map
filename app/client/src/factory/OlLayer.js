@@ -14,7 +14,8 @@ import TopoJsonFormat from 'ol/format/TopoJSON';
 import KmlFormat from 'ol/format/KML';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
-import ImageWMS from 'ol/source/ImageWMS.js';
+import ImageWMS from 'ol/source/ImageWMS.js'
+import LayerGroup from 'ol/layer/Group';
 import { bbox as bboxStrategy } from 'ol/loadingstrategy';
 import { Image as ImageLayer } from 'ol/layer.js';
 import XyzSource from 'ol/source/XYZ';
@@ -38,7 +39,7 @@ export const LayerFactory = {
     KML: KmlFormat
   },
 
-  computeQuadKey: function(x, y, z) {
+  computeQuadKey: function (x, y, z) {
     let quadKeyDigits = [];
     for (let i = z; i > 0; i--) {
       let digit = 0;
@@ -85,11 +86,17 @@ export const LayerFactory = {
    * @return {ol.style} Ol Style
    */
   renderStyle(styleProps, layerName) {
-    let { styleRef, stylePropFnRef } = styleProps;
-    if (stylePropFnRef && !styleRef) {
+    let { styleRef, stylePropFnRef, label } = styleProps;
+    if ((stylePropFnRef && !styleRef) || label) {
       styleRef = 'baseStyle';
     }
-    if (styleProps && styleRef && stylePropFnRef && styleRefs[styleRef]) {
+    if (!stylePropFnRef) {
+      stylePropFnRef = {};
+    }
+    if (
+      (styleProps && styleRef && stylePropFnRef && styleRefs[styleRef]) ||
+      label
+    ) {
       // Get style function reference (default is baseStyle)
       const styleFn = styleRefs[styleRef];
       // Get the functions of the layer
@@ -98,12 +105,12 @@ export const LayerFactory = {
       Object.keys(stylePropFnRef).forEach(fnName => {
         let fn;
         if (layersStylePropFn[layerName]) {
-           fn =
+          fn =
             layersStylePropFn[layerName][fnName] ||
             layersStylePropFn.default[fnName];
         } else {
           if (layersStylePropFn.default[fnName]) {
-            fn = layersStylePropFn.default[fnName]
+            fn = layersStylePropFn.default[fnName];
           }
         }
         if (fn) {
@@ -111,7 +118,7 @@ export const LayerFactory = {
         }
       });
       const props = { ...styleProps, ...stylePropFn, layerName };
-      return styleFn(props,layerName);
+      return styleFn(props, layerName);
     } else if (styleRef) {
       // Edge case for colormap palete
       if (styleRef === 'colorMapStyle') {
@@ -123,7 +130,7 @@ export const LayerFactory = {
       }
       return styleRefs[styleRef](layerName);
     } else {
-      // Just a generic style 
+      // Just a generic style
       return OlStyleFactory.getInstance(styleProps);
     }
   },
@@ -132,9 +139,10 @@ export const LayerFactory = {
    * Returns an OpenLayers layer instance due to given config.
    *
    * @param  {Object} lConf  Layer config object
+   * @param  {Object} zIndex    Index of array used as zIndex for group layers
    * @return {ol.layer.Base} OL layer instance
    */
-  getInstance(lConf) {
+  getInstance(lConf, zIndex) {
     // apply LID (Layer ID) if not existant
     if (!lConf.lid) {
       var now = new Date();
@@ -160,6 +168,8 @@ export const LayerFactory = {
       return this.createVectorTileLayer(lConf);
     } else if (lConf.type === 'ESRI') {
       return this.createESRIFeatureService(lConf);
+    } else if (lConf.type === 'GROUP') {
+      return this.createGroupLayer(lConf, zIndex);
     } else {
       return null;
     }
@@ -383,7 +393,7 @@ export const LayerFactory = {
     };
     // Check if url is a WFS service
     if (lConf.url.includes('wfs?service=WFS&')) {
-      url = function(extent) {
+      url = function (extent) {
         return `${lConf.url}&bbox=${extent.join(',')},EPSG:3857`;
       };
       sourceConfig['strategy'] = bboxStrategy;
@@ -476,7 +486,7 @@ export const LayerFactory = {
   createESRIFeatureService(lConf) {
     const esrijsonFormat = new EsriJSON();
     const vectorSource = new VectorSource({
-      loader: function(extent, resolution, projection) {
+      loader: function (extent, resolution, projection) {
         const url =
           lConf.url +
           lConf.layer +
@@ -484,14 +494,14 @@ export const LayerFactory = {
           'returnGeometry=true&spatialRel=esriSpatialRelIntersects&geometry=' +
           encodeURIComponent(
             '{"xmin":' +
-              extent[0] +
-              ',"ymin":' +
-              extent[1] +
-              ',"xmax":' +
-              extent[2] +
-              ',"ymax":' +
-              extent[3] +
-              ',"spatialReference":{"wkid":102100}}'
+            extent[0] +
+            ',"ymin":' +
+            extent[1] +
+            ',"xmax":' +
+            extent[2] +
+            ',"ymax":' +
+            extent[3] +
+            ',"spatialReference":{"wkid":102100}}'
           ) +
           '&geometryType=esriGeometryEnvelope&inSR=102100&outFields=*' +
           '&outSR=102100';
@@ -531,5 +541,39 @@ export const LayerFactory = {
     });
 
     return layer;
-  }
+  },
+
+  createGroupLayer(lConf, zIndex) {
+    const layers = []
+    const layersConfig = lConf.layers;
+    if (Array.isArray(layersConfig)) {
+      layersConfig.reverse().forEach((layerConfig, index) => {
+        const layer = this.getInstance(layerConfig);
+        if (zIndex) {
+          layer.setZIndex(zIndex + index);
+        }
+        layers.push(layer);
+      });
+    }
+    const layer = new LayerGroup({
+      name: lConf.name,
+      type: lConf.type,
+      title: lConf.title,
+      lid: lConf.lid,
+      displayInLegend: lConf.displayInLegend,
+      displaySidebarInfo: lConf.displaySidebarInfo,
+      sidebarDefaultMedia: lConf.sidebarDefaultMedia,
+      legendIcon: lConf.legendIcon,
+      legendDisplayName: lConf.legendDisplayName,
+      visible: lConf.visible,
+      opacity: lConf.opacity,
+      queryable: lConf.queryable,
+      ratio: lConf.ratio ? lConf.ratio : 1.5,
+      zIndex: lConf.zIndex,
+      group: lConf.group,
+      layers
+    });
+
+    return layer;
+  },
 };

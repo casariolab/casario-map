@@ -1,10 +1,10 @@
 version: "3.9"
 
 networks:
-   default:
-      external:
-  # The network should be the same as TRAEFIK network
-         name: traefik-global-proxy
+  default:
+    external:
+      # The network should be the same as TRAEFIK network
+      name: traefik-global-proxy
 
 volumes:
   postgres_data:
@@ -15,7 +15,6 @@ volumes:
     name: ${COMPOSE_PROJECT_NAME}_pgdumps
 
 services:
-
   client:
     image: ${DOCKER_ID}/${COMPOSE_PROJECT_NAME}:client-${PROJECT_VERSION}
     build:
@@ -66,12 +65,11 @@ services:
     container_name: ${COMPOSE_PROJECT_NAME}_db
     hostname: ${COMPOSE_PROJECT_NAME}_db
     environment:
+      - POSTGRES_DB=${COMPOSE_PROJECT_NAME}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_DB_NAME=${COMPOSE_PROJECT_NAME}
-      - DATABASE_URL=postgis://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${COMPOSE_PROJECT_NAME}_db:5432/${COMPOSE_PROJECT_NAME}
     volumes:
-      - postgres_data:/var/lib/postgresql/data/
+      - postgres_data:/var/lib/postgresql/data
       # uncomment to enable remote connections to postgres
     ports:
       - "${POSTGRES_OUTER_PORT}:5432"
@@ -99,6 +97,8 @@ services:
       - AWS_CLOUDFRONT_URL=${AWS_CLOUDFRONT_URL}
       - NODE_ENV=${API_ENVIRONMENT}
       - JWT_SECRET=${API_JWT_SECRET}
+      - USERS_OPEN_REGISTRATION=${USERS_OPEN_REGISTRATION}
+      - API_PORT=3000
     volumes:
       - /app/node_modules
       - ./app/api:/app

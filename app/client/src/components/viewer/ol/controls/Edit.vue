@@ -1,6 +1,11 @@
 <template>
   <div class="mt-4 mb-2">
-    <div>
+    <div
+      v-if="
+        Array.isArray(loggedUser.roles) &&
+          !loggedUser.roles.includes('guest_user')
+      "
+    >
       <v-layout>
         <v-spacer></v-spacer>
         <div v-if="!selectedLayer">
@@ -126,16 +131,13 @@
         <v-select
           class="mx-4 my-2"
           :items="
-            map
-              .getLayers()
-              .getArray()
-              .filter(
-                l =>
-                  ['VECTORTILE', 'VECTOR'].includes(l.get('type')) &&
-                  l.get('name') &&
-                  l.get('legendDisplayName') &&
-                  l.get('canEdit') !== false
-              )
+            flatLayers.filter(
+              l =>
+                ['VECTORTILE', 'VECTOR'].includes(l.get('type')) &&
+                l.get('name') &&
+                l.get('legendDisplayName') &&
+                l.get('canEdit') !== false
+            )
           "
           v-model="dialogSelectedLayer"
           return-object
@@ -454,15 +456,32 @@ export default {
     ...mapFields('map', {
       isEditingLayer: 'isEditingLayer',
       isEditingPost: 'isEditingPost',
-      selectedLayer: 'selectedLayer',
+      selectedLayer: 'selectedLayer'
     }),
     ...mapGetters('map', {
       layersMetadata: 'layersMetadata'
+    }),
+    ...mapGetters('auth', {
+      loggedUser: 'loggedUser'
     }),
     imageUploadButtonText() {
       return this.imageUpload.selectedFile
         ? this.imageUpload.selectedFile.name
         : this.imageUpload.defaultButtonText;
+    },
+    flatLayers() {
+      const layers = [];
+      this.map
+        .getLayers()
+        .getArray()
+        .forEach(layer => {
+          if (layer.get('type') === 'GROUP') {
+            layers.push(...layer.getLayers().getArray());
+          } else {
+            layers.push(layer);
+          }
+        });
+      return layers;
     }
   },
   methods: {
