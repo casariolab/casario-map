@@ -589,7 +589,7 @@ export const layersStylePropFn = {
       return propertyValue;
     }
   },
-  regiones2: {
+  colaboradores: {
     fillColor: propertyValue => {
       return propertyValue;
     }
@@ -597,16 +597,6 @@ export const layersStylePropFn = {
   coal_global2: {
     circleRadiusFn: propertyValue => {
       return getRadiusValue(propertyValue, 0.3, 4, 50);
-    }
-  },
-  miss_tri: {
-    fillColor: propertyValue => {
-      return propertyValue;
-    }
-  },
-  indigenous_territories: {
-    fillColor: propertyValue => {
-      return propertyValue;
     }
   }
 };
