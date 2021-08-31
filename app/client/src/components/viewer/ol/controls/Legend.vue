@@ -22,7 +22,7 @@
       v-show="isVisible"
       class="elevation-3"
       :width="isVisible ? '250px' : '0px'"
-      style="position:absolute;left:25px;bottom:20px;max-width:200px;opacity:85%;"
+      style="position:absolute;left:25px;bottom:20px;max-width:220px;opacity:85%;"
     >
       <v-btn
         v-show="isVisible"
