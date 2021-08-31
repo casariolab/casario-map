@@ -79,8 +79,36 @@ const state = {
     }
   },
   postEditLayer: null, // user for
+  postFeature: null,
+  postEditType: null,
   lastSelectedLayer: null, // triggered from layer or group change
-  persistentLayers: {}
+  persistentLayers: {},
+  currentResolution: null,
+  mobilePanelState: true,
+  // EDITOR
+  formValid: true,
+  formSchema: {
+    type: 'object',
+    required: [],
+    properties: {}
+  },
+  formSchemaCache: {},
+  formOptions: {
+    debug: false,
+    disableAll: false,
+    autoFoldObjects: true
+  },
+  formData: {},
+  imageUpload: {
+    defaultButtonText: 'Upload',
+    selectedFile: null,
+    isSelecting: false,
+    errorMessage: '',
+    position: 'sidebarMediaTop'
+  },
+  editType: null,
+  editLayer: null,
+  highlightLayer: null,
 };
 
 const getters = {
@@ -148,6 +176,18 @@ const getters = {
       return `${state.activeLayerGroup.navbarGroup}_${state.activeLayerGroup.region}`;
     }
   },
+  currentResolution: state => state.currentResolution,
+  postFeature: state => state.postFeature,
+  mobilePanelState: state => state.mobilePanelState,
+  imageUploadButtonText: state => {
+    return state.imageUpload.selectedFile
+      ? state.imageUpload.selectedFile.name
+      : state.imageUpload.defaultButtonText;
+  },
+  editLayer: state => state.editLayer,
+  editType: state => state.editType,
+  imageUpload: state => state.imageUpload,
+  highlightLayer: state => state.highlightLayer,
   getField
 };
 
@@ -159,7 +199,7 @@ const actions = {
     }
     const layers = rootState.map.layers;
     const promiseArray = [];
-    Object.keys(layers).forEach(function(key) {
+    Object.keys(layers).forEach(function (key) {
       const layer = layers[key];
       if (layer.get('styleObj')) {
         const styleObj = JSON.parse(layer.get('styleObj'));
@@ -195,7 +235,7 @@ const actions = {
     if (promiseArray.length > 0) {
       axios
         .all(promiseArray)
-        .then(function(results) {
+        .then(function (results) {
           results.forEach(response => {
             const features = response.data.features;
             const configData = JSON.parse(response.config.data);
@@ -219,7 +259,7 @@ const actions = {
             commit('SET_COLORMAP_VALUES', { layerName, entities });
           });
         })
-        .catch(function(err) {
+        .catch(function (err) {
           console.log('Fetch Error :-S', err);
         });
     }

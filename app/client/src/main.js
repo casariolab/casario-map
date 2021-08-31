@@ -20,6 +20,9 @@ Vue.config.productionTip = false;
 
 const appSelector = '#app';
 const appEl = document.querySelector('#app');
+const touch = matchMedia('(hover: none)').matches;
+Vue.prototype.$isTouch = touch;
+
 Vue.prototype.$isEmbedded = appEl.hasAttribute('embedded');
 
 Vue.use(VueLazyLoad);

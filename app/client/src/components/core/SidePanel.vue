@@ -1,13 +1,24 @@
 <template>
   <v-layout justify-space-between column fill-height>
     <template
-      v-if="!selectedCoorpNetworkEntity && !isEditingPost && !isEditingHtml"
+      v-if="
+        !selectedCoorpNetworkEntity &&
+          !isEditingPost &&
+          !isEditingHtml &&
+          !editType &&
+          (!highlightLayer ||
+            !highlightLayer.getSource().getFeatures().length > 0)
+      "
     >
       <vue-scroll ref="vs">
         <v-row class="mx-0 px-0">
           <v-col class="mt-0 pt-0">
             <div v-if="isFeatureGetInfo">
-              <v-row align="center" class="my-1 mx-1">
+              <v-row
+                align="center"
+                class="my-1 mx-1"
+                style="word-break:break-word;"
+              >
                 <v-col class="mt-1 pt-0">
                   <div class="sidepanel-header">
                     <h1><span style="font-align:center;color:#c00;"></span></h1>
@@ -22,6 +33,7 @@
                     "
                   >
                     <span
+                      id="sidebar-media-top"
                       v-html="
                         renderMediaHtml(
                           popup.activeFeature.get('sidebarMediaTop')
@@ -39,6 +51,7 @@
                     "
                   >
                     <span
+                      id="sidebar-default-media-top"
                       v-html="
                         renderMediaHtml(
                           popup.activeLayer.get('sidebarDefaultMedia').top
@@ -176,6 +189,7 @@
                         {{ searchLabel }}
                       </v-btn>
                       <v-btn
+                        v-if="!$vuetify.breakpoint.smAndDown"
                         @click="closePopupInfo"
                         text
                         small
@@ -217,6 +231,7 @@
                     "
                   >
                     <span
+                      id="sidebar-media-bottom"
                       v-html="
                         renderMediaHtml(
                           popup.activeFeature.get('sidebarMediaBottom')
@@ -234,6 +249,7 @@
                     "
                   >
                     <span
+                      id="sidebar-default-media-bottom"
                       v-html="
                         renderMediaHtml(
                           popup.activeLayer.get('sidebarDefaultMedia').bottom
@@ -274,7 +290,7 @@
                     ><span>Edit Post</span></v-tooltip
                   >
                 </div>
-                <div>
+                <div v-if="!$vuetify.breakpoint.smAndDown">
                   <v-tooltip left>
                     <template v-slot:activator="{ on }">
                       <v-btn
@@ -353,7 +369,11 @@
             </div>
           </v-flex>
 
-          <v-flex xs2 class="d-flex justify-center">
+          <v-flex
+            v-if="!$vuetify.breakpoint.smAndDown"
+            xs2
+            class="d-flex justify-center"
+          >
             <v-btn
               @click="closeCorpNetworkSelection()"
               dark
@@ -430,8 +450,9 @@
       </v-row>
     </v-layout>
 
-    <!-- // ADD OR EDIT POST-->
+    <!-- ADD OR EDIT POST-->
     <v-layout
+      :style="`overflow:${$vuetify.breakpoint.smAndDown ? 'hidden' : 'unset'};`"
       v-show="
         (isEditingPost &&
           postEditLayer &&
@@ -440,15 +461,34 @@
       "
       fill-height
     >
-      <edit-html
-        v-show="
-          (isEditingPost &&
-            postEditLayer &&
-            postEditLayer.getSource().getFeatures().length > 0) ||
-            isEditingHtml
-        "
-      />
+      <v-row align="start" justify="center" class="mx-0" style="width:100%;">
+        <v-layout align-center class="elevation-0 mb-1" style="width:100%;">
+          <edit-html
+            v-show="
+              (isEditingPost &&
+                postEditLayer &&
+                postEditLayer.getSource().getFeatures().length > 0) ||
+                isEditingHtml
+            "
+          /> </v-layout
+      ></v-row>
     </v-layout>
+
+    <!-- EDIT LAYER MOBILE -->
+
+    <v-layout
+      :style="`overflow:${$vuetify.breakpoint.smAndDown ? 'hidden' : 'unset'};`"
+      v-if="
+        ['addFeature', 'modifyAttributes'].includes(editType) &&
+          selectedLayer &&
+          highlightLayer.getSource().getFeatures().length > 0 &&
+          $vuetify.breakpoint.smAndDown
+      "
+      fill-height
+    >
+      <v-row align="start" justify="center" class="mx-0" style="width:100%;">
+        <layer-edit-form-mobile></layer-edit-form-mobile> </v-row
+    ></v-layout>
   </v-layout>
 </template>
 
@@ -461,17 +501,25 @@ import { SharedMethods } from '../../mixins/SharedMethods';
 import { EventBus } from '../../EventBus';
 import { formatPopupRows, getIframeUrl } from '../../utils/Layer';
 import EditHtml from '../core/EditHtml';
+import LayerEditFormMobile from '../core/LayerEditFormMobile.vue';
 
 export default {
   mixins: [SharedMethods],
   components: {
-    'edit-html': EditHtml
+    'edit-html': EditHtml,
+    'layer-edit-form-mobile': LayerEditFormMobile
   },
   data() {
     return {
       isIframeLoading: true,
       color: this.$appConfig.app.color.primary
     };
+  },
+  created() {
+    EventBus.$on('closeAll', () => {
+      this.closeCorpNetworkSelection();
+      this.closePopupInfo();
+    });
   },
   computed: {
     isFeatureGetInfo() {
@@ -567,7 +615,9 @@ export default {
       isEditingHtml: 'isEditingHtml',
       postEditLayer: 'postEditLayer',
       postIconTitle: 'postIconTitle',
-      groupName: 'groupName'
+      groupName: 'groupName',
+      editLayer: 'editLayer',
+      highlightLayer: 'highlightLayer'
     }),
     ...mapGetters('app', {
       sidebarHtml: 'sidebarHtml',
@@ -579,7 +629,9 @@ export default {
       popup: 'popup',
       selectedCoorpNetworkEntity: 'selectedCoorpNetworkEntity',
       lastSelectedLayer: 'lastSelectedLayer',
-      layers: 'layers'
+      layers: 'layers',
+      editType: 'editType',
+      selectedLayer: 'selectedLayer'
     }),
     ...mapGetters('auth', {
       loggedUser: 'loggedUser'
@@ -635,7 +687,7 @@ export default {
         // Render as image.
         html = `<img
                     class="my-3"
-                    style="max-width:425px;"
+                    style="max-width:100%;"
                     src="${url}"
                   >
                   </img>`;
@@ -735,6 +787,51 @@ export default {
       }
       this.previousMapPosition = null;
       this.previousMapPositionSearch = null;
+    },
+    'popup.activeFeature': function(feature) {
+      if (feature) {
+        this.$nextTick(() => {
+          const elementIds = [
+            'sidebar-media-top',
+            'sidebar-media-bottom',
+            'sidebar-default-media-top',
+            'sidebar-default-media-bottom'
+          ];
+          elementIds.forEach(elementId => {
+            const element = document.getElementById(elementId);
+            if (
+              element &&
+              element.firstChild &&
+              element.firstChild.tagName == 'IFRAME'
+            ) {
+              element.firstChild.width = '100%';
+              this.$nextTick(() => {
+                const width = element.offsetWidth;
+                if (width > 0) {
+                  // Workaround to make the facebook iframe responsive.
+                  if (
+                    element.firstChild &&
+                    element.firstChild.src &&
+                    element.firstChild.src.includes('facebook') &&
+                    //Fb allows only width between 180 and 500.
+                    width > 180 &&
+                    width < 500
+                  ) {
+                    const updatedFbUrl = UrlUtil.updateQueryStringParameter(
+                      element.firstChild.src,
+                      'width',
+                      width
+                    );
+                    if (updatedFbUrl) {
+                      element.firstChild.src = updatedFbUrl;
+                    }
+                  }
+                }
+              });
+            }
+          });
+        });
+      }
     }
   }
 };
