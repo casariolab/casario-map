@@ -56,7 +56,7 @@
         <v-spacer></v-spacer>
         <div v-for="(navbarGroup, index) in navbarGroups" :key="index">
           <v-btn
-            min-width="200"
+            min-width="60"
             class="mx-10"
             :dark="
               activeLayerGroup.navbarGroup === navbarGroup.name ? false : true

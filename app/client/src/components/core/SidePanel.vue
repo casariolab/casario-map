@@ -93,8 +93,8 @@
                               @click="editHtml()"
                               icon
                               class="mr-3"
-                            >
-                              <v-icon>edit</v-icon>
+                            > <!-- added 'color="white" --> 
+                              <v-icon color="white">edit</v-icon>
                             </v-btn> </template
                           ><span>Edit</span></v-tooltip
                         >

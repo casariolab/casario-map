@@ -33,7 +33,7 @@
           $vuetify.breakpoint.smAndDown ? 'right' : 'left'
         }:25px;bottom:${
           $vuetify.breakpoint.smAndDown && !mobilePanelState ? 70 : 20
-        }px;max-width:200px;opacity:85%;z-index:1000;`
+        }px;max-width:220px;opacity:85%;z-index:1000;`
       "
     >
       <v-btn
@@ -50,13 +50,13 @@
         <v-icon class="ml-0" x-small>fas fa-chevron-up</v-icon></v-btn
       >
       <v-expansion-panel class="my-0" :style="`background-color: white;`">
-        <v-row class="my-1" justify="center">
+        <v-row class="my-1" justify="center"> <!--
           <span class="grey--text text--darken-2 subtitle-2">
             <a @click="toggleAllLayersVisibility(true)">select all </a> |
             <a @click="toggleAllLayersVisibility(false)"> clear all</a>
-          </span>
+          </span> -->
         </v-row>
-        <v-divider class="mb-1"></v-divider>
+        <!-- <v-divider class="mb-1"></v-divider>  -->
         <v-expansion-panel-content
           style="max-height:400px;"
           v-show="isVisible"
@@ -122,12 +122,13 @@
             </template>
           </vue-scroll>
         </v-expansion-panel-content>
+        <!--
         <v-divider></v-divider>
         <v-row class="my-1" justify="center">
           <span class="black--text text--darken-2 subtitle-2">
             {{ title }}
           </span>
-        </v-row>
+        </v-row> -->
       </v-expansion-panel>
     </v-expansion-panels>
   </div>
