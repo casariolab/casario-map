@@ -1,6 +1,6 @@
 {
   "app": {
-    "title": "Water Striders",
+    "title": "CORREDORES",
     "color": {
       "primary": "#00000e",
       "secondary": "#00000e"
@@ -8,8 +8,8 @@
     "legend": { "isVisible": true },
     "sideBar": {
       "isVisible": true,
-      "backgroundColor": "#fefefe",
-      "textColor": "black"
+      "backgroundColor": "black",
+      "textColor": "white"
     }
   },
   "map": {
@@ -41,140 +41,112 @@
     ],
     "center": [0, 0],
     "layers": [
-
-      {
-        "type": "GROUP",
-        "name": "indigenous_territories",
-        "legendIcon": "https://bigmudddy.s3.us-east-2.amazonaws.com/assets/icons/legend_indigenous.png",
-        "minResolution": 1,
-        "maxResolution": 40000,
-        "displayInLegend": true,
-        "legendDisplayName": "Indigenous Lands",
-        "visible": false,
-        "hoverable": true,
-        "displaySidebarInfo": true,
-        "group": "two",
-        "attributions": "Test attributions",
-        "layers": [
-          {
-          "type": "VECTOR",
-          "name": "native_land",
-          "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:native_land&outputFormat=application/json&srsname=EPSG:3857",
-          "group": "two",
-          "queryable": true,
-          "format": "GeoJSON",
-          "opacity": 0.8,
-          "zIndex": 1000,
-          "minResolution": 0.25,
-          "maxResolution": 32000,
-          "style": {
-          "label": {
-            "text": "name",
-            "fill": {
-            "color": "black"
-              },
-            "stroke": {
-              "color": "rgba( 255, 250, 240, 0.60 )",
-              "width": 1.5
-              },
-            "offsetX": 0,
-            "offsetY": 0,
-            "maxResolution": 32000,
-            "placement": "point",
-            "textAlign": "center",
-            "textWrap": "normal",
-            "fontType": "Avenir",
-            "fontSize": "15px",
-            "fontWeight": "normal"
-          },
-          "strokeColor": "black",
-          "strokeWidth": 1,
-            "stylePropFnRef": {
-              "fillColor": "variable1"
-              }
-            }
-          },
-          {
-          "type": "VECTOR",
-          "name": "oceti_sakowin",
-          "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:oceti_sakowin&outputFormat=application/json&srsname=EPSG:3857",
-          "group": "two",
-          "queryable": true,
-          "format": "GeoJSON",
-          "opacity": 0.8,
-          "zIndex": 1000,
-          "minResolution": 0.25,
-          "maxResolution": 32000,
-          "style": {
-          "label": {
-            "text": "name",
-            "fill": {
-            "color": "black"
-              },
-            "stroke": {
-              "color": "rgba( 255, 250, 240, 0.70 )",
-              "width": 1.5
-              },
-            "offsetX": 0,
-            "offsetY": 0,
-            "maxResolution": 32000,
-            "placement": "point",
-            "textAlign": "center",
-            "textWrap": "normal",
-            "fontType": "Avenir",
-            "fontSize": "16px",
-            "fontWeight": "normal"
-          },
-          "hoverTextColor": "white",
-          "hoverBackgroundColor": "#000000",
-          "strokeColor": "black",
-          "strokeWidth": 1,
-            "stylePropFnRef": {
-              "fillColor": "variable1"
-               }
-             }
-           }
-         ]
-       },  
+    
       {
         "type": "VECTOR",
-        "name": "places",
-        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:places&outputFormat=application/json&srsname=EPSG:3857",
+        "name": "republica_soja",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:republica_soja&outputFormat=application/json&srsname=EPSG:3857",
         "group": "two",
-        "queryable": true,
+        "queryable": false,
         "displayInLegend": true,
-        "legendDisplayName": "Places",
-        "displaySidebarInfo": true,
+        "legendDisplayName": "'Repúblic Soja' 2003",
         "format": "GeoJSON",
         "visible": false,
         "zIndex": 10000,
         "minResolution": 0.5,
-        "maxResolution": 40000,
-        "label": true,
-        "legendIcon": "https://bigmudddy.s3.us-east-2.amazonaws.com/assets/icons/legend_places.png",
+        "maxResolution": 64000,
+        "label": false,
+        "hoverable": false,
+        "style": {
+          "fillColor": "rgba( 93, 142, 42, 0.15 )",
+          "strokeColor": "rgba( 93, 142, 42, 1.00 )",
+          "strokeWidth": 4
+          }
+      },
+      {
+        "type": "VECTOR",
+        "name": "puertos",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:puertos&outputFormat=application/json&srsname=EPSG:3857",
+        "group": "valle",
+        "queryable": true,
+        "displayInLegend": true,
+        "legendDisplayName": "Puertos",
+        "format": "GeoJSON",
+        "visible": true,
+        "zIndex": 0,
+        "minResolution": 1,
+        "maxResolution": 800,
+        "label": null,
         "hoverable": true,
-          "style": {
+        "style": {
+          "type": "circle",
+          "radius": 5,
+          "fillColor": "#FF7900",
+          "strokeColor": "black",
+          "strokeWidth": 1
+        }
+       },
+      {
+        "type": "VECTOR",
+        "name": "colaboradores",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:colaboradores&outputFormat=application/json&srsname=EPSG:3857",
+        "group": "valle",
+        "queryable": true,
+        "displayInLegend": true,
+        "legendDisplayName": "Colaboradores",
+        "format": "GeoJSON",
+        "visible": true,
+        "zIndex": 10000,
+        "minResolution": 80,
+        "maxResolution": 64000,
+        "label": null,
+        "hoverable": true,
+        "style": {
+          "type": "circle",
+          "radius": 6,
+          "fillColor": "black",
+          "strokeColor": "white",
+          "strokeWidth": 1,
+          "hoverTextColor": "white",
+          "hoverBackgroundColor": "#000000"
+        }
+      },
+       {
+        "type": "VECTOR",
+        "name": "regiones",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:regiones&outputFormat=application/json&srsname=EPSG:3857",
+        "group": "valle",
+        "queryable": false,
+        "displayInLegend": false,
+        "legendDisplayName": "Regiones",
+        "format": "GeoJSON",
+        "visible": true,
+        "zIndex": 0,
+        "minResolution": 1000,
+        "maxResolution": 8000,
+        "label": true,
+        "hoverable": false,
+        "legendIcon": "https://casario-mapa.s3.sa-east-1.amazonaws.com/assets/icons/legends/leyenda_regiones.png",
+        "style": {
           "label": {
-            "text": "title",
+            "text": "label",
             "fill": {
-            "color": "black"
+            "color": "white"
               },
             "stroke": {
-              "color": "rgba(255, 224, 204, 0.70 )",
-              "width": 2.8
+              "color": "rgba( 255, 250, 240, 0.0 )",
+              "width": 0
               },
-            "offsetX": 0,
+            "offsetX": -1,
             "offsetY": 0,
-            "maxResolution": 80,
+            "maxResolution": 32000,
             "placement": "point",
             "textAlign": "center",
             "textWrap": "normal",
-            "fontType": "Avenir",
-            "fontSize": "18px",
+            "fontType": "Roboto",
+            "fontSize": "13px",
             "fontWeight": "normal"
           },
-          "hoverTextColor": "white",
-          "hoverBackgroundColor": "#000000",
           "type": "circle",
           "radius": 1,
           "fillColor": "rgba( 255, 250, 240, 0 )",
@@ -183,427 +155,467 @@
         }
       },
        {
-        "type": "GROUP",
-        "name": "navigation",
-        "legendIcon": "https://bigmudddy.s3.us-east-2.amazonaws.com/assets/icons/legend_navigation.png",
-        "minResolution": 0.5,
-        "maxResolution": 40000,
-        "displayInLegend": true,
-        "legendDisplayName": "Navigation",
-        "visible": false,
-        "hoverable": true,
-        "displaySidebarInfo": true,
-        "group": "two",
-        "attributions": "Test attributions",
-        "layers": [
-          {
-          "type": "VECTOR",
-          "name": "wing_dams",
-          "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:wing_dams&outputFormat=application/json&srsname=EPSG:3857",
-          "group": "two",
-          "queryable": false,
-          "format": "GeoJSON",
-          "includeInSearch": true,
-          "minResolution": 0.5,
-          "maxResolution": 40,
-          "hoverable": true,
-          "isInteractive": true,
-          "style": {
-            "hoverTextColor": "white",
-            "hoverBackgroundColor": "#000000",
-            "type": "line",
-            "strokeColor": "#ffffff",
-            "strokeWidth": 2
-              }
-           },
-          {
-          "type": "XYZ",
-          "name": "usace_charts",
-          "group": "two",
-          "url": "https://bigmudddy.s3.us-east-2.amazonaws.com/assets/tiles/navigation/{z}/{x}/{y}.png",
-          "minResolution": 1,
-          "maxResolution": 40000,
-          "opacity": 0.99,
-          "queryable": false
-        },
-        {
-          "type": "VECTORTILE",
-          "name": "miss_levees",
-          "group": "two",
-          "url": "./geoserver/gwc/service/tms/1.0.0/workspace1:miss_levees@EPSG%3A900913@pbf/{z}/{x}/{-y}.pbf",
-          "minResolution": 1,
-          "maxResolution": 80,
-          "opacity": 1,
-          "queryable": false,
-          "format": "MVT",
-          "hoverable": true,
-          "isInteractive": true,
-            "style": {
-              "hoverTextColor": "white",
-              "hoverBackgroundColor": "#000000",
-              "strokeColor": "rgba(136, 79, 55, 0.9",
-              "strokeWidth": 3
-              }
-           }
-        ]
-      },
-       {
         "type": "VECTOR",
-        "name": "miss_gages",
-        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:miss_gages2&outputFormat=application/json&srsname=EPSG:3857",
-        "group": "two",
+        "name": "audios",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:audios&outputFormat=application/json&srsname=EPSG:3857",
+        "group": "valle",
         "queryable": true,
         "displayInLegend": true,
-        "legendDisplayName": "River Gages",
-        "displaySidebarInfo": true,
+        "legendDisplayName": "Radio Mutante",
         "format": "GeoJSON",
-        "visible": false,
+        "visible": true,
         "zIndex": 10000,
         "minResolution": 0.5,
-        "maxResolution": 32000,
-        "label": true,
+        "maxResolution": 800,
+        "label": false,
         "hoverable": true,
         "style": {
-          "iconUrl": "https://bigmudddy.s3.us-east-2.amazonaws.com/assets/icons/gage.png",
+          "iconUrl": "https://casario-mapa.s3.sa-east-1.amazonaws.com/assets/icons/circulo.png",
           "scale": 0.7,
           "hoverTextColor": "white",
           "hoverBackgroundColor": "#000000"
         }
       },
-      {
-        "type": "XYZ",
-        "name": "openweather",
-        "group": "two",
-        "url": "https://maps.openweathermap.org/maps/2.0/weather/PA0/{z}/{x}/{y}?appid=fc9c7f7bfbe0f4497f6cb622f45cb050",
-        "minResolution": 0.5,
-        "maxResolution": 40000,
-          "zIndex": 10000,
+       {
+        "type": "VECTOR",
+        "name": "videos",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:videos&outputFormat=application/json&srsname=EPSG:3857",
+        "group": "valle",
+        "queryable": true,
         "displayInLegend": true,
-        "legendDisplayName": "Precipitation",
-        "legendIcon": "https://bigmudddy.s3.us-east-2.amazonaws.com/assets/icons/streetmap.png",
+        "legendDisplayName": "Videos Casa Río",
+        "format": "GeoJSON",
         "visible": true,
+        "zIndex": 10000,
+        "minResolution": 0.5,
+        "maxResolution": 800,
+        "label": false,
+        "hoverable": true,
+        "style": {
+          "iconUrl": "https://casario-mapa.s3.sa-east-1.amazonaws.com/assets/icons/triangulo.png",
+          "scale": 0.8,
+          "hoverTextColor": "white",
+          "hoverBackgroundColor": "#000000"
+        }
+      },
+       {
+        "type": "VECTOR",
+        "name": "fotos",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:fotos&outputFormat=application/json&srsname=EPSG:3857",
+        "group": "valle",
+        "queryable": true,
+        "displayInLegend": true,
+        "legendDisplayName": "Fotos",
+        "format": "GeoJSON",
+        "visible": true,
+        "zIndex": 10000,
+        "minResolution": 0.5,
+        "maxResolution": 800,
+        "label": false,
+        "hoverable": true,
+        "style": {
+          "iconUrl": "https://casario-mapa.s3.sa-east-1.amazonaws.com/assets/icons/square.png",
+          "scale": 0.7,
+          "hoverTextColor": "white",
+          "hoverBackgroundColor": "#000000"
+        }
+       },
+      {
+        "type": "VECTORTILE",
+        "name": "humedales_granvalle",
+        "url": "./geoserver/gwc/service/tms/1.0.0/workspace1:humedales_granvalle@EPSG%3A900913@pbf/{z}/{x}/{-y}.pbf",
+        "group": "one",
+        "queryable": false,
+        "displayInLegend": true,
+        "renderMode": "image",
+        "legendDisplayName": "Corredor de Humedales",
+        "format": "MVT",
+        "visible": true,
+        "zIndex": 20000,
         "opacity": 1,
-        "queryable": true
+        "minResolution": 800,
+        "maxResolution": 64000,
+        "label": false,
+        "hoverable": false,
+        "style": {
+          "hoverTextColor": "white",
+          "hoverBackgroundColor": "#000000",
+          "fillColor": "rgba( 137, 175, 28, 0.70 )",
+          "strokeColor": "rgba( 137, 175, 28, 1.0 )",
+          "strokeWidth": 0.3
+        }
       },
       {
-        "type": "XYZ",
-        "name": "labels",
-        "group": "two",
-        "url": "https://api.mapbox.com/styles/v1/bkholmes/cknyrpfv51m8d18o580evho4m/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYmtob2xtZXMiLCJhIjoiNjlkYjI4MDUyYTRlZWEyYzkwYTdmOTgxNmMzOGYwMTUifQ.VSUo52PYOUzS60NR6jqXTw",
-        "minResolution": 0.5,
-        "maxResolution": 3800,
+        "type": "VECTORTILE",
+        "name": "gran_valle",
+        "url": "./geoserver/gwc/service/tms/1.0.0/workspace1:gran_valle@EPSG%3A900913@pbf/{z}/{x}/{-y}.pbf",
+        "group": "one",
+        "queryable": false,
         "displayInLegend": true,
-        "legendDisplayName": "Street Map",
-        "legendIcon": "https://bigmudddy.s3.us-east-2.amazonaws.com/assets/icons/streetmap.png",
-        "visible": false,
-        "opacity": 0.99,
-        "queryable": false
+        "legendDisplayName": "Gran Valle",
+        "renderMode": "vector",
+        "format": "MVT",
+        "visible": true,
+        "zIndex": 20000,
+        "opacity": 1,
+        "minResolution": 800,
+        "maxResolution": 64000,
+        "label": false,
+        "hoverable": false,
+        "legendIcon": "https://casario-mapa.s3.sa-east-1.amazonaws.com/assets/icons/legends/leyenda_gran_valle.png",
+        "style": {
+          "hoverTextColor": "white",
+          "hoverBackgroundColor": "#000000",
+          "featureStyles": [
+            {
+              "fillColor": "rgba( 255, 255, 255, 0.02 )"
+              },
+            {
+              "strokeColor": "rgba( 255,255,255, 0.90 )",
+              "strokeWidth": 4
+              },
+            {
+              "strokeColor": "rgba( 31, 96, 140, 0.70 )",
+              "strokeWidth": 2
+              }
+          ] 
+        }
       },
       {
         "type": "VECTOR",
-        "name": "miss_basin",
-        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:miss_basin&outputFormat=application/json&srsname=EPSG:3857",
+        "name": "humedales",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:humedales&outputFormat=application/json&srsname=EPSG:3857",
+        "group": "two",
+        "queryable": false,
+        "displayInLegend": true,
+        "legendDisplayName": "Corredor de Humedales",
+        "format": "GeoJSON",
+        "visible": true,
+        "zIndex": 10000,
+        "minResolution": 800,
+        "maxResolution": 64000,
+        "label": false,
+        "hoverable": false,
+        "style": {
+        "hoverTextColor": "white",
+        "hoverBackgroundColor": "#000000",
+        "fillColor": "rgba( 152, 178, 59, 0.9)",
+        "strokeColor": "rgba(108, 134, 60, 1.0)",
+        "strokeWidth": 1
+         }
+      },
+      {
+        "type": "VECTOR",
+        "name": "areas_protegidas0",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:areas_protegidas2&outputFormat=application/json&srsname=EPSG:3857",
+        "group": "valle",
+        "queryable": true,
+        "displayInLegend": true,
+        "legendDisplayName": "Áreas protegidas",
+        "format": "GeoJSON",
+        "visible": false,
+        "zIndex": 10000,
+        "minResolution": 801,
+        "maxResolution": 6400,
+        "label": false,
+        "hoverable": false,
+        "style": {
+          "fillColor": "rgba( 185, 143, 215, 0.50 )",
+          "strokeColor": "rgba( 185, 143, 215, 1.0 )",
+          "strokeWidth": 2
+          }
+      },
+      {
+        "type": "VECTOR",
+        "name": "areas_protegidas",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:areas_protegidas2&outputFormat=application/json&srsname=EPSG:3857",
+        "group": "valle",
+        "queryable": true,
+        "displayInLegend": true,
+        "legendDisplayName": "Áreas protegidas",
+        "format": "GeoJSON",
+        "visible": true,
+        "zIndex": 10000,
+        "minResolution": 0.5,
+        "maxResolution": 801,
+        "label": false,
+        "hoverable": false,
+        "style": {
+          "fillColor": "rgba( 185, 143, 215, 0.50 )",
+          "strokeColor": "rgba( 185, 143, 215, 1.0 )",
+          "strokeWidth": 2
+          }
+      },
+      {
+        "type": "VECTOR",
+        "name": "estuary_dodge",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:estuary_dodge&outputFormat=application/json&srsname=EPSG:3857",
         "group": "backgroundLayers",
         "queryable": true,
         "displayInLegend": false,
         "legendDisplayName": "",
         "format": "GeoJSON",
         "visible": true,
-        "zIndex": 0,
-        "minResolution": 400,
-        "maxResolution": 32000,
-        "hoverable": true,
-        "style": {
-          "type": "line",
-          "strokeColor": "#ffffff",
-          "strokeWidth": 1,
-          "strokeOpacity": 0.5
-          
-        }
-      },
-      {
-        "type": "GROUP",
-        "name": "pipelines_refineries",
-        "legendIcon": "https://bigmudddy.s3.us-east-2.amazonaws.com/assets/icons/legend_pipelines_refineries.png",
-        "minResolution": 1,
-        "maxResolution": 8000,
-        "displayInLegend": true,
-        "legendDisplayName": "Oil System",
-        "visible": false,
-        "displaySidebarInfo": true,
-        "group": "two",
-        "attributions": "Test attributions",
-        "layers": [
-          {
-          "type": "VECTORTILE",
-          "name": "miss_pipelines",
-          "url": "./geoserver/gwc/service/tms/1.0.0/workspace1:miss_pipes@EPSG%3A900913@pbf/{z}/{x}/{-y}.pbf",
-          "queryable": true,
-          "format": "MVT",
-          "zIndex": 0,
-          "minResolution": 0.5,
-          "maxResolution": 8000,
-          "hoverable": true,
-          "isInteractive": true,
-            "style": {
-              "hoverTextColor": "white",
-              "hoverBackgroundColor": "#000000",
-              "strokeColor": "#CB1735",
-              "strokeWidth": 1.5
-              }
-          },
-          {
-          "type": "VECTORTILE",
-          "name": "gom_pipelines",
-          "url": "./geoserver/gwc/service/tms/1.0.0/workspace1:gom_pipelines@EPSG%3A900913@pbf/{z}/{x}/{-y}.pbf",
-          "queryable": true,
-          "format": "MVT",
-          "zIndex": 0,
-          "minResolution": 0.5,
-          "maxResolution": 8000,
-          "hoverable": true,
-          "isInteractive": true,
-            "style": {
-              "hoverTextColor": "white",
-              "hoverBackgroundColor": "#000000",
-              "strokeColor": "#CB1735",
-              "strokeWidth": 1
-              }
-          },
-          {
-          "type": "VECTOR",
-          "name": "refineries",
-          "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:miss_refineries_ghg&outputFormat=application/json&srsname=EPSG:3857",
-          "queryable": true,
-          "format": "GeoJSON",
-          "zIndex": 0,
-          "minResolution": 1,
-          "maxResolution": 8000,
-          "label": null,
-          "hoverable": true,
-          "isInteractive": true,
-            "style": {
-            "iconUrl": "https://bigmudddy.s3.us-east-2.amazonaws.com/assets/icons/refinery.png",
-            "scale": 0.5,
-            "hoverTextColor": "white",
-            "hoverBackgroundColor": "#000000"
-            }
-          }
-        ]
-      },
-      {
-        "type": "GROUP",
-        "name": "coal_power",
-        "legendIcon": "https://bigmudddy.s3.us-east-2.amazonaws.com/assets/icons/coal.png",
-        "minResolution": 1,
-        "maxResolution": 8000,
-        "displayInLegend": true,
-        "legendDisplayName": "Coal Power",
-        "visible": false,
-        "displaySidebarInfo": true,
-        "group": "two",
-        "attributions": "Test attributions",
-        "layers": [
-          {
-          "type": "VECTOR",
-          "name": "miss_coal_ghg",
-          "legendDisplayName": "Coal GHG",
-          "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:miss_coal_ghg&outputFormat=application/json&srsname=EPSG:3857",
-          "group": "two",
-          "queryable": true,
-          "format": "GeoJSON",
-          "zIndex": 1000,
-          "minResolution": 1,
-          "maxResolution": 8000,
-          "label": null,
-          "hoverable": true,
-          "style": {
-            "iconUrl": "https://bigmudddy.s3.us-east-2.amazonaws.com/assets/icons/coal.png",
-            "scale": 0.35,
-            "hoverTextColor": "white",
-            "hoverBackgroundColor": "#000000"
-             }
-          },
-          {
-          "type": "VECTOR",
-          "name": "miss_legacy_ash",
-          "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:miss_legacy_ash&outputFormat=application/json&srsname=EPSG:3857",
-          "group": "two",
-          "queryable": true,
-          "format": "GeoJSON",
-          "zIndex": 100,
-          "minResolution": 1,
-          "maxResolution": 8000,
-          "label": null,
-          "hoverable": true,
-          "style": {
-            "iconUrl": "https://bigmudddy.s3.us-east-2.amazonaws.com/assets/icons/legacy_coal.png",
-            "scale": 0.55,
-            "hoverTextColor": "white",
-            "hoverBackgroundColor": "#000000"
-             }
-          },
-          {
-          "type": "VECTOR",
-          "name": "miss_coal_ash",
-          "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:miss_coal_ash&outputFormat=application/json&srsname=EPSG:3857",
-          "group": "two",
-          "queryable": true,
-          "format": "GeoJSON",
-          "zIndex": 1000,
-          "minResolution": 0.5,
-          "maxResolution": 400,
-          "label": null,
-          "hoverable": true,
-          "style": {
-            "iconUrl": "https://bigmudddy.s3.us-east-2.amazonaws.com/assets/icons/coal_ash.png",
-            "scale": 0.6,
-            "hoverTextColor": "white",
-            "hoverBackgroundColor": "#000000"
-              }
-            }
-          ]
-        },
-       {
-        "type": "VECTOR",
-        "name": "cancer_alley_tri",
-        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:cancer_alley_tri&outputFormat=application/json&srsname=EPSG:3857",
-        "group": "two",
-        "queryable": true,
-        "displayInLegend": true,
-        "legendDisplayName": "Cancer Alley",
-        "displaySidebarInfo": true,
-        "format": "GeoJSON",
-        "visible": false,
         "zIndex": 10000,
         "minResolution": 0.5,
-        "maxResolution": 32000,
-        "label": true,
-        "hoverable": true,
+        "maxResolution": 64000,
+        "label": false,
+        "hoverable": false,
         "style": {
-          "iconUrl": "https://bigmudddy.s3.us-east-2.amazonaws.com/assets/icons/toxic.png",
-          "scale": 0.7,
-          "hoverTextColor": "white",
-          "hoverBackgroundColor": "#000000"
-        }
+          "fillColor": "#997955",
+          "strokeColor": "#997955",
+          "strokeWidth": 1
+          }
+      },
+      {
+        "type": "VECTOR",
+        "name": "estuario_negro",
+        "url": "https://geo.timetochange.today/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=osm:estuario&outputFormat=application/json&srsname=EPSG:3857",
+        "group": "backgroundLayers",
+        "queryable": true,
+        "displayInLegend": false,
+        "legendDisplayName": "",
+        "format": "GeoJSON",
+        "visible": true,
+        "zIndex": 10000,
+        "minResolution": 0.5,
+        "maxResolution": 64000,
+        "label": false,
+        "hoverable": false,
+        "style": {
+          "fillColor": "#030303",
+          "strokeColor": "#030303",
+          "strokeWidth": 1
+          }
       },
 
-       {
+      {
         "type": "XYZ",
-        "name": "worldmap",
-        "group": "two",
-        "url": "https://geo.timetochange.today/geoserver/gwc/service/tms/1.0.0/osm:world_phys_saturated_yellow@EPSG%3A900913@png/{z}/{x}/{-y}.png",
-        "minResolution": 40,
+        "name": "biocultural",
+        "group": "backgroundLayers",
+        "url": "https://s3-sa-east-1.amazonaws.com/casario-mapa/assets/tiles/bioculturales/{z}/{x}/{y}.png",
+        "minResolution": 4,
         "maxResolution": 64000,
         "opacity": 0.99,
+        "queryable": false,
+        "visible": true
+      },
+      {
+        "type": "XYZ",
+        "name": "cuenca_oscura",
+        "group": "valle",
+        "url": "https://s3-sa-east-1.amazonaws.com/casario-mapa/assets/tiles/cuenca_oscura/{z}/{x}/{y}.png",
+        "minResolution": 6,
+        "maxResolution": 64000,
+        "displayInLegend": false,
+        "legendDisplayName": "",
+        "opacity": 0.99,
+        "queryable": false,
+        "visible": true
+      },
+      {
+        "type": "XYZ",
+        "name": "cuenca_extractivista",
+        "group": "valle",
+        "url": "https://geo.timetochange.today/geoserver/gwc/service/tms/1.0.0/osm%3Acuenca_extractivista@EPSG%3A900913@png/{z}/{x}/{-y}.png",
+        "minResolution": 0.50,
+        "maxResolution": 640000,
+        "displayInLegend": false,
+        "legendDisplayName": "",
+        "opacity": 0.99,
+        "visible": true,
         "updatewhileanimating": true
       },
       {
         "type": "XYZ",
         "name": "osm_transparencies",
-        "group": "two",
+        "group": "backgroundLayers",
         "url": "https://geo.timetochange.today/geoserver/gwc/service/tms/1.0.0/osm:osm_transparencies@EPSG%3A900913@png/{z}/{x}/{-y}.png",
-        "minResolution": 0.5,
-        "maxResolution": 8000,
+        "minResolution": 1,
+        "maxResolution": 64000,
+        "displayInLegend": false,
+        "legendDisplayName": "",
+        "opacity": 0.99,
+        "visible": true,
+        "updatewhileanimating": true
+      },
+      {
+        "type": "XYZ",
+        "name": "soja_2001-2020",
+        "group": "one",
+        "url": "https://s3-sa-east-1.amazonaws.com/casario-mapa/assets/tiles/soja_2001-2020/{z}/{x}/{y}.png",
+        "minResolution": 1,
+        "maxResolution": 64000,
         "displayInLegend": true,
-        "legendDisplayName": "OSM",
+        "legendDisplayName": "Soja 2001-20",
+        "legendIcon": "https://casario-mapa.s3.sa-east-1.amazonaws.com/assets/icons/legends/leyenda_soja_2001-2020.png",
+        "opacity": 0.99,
+        "visible": true,
+        "updatewhileanimating": true
+      },
+      {
+        "type": "VECTOR",
+        "name": "republica_actual",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:republica_actual&outputFormat=application/json&srsname=EPSG:3857",
+        "group": "two",
+        "queryable": false,
+        "displayInLegend": true,
+        "legendDisplayName": "República actual",
+        "format": "GeoJSON",
+        "visible": false,
+        "zIndex": 10000,
+        "minResolution": 0.5,
+        "maxResolution": 64000,
+        "label": false,
+        "hoverable": false,
+        "style": {
+          "fillColor": "rgba(221,68,252, 0.15 )",
+          "strokeColor": "rgba( 221,68,252, 0.80 )",
+          "strokeWidth": 4
+          }
+      },
+      {
+        "type": "XYZ",
+        "name": "desmonte",
+        "group": "one",
+        "url": "https://s3-sa-east-1.amazonaws.com/casario-mapa/assets/tiles/desmonte/{z}/{x}/{y}.png",
+        "minResolution": 1,
+        "maxResolution": 64000,
+        "displayInLegend": true,
+        "legendDisplayName": "Desmonte 2001-20",
+        "legendIcon": "https://casario-mapa.s3.sa-east-1.amazonaws.com/assets/icons/legends/leyenda_desmonte.png",
+        "opacity": 0.99,
+        "visible": false,
+        "updatewhileanimating": true
+      },
+      {
+        "type": "VECTOR",
+        "name": "hidrovia_simplificada",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:hidrovia_simplificada&outputFormat=application/json&srsname=EPSG:3857",
+        "group": "two",
+        "queryable": true,
+        "displayInLegend": true,
+        "legendDisplayName": "Hidrovía",
+        "format": "GeoJSON",
+        "visible": true,
+        "zIndex": 10000,
+        "minResolution": 0.5,
+        "maxResolution": 64000,
+        "label": false,
+        "hoverable": false,
+        "style": {
+          "strokeColor": "#16C0DB",
+          "strokeWidth": 5
+          }
+      },
+      {
+        "type": "XYZ",
+        "name": "forest_loss",
+        "group": "one",
+        "url": "https://geo.timetochange.today/geoserver/gwc/service/tms/1.0.0/osm%3AForestLossTiledCutOvr@EPSG%3A900913@png/{z}/{x}/{-y}.png",
+        "minResolution": 1,
+        "maxResolution": 64000,
+        "displayInLegend": false,
+        "legendDisplayName": "Desmonte 2000-2020",
         "opacity": 0.99,
         "visible": false,
         "updatewhileanimating": true
       },
       {
         "type": "XYZ",
-        "name": "mississippi",
-        "group": "two",
-        "url": "https://maptime.s3.us-east-2.amazonaws.com/assets/prod/tiles/miss_map/{z}/{x}/{y}.png",
+        "name": "osm_cuenca",
+        "group": "backgroundLayers",
+        "url": "https://geo.timetochange.today/geoserver/gwc/service/tms/1.0.0/osm%3Aosm_cuenca@EPSG%3A900913@png/{z}/{x}/{-y}.png",
+        "minResolution": 0.5,
+        "maxResolution": 64000,
         "displayInLegend": false,
-        "legendDisplayName": "Mississippi Basin",
-        "minResolution": 16,
-        "maxResolution": 64000,
+        "legendDisplayName": "",
         "opacity": 0.99,
-        "queryable": false,
         "visible": true,
         "updatewhileanimating": true
       },
       {
         "type": "XYZ",
-        "name": "hydro",
-        "group": "two",
-        "url": "https://basemap.nationalmap.gov/arcgis/rest/services/USGSHydroCached/MapServer/tile/{z}/{y}/{x}",
-        "minResolution": 0,
-        "maxResolution": 64000,
+        "name": "calles",
+        "group": "one",
+        "url": "https://geo.timetochange.today/geoserver/gwc/service/tms/1.0.0/osm%3Amap_bw@EPSG%3A900913@png/{z}/{x}/{-y}.png",
+        "minResolution": 0.5,
+        "maxResolution": 8000,
         "displayInLegend": true,
-        "legendDisplayName": "Hydro",
+        "legendIcon": "https://casario-mapa.s3.sa-east-1.amazonaws.com/assets/icons/legends/leyenda_red_urbana.png",
+        "legendDisplayName": "Red vial",
+        "opacity": 0.99,
+        "visible": true,
+        "updatewhileanimating": true
+      },
+      {
+        "type": "XYZ",
+        "name": "sitios",
+        "group": "one",
+        "url": "https://geo.timetochange.today/geoserver/gwc/service/tms/1.0.0/osm%3Aosm_places_bw_corredores@EPSG%3A900913@png/{z}/{x}/{-y}.png",
+        "minResolution": 0.5,
+        "maxResolution": 8000,
+        "displayInLegend": false,
+        "legendIcon": "https://casario-mapa.s3.sa-east-1.amazonaws.com/assets/icons/legends/leyenda_red_urbana.png",
+        "legendDisplayName": "Red vial",
+        "opacity": 0.99,
+        "visible": true,
+        "updatewhileanimating": true
+      },
+      {
+        "type": "XYZ",
+        "name": "imagen_satelital",
+        "group": "backgroundLayers",
+        "url": "https://api.mapbox.com/styles/v1/bkholmes/ckqb0kvi23mxz17n203e8ravx/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYmtob2xtZXMiLCJhIjoiNjlkYjI4MDUyYTRlZWEyYzkwYTdmOTgxNmMzOGYwMTUifQ.VSUo52PYOUzS60NR6jqXTw",
+        "minResolution": 0.50,
+        "maxResolution": 20,
+        "opacity": 1,
+        "queryable": false,
+        "visible": true
+      },
+      {
+        "type": "XYZ",
+        "name": "ESRI_world_physical",
+        "group": "backgroundLayers",
+        "url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}",
+        "minResolution": 4,
+        "maxResolution": 64000,
+        "opacity": 1,
+        "queryable": false,
+        "visible": true,
+        "updatewhileanimating": true
+      },
+      {
+        "type": "XYZ",
+        "name": "ESRI_world_physical2",
+        "url": "https://geo.timetochange.today/geoserver/gwc/service/tms/1.0.0/osm%3AWorld_Physical_Map@EPSG%3A900913@png/{z}/{x}/{-y}.png",
+        "group": "one",
+        "visible": true,
+        "opacity": 0.99,
+        "zIndex": 0,
+        "minResolution": 2,
+        "maxResolution": 64000
+      },
+      {
+        "type": "XYZ",
+        "name": "aerial",
+        "group": "two",
+        "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+        "minResolution": 0,
+        "maxResolution": 10,
         "opacity": 0.99,
         "queryable": false,
-        "visible": true,
-        "updatewhileanimating": true
-      },
-      {
-        "type": "XYZ",
-        "name": "oceans",
-        "group": "backgroundLayers",
-        "url": "https://server.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/{z}/{y}/{x}",
-        "minResolution": 0.25,
-        "maxResolution": 64000,
-        "opacity": 1,
-        "queryable": false,
-        "visible": true,
-        "updatewhileanimating": true
-      },
-      {
-        "type": "XYZ",
-        "name": "streets",
-        "group": "backgroundLayers",
-        "url": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",
-        "minResolution": 0.25,
-        "maxResolution": 64000,
-        "opacity": 1,
-        "queryable": false,
-        "visible": true,
-        "updatewhileanimating": true
+        "visible": true
       },
       {
         "type": "XYZ",
         "name": "ESRI-World-Imagery",
         "group": "backgroundLayers",
         "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-        "minResolution": 0.25,
-        "maxResolution": 4,
-        "queryable": false,
-        "visible": true
-      },
-      {
-        "type": "XYZ",
-        "name": "ESRI-World-Imagery2",
-        "group": "backgroundLayers",
-        "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-        "minResolution": 0.25,
-        "maxResolution": 400,
-        "queryable": false,
-        "visible": true,
-        "opacity": 0.7
-      },
-      {
-        "type": "XYZ",
-        "name": "aerials",
-        "group": "backgroundLayers",
-        "url": "https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}",
-        "minResolution": 0.25,
+        "minResolution": 0.50,
         "maxResolution": 40,
         "queryable": false,
         "visible": true
-      },
-      {
-        "type": "XYZ",
-        "name": "ESRI_world_physical2",
-        "url": "https://geo.timetochange.today/geoserver/gwc/service/tms/1.0.0/osm%3AWorld_Physical_Map@EPSG%3A900913@png/{z}/{x}/{-y}.png",
-        "group": "backgroundLayers",
-        "visible": true,
-        "opacity": 0.99,
-        "zIndex": 0,
-        "minResolution": 800,
-        "maxResolution": 64000
       }
     ],
     "flyToSlideshow": {
@@ -614,137 +626,468 @@
       ]
     },
     "groups": {
-      "one": {
+    
+      "valle": {
         "default": {
           "layers": [
-            "aerials",
-            "worldmap",
-            "mississippi",
-            "miss_basin"
+            "osm_cuenca",
+            "biocultural",
+            "estuary_dodge",
+            "gran_valle",
+            "humedales",
+            "areas_protegidas0",
+            "areas_protegidas",
+            "imagen_satelital",
+            "audios",
+            "videos",
+            "fotos",
+            "colaboradores",
+            "sitios",
+            "regiones"
           ],
-          "center": [-95.707, 39.725],
-          "resolution": 3800,
-          "mobileCenter": [-92.705, 38.291],
-          "mobileResolution": 6000,
-          "minResolution": 0.25,
-          "maxResolution": 32000
+          "center": [-60.130, -27.126],
+          "resolution": 5000,
+          "mobileCenter": [-58.936, -28.151],
+          "mobileResolution": 6200,
+          "minResolution": 0.5,
+          "maxResolution": 64000
         },
-        "local": {
-          "layers": [],
-          "center": [-99, 42.9],
-          "resolution": 9000,
-          "minResolution": 0.25,
-          "maxResolution": 32000
+        "biocultural": {
+          "layers": [
+            "osm_cuenca",
+            "biocultural",
+            "estuary_dodge",
+            "gran_valle",
+            "humedales",
+            "areas_protegidas0",
+            "areas_protegidas",
+            "imagen_satelital",
+            "audios",
+            "videos",
+            "fotos",
+            "colaboradores",
+            "sitios",
+            "regiones"
+            ],
+          "center": [-60.130, -27.126],
+          "resolution": 5000,
+          "mobileCenter": [-58.936, -28.151],
+          "mobileResolution": 6200,
+          "minResolution": 0.5,
+          "maxResolution": 64000
         },
-        "global": {
-          "layers": [],
-          "center": [2.44, 30.81],
-          "resolution": 25000,
-          "minResolution": 0.25,
+        "extractivista": {
+          "layers": [
+            "cuenca_extractivista",
+            "cuenca_oscura",
+            "estuario_negro",
+            "republica_soja",
+            "republica_actual",
+            "hidrovia_simplificada",
+            "soja_2001-2020",
+            "desmonte",
+            "calles",
+            "puertos",
+            "ESRI-World-Imagery"
+            ],
+          "center": [-60.130, -27.126],
+          "resolution": 5000,
+          "mobileCenter": [-58.936, -28.151],
+          "mobileResolution": 6200,
+          "minResolution": 0.5,
           "maxResolution": 64000
         }
       },
-      "two": {
+      
+      "estuario": {
         "default": {
           "layers": [
-            "aerials",
-            "worldmap",
-            "mississippi",
-            "miss_basin",
-            "navigation",
-            "indigenous_territories",
-            "places",
-            "miss_gages",
-            "pipelines_refineries",
-            "coal_power",
-            "cancer_alley_tri",
-            "labels"
+            "osm_cuenca",
+            "biocultural",
+            "estuary_dodge",
+            "areas_protegidas",
+            "imagen_satelital",
+            "audios",
+            "videos",
+            "fotos",
+            "sitios",
+            "colaboradores"
           ],
-          "center": [-95.707, 39.725],
-          "resolution": 3800,
-          "mobileCenter": [-90.794, 38.1],
-          "mobileResolution": 5340,
-          "minResolution": 0.25,
+          "center": [-57.835, -34.671],
+          "resolution": 200,
+          "minResolution": 0.5,
+          "maxResolution": 64000
+        },
+        "biocultural": {
+          "layers": [
+            "osm_cuenca",
+            "biocultural",
+            "estuary_dodge",
+            "areas_protegidas",
+            "imagen_satelital",
+            "audios",
+            "videos",
+            "fotos",
+            "sitios",
+            "colaboradores"
+            ],
+          "center": [-57.947, -34.845],
+          "resolution": 60,
+          "minResolution": 0.5,
           "maxResolution": 32000
         },
-        "local": {
-          "layers": [],
-          "center": [-99, 42.9],
-          "resolution": 9000,
-          "minResolution": 0.25,
-          "maxResolution": 32000
-        },
-        "global": {
-          "layers": [],
-          "center": [-5, 30],
-          "resolution": 32000,
-          "minResolution": 0.25,
+        "extractivista": {
+          "layers": [
+            "cuenca_extractivista",
+            "cuenca_oscura",
+            "estuario",
+            "republica_soja",
+            "republica_actual",
+            "hidrovia_simplificada",
+            "soja_2001-2020",
+            "desmonte",
+            "calles",
+            "puertos",
+            "ESRI-World-Imagery"
+            ],
+          "center": [-59.369, -33.206],
+          "resolution": 600,
+          "minResolution": 0.5,
           "maxResolution": 64000
         }
       },
-      "three": {
+      
+      "delta": {
         "default": {
           "layers": [
-            "aerials",
-            "worldmap",
-            "mississippi",
-            "miss_basin"
+            "osm_cuenca",
+            "biocultural",
+            "estuary_dodge",
+            "areas_protegidas",
+            "imagen_satelital",
+            "audios",
+            "videos",
+            "fotos",
+            "sitios",
+            "colaboradores"
           ],
-          "center": [-95.707, 39.725],
-          "resolution": 3800,
-          "mobileCenter": [-92.705, 38.291],
-          "mobileResolution": 6000,
-          "minResolution": 0.25,
+          "center": [-59.412, -33.091],
+          "resolution": 600,
+          "minResolution": 0.5,
+          "maxResolution": 64000
+        },
+        "biocultural": {
+          "layers": [
+            "osm_cuenca",
+            "biocultural",
+            "estuary_dodge",
+            "areas_protegidas",
+            "imagen_satelital",
+            "audios",
+            "videos",
+            "fotos",
+            "sitios",
+            "colaboradores"
+            ],
+          "center": [-57.947, -34.845],
+          "resolution": 60,
+          "minResolution": 0.5,
           "maxResolution": 32000
         },
-        "local": {
-          "layers": [],
-          "center": [-97, 37],
-          "resolution": 6000,
-          "minResolution": 0.25,
-          "maxResolution": 16000
+        "extractivista": {
+          "layers": [
+            "cuenca_extractivista",
+            "cuenca_oscura",
+            "estuario",
+            "republica_soja",
+            "republica_actual",
+            "hidrovia_simplificada",
+            "soja_2001-2020",
+            "desmonte",
+            "calles",
+            "puertos",
+            "ESRI-World-Imagery"
+            ],
+          "center": [-59.369, -33.206],
+          "resolution": 600,
+          "minResolution": 0.5,
+          "maxResolution": 64000
+        }
+      },
+      
+      "parana_medio": {
+        "default": {
+          "layers": [
+            "osm_cuenca",
+            "biocultural",
+            "estuary_dodge",
+            "areas_protegidas",
+            "imagen_satelital",
+            "audios",
+            "videos",
+            "fotos",
+            "sitios",
+            "colaboradores"
+          ],
+          "center": [-59.919, -29.798],
+          "resolution": 400,
+          "minResolution": 0.50,
+          "maxResolution": 64000
         },
-        "global": {
-          "layers": [],
-          "center": [2.44, 31.01],
-          "resolution": 30000,
-          "minResolution": 0.25,
-          "maxResolution": 32000
+        "biocultural": {
+          "layers": [
+            "osm_cuenca",
+            "biocultural",
+            "estuary_dodge",
+            "areas_protegidas",
+            "imagen_satelital",
+            "audios",
+            "videos",
+            "fotos",
+            "sitios",
+            "colaboradores"
+          ],
+          "center": [-59.919, -29.798],
+          "resolution": 400,
+          "minResolution": 0.50,
+          "maxResolution": 64000
+        },
+        "extractivista": {
+          "layers": [
+            "cuenca_extractivista",
+            "cuenca_oscura",
+            "estuario",
+            "republica_soja",
+            "republica_actual",
+            "hidrovia_simplificada",
+            "soja_2001-2020",
+            "desmonte",
+            "calles",
+            "puertos",
+            "ESRI-World-Imagery"
+          ],
+          "center": [-59.919, -29.798],
+          "resolution": 400,
+          "minResolution": 0.50,
+          "maxResolution": 64000
+        }
+      },
+      
+      "esteros": {
+        "default": {
+          "layers": [
+            "osm_cuenca",
+            "biocultural",
+            "estuary_dodge",
+            "areas_protegidas",
+            "imagen_satelital",
+            "audios",
+            "videos",
+            "fotos",
+            "regiones",
+            "colaboradores"
+          ],
+          "center": [-58.015, -27.338],
+          "resolution": 400,
+          "minResolution": 0.50,
+          "maxResolution": 64000
+        },
+        "biocultural": {
+          "layers": [
+            "osm_cuenca",
+            "biocultural",
+            "estuary_dodge",
+            "areas_protegidas",
+            "imagen_satelital",
+            "audios",
+            "videos",
+            "fotos",
+            "sitios",
+            "colaboradores"
+          ],
+          "center": [-58.015, -27.338],
+          "resolution": 400,
+          "minResolution": 0.50,
+          "maxResolution": 64000
+        },
+        "extractivista": {
+          "layers": [
+            "cuenca_extractivista",
+            "cuenca_oscura",
+            "estuario",
+            "republica_soja",
+            "republica_actual",
+            "hidrovia_simplificada",
+            "soja_2001-2020",
+            "desmonte",
+            "calles",
+            "puertos",
+            "ESRI-World-Imagery"
+          ],
+          "center": [-58.015, -27.338],
+          "resolution": 400,
+          "minResolution": 0.50,
+          "maxResolution": 64000
+        }
+      },
+      
+      "paraguay": {
+        "default": {
+          "layers": [
+            "osm_cuenca",
+            "biocultural",
+            "estuary_dodge",
+            "areas_protegidas",
+            "imagen_satelital",
+            "audios",
+            "videos",
+            "fotos",
+            "sitios",
+            "colaboradores"
+          ],
+          "center": [-57.703, -25.336],
+          "resolution": 280,
+          "minResolution": 0.50,
+          "maxResolution": 64000
+        },
+        "biocultural": {
+          "layers": [
+            "osm_cuenca",
+            "biocultural",
+            "estuary_dodge",
+            "areas_protegidas",
+            "imagen_satelital",
+            "audios",
+            "videos",
+            "fotos",
+            "sitios",
+            "colaboradores"
+            ],
+          "center": [-57.703, -25.336],
+          "resolution": 280,
+          "minResolution": 0.50,
+          "maxResolution": 64000
+        },
+        "extractivista": {
+          "layers": [
+            "cuenca_extractivista",
+            "cuenca_oscura",
+            "estuario",
+            "republica_soja",
+            "republica_actual",
+            "hidrovia_simplificada",
+            "soja_2001-2020",
+            "desmonte",
+            "calles",
+            "puertos",
+            "ESRI-World-Imagery"
+            ],
+          "center": [-57.703, -25.336],
+          "resolution": 280,
+          "minResolution": 0.50,
+          "maxResolution": 64000
+        }
+      },
+      
+      "pantanal": {
+        "default": {
+          "layers": [
+            "osm_cuenca",
+            "biocultural",
+            "estuary_dodge",
+            "areas_protegidas",
+            "imagen_satelital",
+            "audios",
+            "videos",
+            "fotos",
+            "sitios",
+            "colaboradores"
+          ],
+          "center": [-58.061, -17.283],
+          "resolution": 800,
+          "minResolution": 0.50,
+          "maxResolution": 64000
+        },
+        "biocultural": {
+          "layers": [
+            "osm_cuenca",
+            "biocultural",
+            "estuary_dodge",
+            "areas_protegidas",
+            "imagen_satelital",
+            "audios",
+            "videos",
+            "fotos",
+            "sitios",
+            "colaboradores"
+            ],
+          "center": [-58.061, -17.283],
+          "resolution": 800,
+          "minResolution": 0.50,
+          "maxResolution": 64000
+        },
+        "extractivista": {
+          "layers": [
+            "cuenca_extractivista",
+            "cuenca_oscura",
+            "estuario",
+            "republica_soja",
+            "republica_actual",
+            "hidrovia_simplificada",
+            "soja_2001-2020",
+            "desmonte",
+            "calles",
+            "puertos",
+            "ESRI-World-Imagery"
+            ],
+          "center": [-58.362, -18.346],
+          "resolution": 800,
+          "minResolution": 0.50,
+          "maxResolution": 64000
         }
       }
     },
     "groupTitles": {
-      "one": "Downstream Journal",
-      "two": "River Semester 2021",
-      "three": "Student Projects"
+      "valle": "Gran Valle",
+      "estuario": "Estuario",
+      "delta": "Delta",
+      "parana_medio": "Paraná Medio",
+      "esteros": "Esteros",
+      "paraguay": "Bajo Paraguay",
+      "pantanal": "Pantanal"
     },
     "regionTitles": {
-      "local": "Local",
-      "global": "global",
+      "biocultural": "biocultural",
+      "extractivista": "extractivista",
+      "biocultural": "biocultural",
+      "extractivista": "extractivista",
+      "biocultural": "biocultural",
+      "extractivista": "extractivista",
+      "biocultural": "biocultural",
+      "extractivista": "extractivista",
+      "biocultural": "biocultural",
+      "extractivista": "extractivista",
+      "biocultural": "biocultural",
+      "extractivista": "extractivista",
+      "biocultural": "biocultural",
+      "extractivista": "extractivista",
       "default": ""
     },
     "popupFieldsMapping": {
       "default": {
-        "title": "NAME",
-        "entity": "OWNER"
+        "title": "Título",
+        "entity": "Categoría",
+        "description": "Descripción"
       }
     },
     "featureInfoHiddenProps": [
-      "caption",
       "variable1",
       "variable2",
       "imageUrl",
       "sidebarMediaTop",
       "sidebarMediaBottom",
       "videoUrl",
-      "videoSrc",
-      "STAID2",
-      "facility_id",
-      "frs_id",
-      "primary_naics_code",
-      "facn",
-      "frsid",
-      "original_id"
+      "videoSrc"
     ],
     "corporateEntitiesUrls": {
       "Enbridge": ""
