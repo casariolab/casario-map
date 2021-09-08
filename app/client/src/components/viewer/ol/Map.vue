@@ -264,7 +264,7 @@ export default {
       queryLayersGeoserverNames: null,
       activeInteractions: [],
       getInfoResult: [],
-      radius: 300,
+      radius: 130,
       mousePosition: undefined,
       spotlightMessage: false,
       lightBoxImages: [],
