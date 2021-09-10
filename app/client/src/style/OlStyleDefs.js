@@ -594,6 +594,11 @@ export const layersStylePropFn = {
       return propertyValue;
     }
   },
+  glp_componentes: {
+    fillColor: propertyValue => {
+      return propertyValue;
+    }
+  },
   coal_global2: {
     circleRadiusFn: propertyValue => {
       return getRadiusValue(propertyValue, 0.3, 4, 50);

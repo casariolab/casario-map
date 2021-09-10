@@ -32,6 +32,6 @@ export default {
   right: 0;
   bottom: 0;
   overflow: hidden;
-  background-color: #BC8D5A;
+  background-color: #b1905a;
 }
 </style>
