@@ -93,8 +93,8 @@
                               @click="editHtml()"
                               icon
                               class="mr-3"
-                            > <!-- added 'color="white" --> 
-                              <v-icon color="white">edit</v-icon>
+                            > <!-- added 'color="grey"' --> 
+                              <v-icon color="grey">edit</v-icon>
                             </v-btn> </template
                           ><span>Edit</span></v-tooltip
                         >
@@ -144,6 +144,7 @@
                     style="width: 100%;"
                     v-if="popup.showInSidePanel"
                   >
+                  <!-- Added "color="grey"' four times in following two sections -->
                     <v-divider class="mb-1"></v-divider>
                     <v-layout>
                       <v-btn
@@ -151,13 +152,14 @@
                         text
                         small
                         class="mb-2 mt-1 mr-2"
+                        color="grey"
                         v-if="
                           ['Point', 'MultiPoint'].includes(
                             popup.activeFeature.getGeometry().getType()
                           ) && !previousMapPosition
                         "
                       >
-                        <v-icon small class="mr-1">fas fa-search-plus</v-icon>
+                        <v-icon small class="mr-1" color="grey">fas fa-search-plus</v-icon>
                         ZOOM
                       </v-btn>
                       <v-btn
@@ -165,13 +167,14 @@
                         text
                         small
                         class="mb-2 mt-1 mr-2"
+                        color="grey"
                         v-if="
                           previousMapPosition &&
                             previousMapPosition.zoom &&
                             previousMapPosition.center
                         "
                       >
-                        <v-icon small class="mr-1">fas fa-arrow-left</v-icon>
+                        <v-icon small class="mr-1" color="grey">fas fa-arrow-left</v-icon>
                         BACK
                       </v-btn>
                       <v-spacer></v-spacer>
@@ -188,14 +191,16 @@
                         <v-icon small class="mr-1">public</v-icon>
                         {{ searchLabel }}
                       </v-btn>
+                      <!-- added "grey" twice in this seection -->
                       <v-btn
                         v-if="!$vuetify.breakpoint.smAndDown"
                         @click="closePopupInfo"
                         text
                         small
                         class="mb-2 mt-1"
+                        color="grey"
                       >
-                        <v-icon small class="mr-1">close</v-icon>
+                        <v-icon small class="mr-1" color="grey">close</v-icon>
                         Close
                       </v-btn>
                     </v-layout>
@@ -260,7 +265,7 @@
                 </v-col>
               </v-row>
             </div>
-            <!-- EDIT POST BUTTONS -->
+            <!-- EDIT POST BUTTONS (added 'color="grey"')-->
             <div v-if="isHtmlViewer" style="width:100%;">
               <v-row>
                 <v-spacer></v-spacer>
@@ -272,6 +277,7 @@
                         @click="deletePost(popup.activeFeature)"
                         icon
                         class="mr-3"
+                        color="grey"
                       >
                         <v-icon>delete</v-icon>
                       </v-btn> </template
@@ -284,6 +290,7 @@
                         @click="editPost(popup.activeFeature)"
                         icon
                         class="mr-3"
+                        color="grey"
                       >
                         <v-icon>edit</v-icon>
                       </v-btn> </template
@@ -298,6 +305,7 @@
                         @click="closePopupInfo"
                         icon
                         class="mr-3"
+                        color="grey"
                       >
                         <v-icon>close</v-icon>
                       </v-btn> </template
