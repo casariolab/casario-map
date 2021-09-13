@@ -595,6 +595,11 @@ export const layersStylePropFn = {
       return propertyValue;
     }
   },
+  glp_componentes: {
+    fillColor: propertyValue => {
+      return propertyValue;
+    }
+  },
   hidrovia3_calados: {
     strokeColor: propertyValue => {
       return propertyValue;
