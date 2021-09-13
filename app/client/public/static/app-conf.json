@@ -73,7 +73,7 @@
         "legendDisplayName": "Puertos",
         "format": "GeoJSON",
         "visible": true,
-        "zIndex": 0,
+        "zIndex": 10000,
         "minResolution": 1,
         "maxResolution": 64000,
         "label": null,
@@ -571,7 +571,7 @@
           "legendDisplayName": "Hidrovía1",
           "format": "GeoJSON",
           "visible": true,
-          "zIndex": 10000,
+          "zIndex": 1000,
           "minResolution": 1800,
           "maxResolution": 64000,
           "label": false,
@@ -583,44 +583,28 @@
         },
         {
           "type": "VECTOR",
-          "name": "hidrovia2",
-          "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:hidrovia2&outputFormat=application/json&srsname=EPSG:3857",
-          "group": "valle",
-          "queryable": false,
-          "isInteractive": false,
+          "name": "hidrovia3_calados",
+          "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:hidrovia3_calados&outputFormat=application/json&srsname=EPSG:3857",
+          "group": "two",
+          "queryable": true,
+          "isInteractive": true,
           "displayInLegend": false,
-          "legendDisplayName": "Hidrovía2",
+          "legendDisplayName": "Hidrovía3 calados",
           "format": "GeoJSON",
           "visible": true,
-          "zIndex": 10000,
-          "minResolution": 200,
+          "zIndex": 1000,
+          "minResolution": 0.5,
           "maxResolution": 1810,
           "label": false,
-          "hoverable": false,
+          "hoverable": true,
           "style": {
-              "strokeColor": "#16C0DB",
-              "strokeWidth": 5
-              }
-        },
-        {
-          "type": "VECTOR",
-          "name": "hidrovia3",
-          "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:hidrovia3&outputFormat=application/json&srsname=EPSG:3857",
-          "group": "two",
-          "queryable": false,
-          "isInteractive": false,
-          "displayInLegend": false,
-          "legendDisplayName": "Hidrovía3",
-          "format": "GeoJSON",
-          "visible": true,
-          "zIndex": 10000,
-          "minResolution": 0.5,
-          "maxResolution": 200,
-          "label": false,
-          "hoverable": false,
-          "style": {
-              "strokeColor": "#16C0DB",
-              "strokeWidth": 5
+            "type": "line",
+            "stylePropFnRef": {
+              "strokeColor": "variable1"
+            },
+            "strokeWidth": 5,
+            "hoverTextColor": "white",
+            "hoverBackgroundColor": "#000000"
             }
           }
         ]
@@ -993,6 +977,7 @@
             "audios",
             "videos",
             "fotos",
+            "sitios",
             "regiones",
             "colaboradores"
           ],
@@ -1162,7 +1147,7 @@
       }
     },
     "groupTitles": {
-      "valle": "Gran Valle",
+      "valle": "Valle Central",
       "estuario": "Estuario",
       "delta": "Delta",
       "parana_medio": "Paraná Medio",

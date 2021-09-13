@@ -347,8 +347,9 @@ export function baseStyle(config) {
                   stylePropFnRef.strokeWidth &&
                   strokeWidth instanceof Function
                   ? strokeWidth(feature.get(stylePropFnRef.strokeWidth))
-                  : strokeWidth || 4,
-              lineDash: lineDash || [6]
+                  : strokeWidth || 4
+                  /* Here I removed a comma and this line, which was giving me an unwanted dash: 
+            lineDash: lineDash || [6] */
             })
           };
           if (labelText) {
@@ -594,8 +595,8 @@ export const layersStylePropFn = {
       return propertyValue;
     }
   },
-  glp_componentes: {
-    fillColor: propertyValue => {
+  hidrovia3_calados: {
+    strokeColor: propertyValue => {
       return propertyValue;
     }
   },
