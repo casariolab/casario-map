@@ -1,9 +1,9 @@
 {
   "app": {
-    "title": "CORREDORES",
+    "title": "BIOCULTURAS",
     "projectWebsite": "https://casariolab.art",
     "color": {
-      "primary": "#060605",
+      "primary": "#00000e",
       "secondary": "#00000e"
     },
     "legend": { "isVisible": true },
@@ -1179,6 +1179,7 @@
         }
       }
     },
+    "defaultActiveGroup": "valle",
     "groupTitles": {
       "valle": "Valle Central",
       "estuario": "Estuario",
