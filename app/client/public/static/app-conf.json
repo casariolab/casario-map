@@ -1,6 +1,7 @@
 {
   "app": {
-    "title": "CORREDORES",
+    "title": "BIOCULTURAS",
+    "projectWebsite": "https://casariolab.art",
     "color": {
       "primary": "#00000e",
       "secondary": "#00000e"
@@ -112,7 +113,7 @@
           "hoverBackgroundColor": "#000000"
         }
       },
-       {
+      {
         "type": "VECTOR",
         "name": "regiones",
         "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:regiones&outputFormat=application/json&srsname=EPSG:3857",
@@ -162,7 +163,7 @@
         "group": "valle",
         "queryable": true,
         "displayInLegend": true,
-        "legendDisplayName": "Radio Mutante",
+        "legendDisplayName": "Audios",
         "format": "GeoJSON",
         "visible": true,
         "zIndex": 10000,
@@ -184,7 +185,7 @@
         "group": "valle",
         "queryable": true,
         "displayInLegend": true,
-        "legendDisplayName": "Videos Casa Río",
+        "legendDisplayName": "Videos",
         "format": "GeoJSON",
         "visible": true,
         "zIndex": 10000,
@@ -301,12 +302,10 @@
         "label": false,
         "hoverable": false,
         "style": {
-        "hoverTextColor": "white",
-        "hoverBackgroundColor": "#000000",
-        "fillColor": "rgba( 152, 178, 59, 0.9)",
-        "strokeColor": "rgba(108, 134, 60, 1.0)",
-        "strokeWidth": 1
-         }
+          "fillColor": "rgba( 185, 143, 215, 0.80 )",
+          "strokeColor": "rgba( 185, 143, 215, 1.0 )",
+          "strokeWidth": 2
+          }
       },
       {
         "type": "VECTOR",
@@ -484,21 +483,6 @@
       },
       {
         "type": "XYZ",
-        "name": "estacionalidad",
-        "group": "one",
-        "url": "https://s3-sa-east-1.amazonaws.com/casario-mapa/assets/tiles/estacionalidad/{z}/{x}/{y}.png",
-        "minResolution": 1,
-        "maxResolution": 64000,
-        "displayInLegend": true,
-        "displaySidebarInfo": true,
-        "legendDisplayName": "Estacionalidad del agua",
-        "legendIcon": " ",
-        "opacity": 0.99,
-        "visible": false,
-        "updatewhileanimating": true
-      },
-      {
-        "type": "XYZ",
         "name": "soja_2001-2020",
         "group": "one",
         "url": "https://s3-sa-east-1.amazonaws.com/casario-mapa/assets/tiles/soja_2001-2020/{z}/{x}/{y}.png",
@@ -549,13 +533,29 @@
         "updatewhileanimating": true
       },
       {
+        "type": "XYZ",
+        "name": "quemas",
+        "group": "one",
+        "url": "https://s3-sa-east-1.amazonaws.com/casario-mapa/assets/tiles/extractivista/focos_de_incendio/{z}/{x}/{y}.png",
+        "minResolution": 1,
+        "maxResolution": 64000,
+        "zIndex": 1000,
+        "displayInLegend": true,
+        "legendIcon": "https://casario-mapa.s3.sa-east-1.amazonaws.com/assets/icons/legends/leyenda_quemas.png",
+        "displaySidebarInfo": true,
+        "legendDisplayName": "Una semana del 2020",
+        "opacity": 0.99,
+        "visible": false,
+        "updatewhileanimating": true
+      },
+      {
         "type": "GROUP",
         "name": "hidrovia",
-        "legendIcon": " ",
         "minResolution": 1,
         "maxResolution": 68000,
         "displayInLegend": true,
         "legendDisplayName": "Hidrovía",
+        "legendIcon": "https://casario-mapa.s3.sa-east-1.amazonaws.com/assets/icons/legends/leyenda_hidrovia.png",
         "visible": true,
         "displaySidebarInfo": true,
         "group": "valle",
@@ -571,8 +571,8 @@
           "legendDisplayName": "Hidrovía1",
           "format": "GeoJSON",
           "visible": true,
-          "zIndex": 1000,
-          "minResolution": 1800,
+          "zIndex": 1,
+          "minResolution": 1000,
           "maxResolution": 64000,
           "label": false,
           "hoverable": false,
@@ -586,15 +586,15 @@
           "name": "hidrovia3_calados",
           "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:hidrovia3_calados&outputFormat=application/json&srsname=EPSG:3857",
           "group": "two",
-          "queryable": true,
+          "queryable": false,
           "isInteractive": true,
           "displayInLegend": false,
           "legendDisplayName": "Hidrovía3 calados",
           "format": "GeoJSON",
           "visible": true,
-          "zIndex": 1000,
+          "zIndex": 1,
           "minResolution": 0.5,
-          "maxResolution": 1810,
+          "maxResolution": 1010,
           "label": false,
           "hoverable": true,
           "style": {
@@ -705,7 +705,7 @@
     },
     "groups": {
     
-      "valle": {
+      "valle_central": {
         "default": {
           "layers": [
             "osm_cuenca",
@@ -714,7 +714,6 @@
             "estuario",
             "gran_valle",
             "humedales",
-            "areas_protegidas0",
             "areas_protegidas",
             "territorios_bioculturales",
             "glp_componentes",
@@ -742,7 +741,6 @@
             "estuary_dodge",
             "gran_valle",
             "humedales",
-            "areas_protegidas0",
             "areas_protegidas",
             "territorios_bioculturales",
             "glp_componentes",
@@ -767,12 +765,12 @@
             "republica_actual",
             "soja_2001-2020",
             "desmonte",
+            "quemas",
+            "regiones",
+            "ESRI-World-Imagery",
             "hidrovia",
             "calles",
-            "puertos",
-            "estacionalidad",
-            "regiones",
-            "ESRI-World-Imagery"
+            "puertos"
             ],
           "center": null,
           "resolution": null,
@@ -832,11 +830,12 @@
             "republica_actual",
             "soja_2001-2020",
             "desmonte",
-            "hidrovia",
-            "puertos",
-            "calles",
+            "quemas",
             "regiones",
-            "ESRI-World-Imagery"
+            "ESRI-World-Imagery",
+            "hidrovia",
+            "calles",
+            "puertos"
             ],
           "center": null,
           "resolution": null,
@@ -892,11 +891,12 @@
             "republica_actual",
             "soja_2001-2020",
             "desmonte",
-            "hidrovia",
-            "puertos",
-            "calles",
+            "quemas",
             "regiones",
-            "ESRI-World-Imagery"
+            "ESRI-World-Imagery",
+            "hidrovia",
+            "calles",
+            "puertos"
             ],
           "center": null,
           "resolution": null,
@@ -952,11 +952,12 @@
             "republica_actual",
             "soja_2001-2020",
             "desmonte",
-            "hidrovia",
-            "puertos",
-            "calles",
+            "quemas",
             "regiones",
-            "ESRI-World-Imagery"
+            "ESRI-World-Imagery",
+            "hidrovia",
+            "calles",
+            "puertos"
           ],
           "center": null,
           "resolution": null,
@@ -1013,11 +1014,12 @@
             "republica_actual",
             "soja_2001-2020",
             "desmonte",
-            "hidrovia",
-            "puertos",
-            "calles",
+            "quemas",
             "regiones",
-            "ESRI-World-Imagery"
+            "ESRI-World-Imagery",
+            "hidrovia",
+            "calles",
+            "puertos"
           ],
           "center": null,
           "resolution": null,
@@ -1073,11 +1075,12 @@
             "republica_actual",
             "soja_2001-2020",
             "desmonte",
-            "hidrovia",
-            "puertos",
-            "calles",
+            "quemas",
             "regiones",
-            "ESRI-World-Imagery"
+            "ESRI-World-Imagery",
+            "hidrovia",
+            "calles",
+            "puertos"
             ],
           "center": null,
           "resolution": null,
@@ -1133,11 +1136,12 @@
             "republica_actual",
             "soja_2001-2020",
             "desmonte",
-            "hidrovia",
-            "puertos",
-            "calles",
+            "quemas",
             "regiones",
-            "ESRI-World-Imagery"
+            "ESRI-World-Imagery",
+            "hidrovia",
+            "calles",
+            "puertos"
             ],
           "center": null,
           "resolution": null,
@@ -1147,7 +1151,7 @@
       }
     },
     "groupTitles": {
-      "valle": "Valle Central",
+      "valle_central": "Valle Central",
       "estuario": "Estuario",
       "delta": "Delta",
       "parana_medio": "Paraná Medio",
@@ -1176,7 +1180,10 @@
       "default": {
         "title": "Título",
         "entity": "Categoría",
-        "description": "Descripción"
+        "description": "Descriptivo",
+        "MUNIC_1": "MUNICIPALIDAD 1",
+        "MUNIC_2": "MUNICIPALIDAD 2"
+        
       }
     },
     "featureInfoHiddenProps": [
@@ -1186,7 +1193,16 @@
       "sidebarMediaTop",
       "sidebarMediaBottom",
       "videoUrl",
-      "videoSrc"
+      "videoSrc",
+      "UF_1",
+      "COD_BAC",
+      "COD_SBAC",
+      "LAT_EIXO_G",
+      "LONG EIXO",
+      "UF_2",
+      "UF_CF",
+      "MUNIC_CF"
+      
     ],
     "corporateEntitiesUrls": {
       "Enbridge": ""
