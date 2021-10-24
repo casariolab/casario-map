@@ -85,29 +85,39 @@
         </v-menu>
 
         <v-spacer></v-spacer>
-        <div v-for="(navbarGroup, index) in navbarGroups" :key="index">
-          <v-btn
-            min-width="60"
-            class="mx-10"
-            :dark="
-              activeLayerGroup.navbarGroup === navbarGroup.name ? false : true
-            "
-            @click="changeNavbarGroup(navbarGroup)"
-            :color="
-              activeLayerGroup.navbarGroup === navbarGroup.name
-                ? 'white'
-                : color.primary
-            "
-            :class="{
-              'elevation-0': activeLayerGroup.navbarGroup !== navbarGroup.name,
-              'font-weight-bold black--text':
-                activeLayerGroup.navbarGroup === navbarGroup.name,
-              'elevation-6': activeLayerGroup.navbarGroup === navbarGroup.name
-            }"
-          >
-            {{ navbarGroup.title }}
-          </v-btn>
-        </div>
+        <template
+          v-if="
+            ($appConfig.app.navbar &&
+              $appConfig.app.navbar.dropdownMenu !== true) ||
+              !$appConfig.app.navbar
+          "
+        >
+          <div v-for="(navbarGroup, index) in navbarGroups" :key="index">
+            <v-btn
+              min-width="200"
+              class="mx-10"
+              :dark="
+                activeLayerGroup.navbarGroup === navbarGroup.name ? false : true
+              "
+              @click="changeNavbarGroup(navbarGroup)"
+              :color="
+                activeLayerGroup.navbarGroup === navbarGroup.name
+                  ? 'white'
+                  : color.primary
+              "
+              :class="{
+                'elevation-0':
+                  activeLayerGroup.navbarGroup !== navbarGroup.name,
+                'font-weight-bold black--text':
+                  activeLayerGroup.navbarGroup === navbarGroup.name,
+                'elevation-6': activeLayerGroup.navbarGroup === navbarGroup.name
+              }"
+            >
+              {{ navbarGroup.title }}
+            </v-btn>
+          </div>
+        </template>
+
         <v-spacer></v-spacer><v-spacer></v-spacer>
 
         <!--      <span class="title pr-5">before it's too late</span>  -->

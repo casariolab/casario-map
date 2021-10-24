@@ -1,16 +1,16 @@
 {
   "app": {
-    "title": "BIOCULTURAS",
+    "title": "CORREDORES",
     "projectWebsite": "https://casariolab.art",
     "color": {
-      "primary": "#00000e",
+      "primary": "#060605",
       "secondary": "#00000e"
     },
     "legend": { "isVisible": true },
     "sideBar": {
       "isVisible": true,
-      "backgroundColor": "#fefefe",
-      "textColor": "black"
+      "backgroundColor": "#060605",
+      "textColor": "white"
     },
     "navbar": {
       "dropdownMenu": true
@@ -734,7 +734,7 @@
     },
     "groups": {
     
-      "valle_central": {
+      "valle": {
         "default": {
           "layers": [
             "osm_cuenca",
@@ -1180,7 +1180,7 @@
       }
     },
     "groupTitles": {
-      "valle_central": "Valle Central",
+      "valle": "Valle Central",
       "estuario": "Estuario",
       "delta": "Delta",
       "parana_medio": "Paraná Medio",
