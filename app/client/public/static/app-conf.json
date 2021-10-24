@@ -9,8 +9,11 @@
     "legend": { "isVisible": true },
     "sideBar": {
       "isVisible": true,
-      "backgroundColor": "black",
-      "textColor": "white"
+      "backgroundColor": "#fefefe",
+      "textColor": "black"
+    },
+    "navbar": {
+      "dropdownMenu": true
     }
   },
   "map": {
@@ -114,6 +117,32 @@
         }
       },
       {
+        "type": "VECTOR",
+        "name": "AHEs",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:AHEs&outputFormat=application/json&srsname=EPSG:3857",
+        "group": "valle",
+        "queryable": true,
+        "displayInLegend": true,
+        "legendDisplayName": "Pequeños centrales",
+        "displaySidebarInfo": false,
+        "format": "GeoJSON",
+        "visible": true,
+        "zIndex": 10000,
+        "minResolution": 2,
+        "maxResolution": 64000,
+        "label": null,
+        "hoverable": true,
+        "style": {
+          "type": "circle",
+          "radius": 3,
+          "fillColor": "#FEFC5A",
+          "strokeColor": "#FF0809",
+          "strokeWidth": 1,
+          "hoverTextColor": "white",
+          "hoverBackgroundColor": "#000000"
+         }
+      },
+       {
         "type": "VECTOR",
         "name": "regiones",
         "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:regiones&outputFormat=application/json&srsname=EPSG:3857",
