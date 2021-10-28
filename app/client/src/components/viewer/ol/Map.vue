@@ -49,6 +49,7 @@
     >
       <add-post :color="color.primary" :map="map"></add-post>
     </div>
+    <!-- UNCOMMENT TO SHOW SPOTLIGHT MESSAGE
     <div
       v-show="
         spotlightMessage === true &&
@@ -60,7 +61,9 @@
       ref="spotlightControls"
     >
       press ↑ or ↓ to change spotlight size
-    </div>
+    </div>  
+    
+    -->
 
     <!-- Popup overlay  -->
     <overlay-popup

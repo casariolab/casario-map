@@ -600,6 +600,11 @@ export const layersStylePropFn = {
       return propertyValue;
     }
   },
+  cmr_componentes: {
+    fillColor: propertyValue => {
+      return propertyValue;
+    }
+  },
   hidrovia3_calados: {
     strokeColor: propertyValue => {
       return propertyValue;

@@ -80,7 +80,7 @@
                 "displayInLegend": true,
                 "legendDisplayName": "Puertos",
                 "format": "GeoJSON",
-                "visible": true,
+                "visible": false,
                 "zIndex": 10000,
                 "minResolution": 1,
                 "maxResolution": 64000,
@@ -390,6 +390,31 @@
             },
             {
                 "type": "VECTOR",
+                "name": "cmr_componentes",
+                "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:cmr_componentes&outputFormat=application/json&srsname=EPSG:3857",
+                "group": "valle",
+                "queryable": true,
+                "displayInLegend": true,
+                "legendDisplayName": "CMR componentes",
+                "format": "GeoJSON",
+                "visible": true,
+                "zIndex": 10000,
+                "minResolution": 0.25,
+                "maxResolution": 120,
+                "label": null,
+                "hoverable": true,
+                "style": {
+                    "hoverTextColor": "white",
+                    "hoverBackgroundColor": "#000000",
+                    "stylePropFnRef": {
+                        "fillColor": "variable1"
+                    },
+                    "strokeColor": "black",
+                    "strokeWidth": 1
+                }
+            },
+            {
+                "type": "VECTOR",
                 "name": "areas_protegidas0",
                 "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:areas_protegidas2&outputFormat=application/json&srsname=EPSG:3857",
                 "group": "valle",
@@ -448,8 +473,8 @@
                 "hoverable": false,
                 "isInteractive": false,
                 "style": {
-                    "fillColor": "#B3905E",
-                    "strokeColor": "#B3905E",
+                    "fillColor": "#b48e5b",
+                    "strokeColor": "#b48e5b",
                     "strokeWidth": 1
                 }
             },
@@ -587,12 +612,11 @@
                         "url": "https://s3-sa-east-1.amazonaws.com/casario-mapa/assets/tiles/focos_de_incendio/Julio-Agosto_2021/{z}/{x}/{y}.png",
                         "minResolution": 1,
                         "maxResolution": 64000,
-                        "zIndex": 1000,
+                        "zIndex": 100,
                         "displayInLegend": true,
                         "displaySidebarInfo": true,
                         "legendDisplayName": "2021",
                         "opacity": 0.99,
-                        "visible": false,
                         "updatewhileanimating": true
                     },
                     {
@@ -602,27 +626,11 @@
                         "url": "https://s3-sa-east-1.amazonaws.com/casario-mapa/assets/tiles/focos_de_incendio/Julio-Agosto_2020/{z}/{x}/{y}.png",
                         "minResolution": 1,
                         "maxResolution": 64000,
-                        "zIndex": 1000,
+                        "zIndex": 100,
                         "displayInLegend": true,
                         "displaySidebarInfo": true,
                         "legendDisplayName": "2020",
                         "opacity": 0.99,
-                        "visible": false,
-                        "updatewhileanimating": true
-                    },
-                    {
-                        "type": "XYZ",
-                        "name": "Julio-Agosto 2019",
-                        "group": "extractivista",
-                        "url": "https://s3-sa-east-1.amazonaws.com/casario-mapa/assets/tiles/focos_de_incendio/Julio-Agosto_2019/{z}/{x}/{y}.png",
-                        "minResolution": 1,
-                        "maxResolution": 64000,
-                        "zIndex": 1000,
-                        "displayInLegend": true,
-                        "displaySidebarInfo": true,
-                        "legendDisplayName": "2019",
-                        "opacity": 0.99,
-                        "visible": false,
                         "updatewhileanimating": true
                     }
                 ]
@@ -650,7 +658,7 @@
                         "legendDisplayName": "Hidrovía1",
                         "format": "GeoJSON",
                         "visible": true,
-                        "zIndex": 1,
+                        "zIndex": 100,
                         "minResolution": 1000,
                         "maxResolution": 64000,
                         "label": false,
@@ -671,7 +679,7 @@
                         "legendDisplayName": "Hidrovía3 calados",
                         "format": "GeoJSON",
                         "visible": true,
-                        "zIndex": 1,
+                        "zIndex": 100,
                         "minResolution": 0.5,
                         "maxResolution": 1010,
                         "label": false,
@@ -795,6 +803,7 @@
                         "areas_protegidas",
                         "territorios_bioculturales",
                         "glp_componentes",
+                        "cmr_componentes",
                         "imagen_satelital",
                         "audios",
                         "videos",
@@ -807,7 +816,7 @@
                         -60.13,
                         -27.126
                     ],
-                    "resolution": 5000,
+                    "resolution": 4500,
                     "mobileCenter": [
                         -58.936,
                         -28.151
@@ -849,10 +858,10 @@
                         "republica_actual",
                         "soja_2001-2020",
                         "desmonte",
+                        "hidrovia",
                         "quemas",
                         "regiones",
                         "ESRI-World-Imagery",
-                        "hidrovia",
                         "calles",
                         "puertos"
                     ],
