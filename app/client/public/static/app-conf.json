@@ -389,29 +389,149 @@
                 }
             },
             {
+                "type": "GROUP",
+                "name": "cmr_conjunto",
+                "legendIcon": "https://casario-mapa.s3.sa-east-1.amazonaws.com/assets/icons/legends/",
+                "minResolution": 0,
+                "maxResolution": 120,
+                "displayInLegend": true,
+                "legendDisplayName": "Cuenca Matanza-Riachuelo",
+                "visible": true,
+                "displaySidebarInfo": true,
+                "group": "valle",
+                "attributions": "Test attributions",
+                "displaySeries": false,
+                "layers": [
+            {
                 "type": "VECTOR",
-                "name": "cmr_componentes",
-                "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:cmr_componentes&outputFormat=application/json&srsname=EPSG:3857",
+                "name": "cmr_puntos",
+                "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:cmr_puntos&outputFormat=application/json&srsname=EPSG:3857",
                 "group": "valle",
                 "queryable": true,
-                "displayInLegend": true,
-                "legendDisplayName": "CMR componentes",
+                "displayInLegend": false,
                 "format": "GeoJSON",
                 "visible": true,
                 "zIndex": 10000,
                 "minResolution": 0,
-                "maxResolution": 120,
-                "label": null,
+                "maxResolution": 100,
+                "label": true,
                 "hoverable": true,
                 "style": {
-                    "hoverTextColor": "white",
-                    "hoverBackgroundColor": "#000000",
-                    "stylePropFnRef": {
-                        "fillColor": "variable1"
+                    "label": {
+                        "text": "name",
+                        "fill": {
+                            "color": "black"
+                        },
+                        "stroke": {
+                            "color": "rgba( 255, 250, 240, 0.8 )",
+                            "width": 3
+                        },
+                        "offsetX": 0,
+                        "offsetY": -10,
+                        "maxResolution": 4,
+                        "placement": "point",
+                        "textAlign": "center",
+                        "textWrap": "normal",
+                        "fontType": "Roboto",
+                        "fontSize": "14px",
+                        "fontWeight": "normal",
+                        "zIndex": 1000
                     },
-                    "strokeColor": "black",
+                    "type": "circle",
+                    "radius": 4,
+                    "fillColor": "rgba( 185, 143, 215, 0.70 )",
+                    "strokeColor": "rgba( 255, 255, 255, 1.0 )",
                     "strokeWidth": 1
+                  }
+                },
+                {
+                    "type": "VECTOR",
+                    "name": "cmr_puntos_naturales",
+                    "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:cmr_puntos_naturales&outputFormat=application/json&srsname=EPSG:3857",
+                    "group": "valle",
+                    "queryable": true,
+                    "displayInLegend": false,
+                    "format": "GeoJSON",
+                    "visible": true,
+                    "zIndex": 10000,
+                    "minResolution": 0,
+                    "maxResolution": 100,
+                    "label": true,
+                    "hoverable": true,
+                    "style": {
+                        "label": {
+                            "text": "name",
+                            "fill": {
+                                "color": "black"
+                            },
+                            "stroke": {
+                                "color": "rgba( 255, 250, 240, 0.8 )",
+                                "width": 3
+                            },
+                            "offsetX": 0,
+                            "offsetY": -10,
+                            "maxResolution": 4,
+                            "placement": "point",
+                            "textAlign": "center",
+                            "textWrap": "normal",
+                            "fontType": "Roboto",
+                            "fontSize": "14px",
+                            "fontWeight": "normal",
+                            "zIndex": 1000
+                        },
+                        "type": "circle",
+                        "radius": 4,
+                        "fillColor": "green",
+                        "strokeColor": "rgba( 255, 255, 255, 1.0 )",
+                        "strokeWidth": 1
+                      }
+                    },
+                    {
+                        "type": "VECTOR",
+                        "name": "cmr_rio",
+                        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:cmr_rio&outputFormat=application/json&srsname=EPSG:3857",
+                        "group": "valle",
+                        "queryable": true,
+                        "isInteractive": true,
+                        "format": "GeoJSON",
+                        "visible": true,
+                        "zIndex": 10000,
+                        "minResolution": 0,
+                        "maxResolution": 120,
+                        "label": false,
+                        "hoverable": true,
+                        "style": {
+                            "type": "line",
+                            "strokeColor": "blue",
+                            "strokeWidth": 3,
+                            "hoverTextColor": "black",
+                            "hoverBackgroundColor": "#000000"
+                        }
+                    },
+                {
+                    "type": "VECTOR",
+                    "name": "cmr_componentes",
+                    "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:cmr_componentes&outputFormat=application/json&srsname=EPSG:3857",
+                    "group": "valle",
+                    "queryable": true,
+                    "format": "GeoJSON",
+                    "visible": true,
+                    "zIndex": 10000,
+                    "minResolution": 0,
+                    "maxResolution": 120,
+                    "label": null,
+                    "hoverable": true,
+                    "style": {
+                        "hoverTextColor": "white",
+                        "hoverBackgroundColor": "#000000",
+                        "stylePropFnRef": {
+                            "fillColor": "variable1"
+                        },
+                        "strokeColor": "black",
+                        "strokeWidth": 1
+                    }
                 }
+              ]
             },
             {
                 "type": "VECTOR",
@@ -802,14 +922,14 @@
                         "humedales",
                         "areas_protegidas",
                         "territorios_bioculturales",
-                        "glp_componentes",
-                        "cmr_componentes",
                         "imagen_satelital",
                         "audios",
                         "videos",
                         "fotos",
                         "colaboradores",
                         "sitios",
+                        "glp_componentes",
+                        "cmr_conjunto",
                         "regiones"
                     ],
                     "center": [
@@ -1211,9 +1331,10 @@
         },
         "popupFieldsMapping": {
             "default": {
-                "title": "Título",
-                "entity": "Categoría",
-                "description": "Descriptivo",
+                "title": "TÍTULO",
+                "name": "NOMBRE",
+                "entity": "CATEGORÍA",
+                "description": "DESCRIPTIVO",
                 "MUNIC_1": "MUNICIPALIDAD 1",
                 "MUNIC_2": "MUNICIPALIDAD 2"
             }
