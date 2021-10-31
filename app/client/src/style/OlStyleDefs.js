@@ -605,6 +605,11 @@ export const layersStylePropFn = {
       return propertyValue;
     }
   },
+  fire_puntos: {
+    fillColor: propertyValue => {
+      return propertyValue;
+    }
+  },
   hidrovia3_calados: {
     strokeColor: propertyValue => {
       return propertyValue;
