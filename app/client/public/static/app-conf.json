@@ -738,20 +738,6 @@
                         "legendDisplayName": "2021",
                         "opacity": 0.99,
                         "updatewhileanimating": true
-                    },
-                    {
-                        "type": "XYZ",
-                        "name": "Julio-Agosto 2020",
-                        "group": "extractivista",
-                        "url": "https://s3-sa-east-1.amazonaws.com/casario-mapa/assets/tiles/focos_de_incendio/Julio-Agosto_2020/{z}/{x}/{y}.png",
-                        "minResolution": 1,
-                        "maxResolution": 64000,
-                        "zIndex": 100,
-                        "displayInLegend": true,
-                        "displaySidebarInfo": true,
-                        "legendDisplayName": "2020",
-                        "opacity": 0.99,
-                        "updatewhileanimating": true
                     }
                 ]
             },
@@ -768,6 +754,34 @@
                 "group": "valle",
                 "attributions": "Test attributions",
                 "layers": [
+                    {
+                        "type": "XYZ",
+                        "name": "Julio-Agosto 2019",
+                        "group": "extractivista",
+                        "url": "https://s3-sa-east-1.amazonaws.com/casario-mapa/assets/tiles/focos_de_incendio/Julio-Agosto_2019/{z}/{x}/{y}.png",
+                        "minResolution": 1,
+                        "maxResolution": 64000,
+                        "zIndex": 100,
+                        "displayInLegend": true,
+                        "displaySidebarInfo": true,
+                        "legendDisplayName": "2020",
+                        "opacity": 0.99,
+                        "updatewhileanimating": true
+                    },
+                    {
+                        "type": "XYZ",
+                        "name": "Julio-Agosto 2020",
+                        "group": "extractivista",
+                        "url": "https://s3-sa-east-1.amazonaws.com/casario-mapa/assets/tiles/focos_de_incendio/Julio-Agosto_2020/{z}/{x}/{y}.png",
+                        "minResolution": 1,
+                        "maxResolution": 64000,
+                        "zIndex": 100,
+                        "displayInLegend": true,
+                        "displaySidebarInfo": true,
+                        "legendDisplayName": "2020",
+                        "opacity": 0.99,
+                        "updatewhileanimating": true
+                    },
                     {
                         "type": "VECTOR",
                         "name": "hidrovia1",
