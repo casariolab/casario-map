@@ -404,47 +404,50 @@
                 "attributions": "Test attributions",
                 "displaySeries": false,
                 "layers": [
-            {
-                "type": "VECTOR",
-                "name": "cmr_puntos",
-                "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:cmr_puntos&outputFormat=application/json&srsname=EPSG:3857",
-                "group": "valle",
-                "queryable": true,
-                "displayInLegend": false,
-                "format": "GeoJSON",
-                "visible": true,
-                "zIndex": 10000,
-                "minResolution": 0,
-                "maxResolution": 100,
-                "label": true,
-                "hoverable": true,
-                "style": {
-                    "label": {
-                        "text": "name",
-                        "fill": {
-                            "color": "black"
+                {
+                    "type": "VECTOR",
+                    "name": "cmr_componentes",
+                    "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:cmr_componentes&outputFormat=application/json&srsname=EPSG:3857",
+                    "group": "valle",
+                    "queryable": true,
+                    "format": "GeoJSON",
+                    "visible": true,
+                    "zIndex": 100,
+                    "minResolution": 0,
+                    "maxResolution": 120,
+                    "label": null,
+                    "hoverable": true,
+                    "style": {
+                        "hoverTextColor": "white",
+                        "hoverBackgroundColor": "#000000",
+                        "stylePropFnRef": {
+                            "fillColor": "variable1"
                         },
-                        "stroke": {
-                            "color": "rgba( 255, 250, 240, 0.8 )",
-                            "width": 3
-                        },
-                        "offsetX": 0,
-                        "offsetY": -10,
-                        "maxResolution": 1,
-                        "placement": "point",
-                        "textAlign": "center",
-                        "textWrap": "normal",
-                        "fontType": "Roboto",
-                        "fontSize": "14px",
-                        "fontWeight": "normal",
-                        "zIndex": 1000
-                    },
-                    "type": "circle",
-                    "radius": 4,
-                    "fillColor": "rgba( 185, 143, 215, 0.70 )",
-                    "strokeColor": "rgba( 255, 255, 255, 1.0 )",
-                    "strokeWidth": 1
-                  }
+                        "strokeColor": "black",
+                        "strokeWidth": 1
+                    }
+                },
+                {
+                    "type": "VECTOR",
+                    "name": "cmr_rio",
+                    "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:cmr_rio&outputFormat=application/json&srsname=EPSG:3857",
+                    "group": "valle",
+                    "queryable": true,
+                    "isInteractive": true,
+                    "format": "GeoJSON",
+                    "visible": true,
+                    "zIndex": 100,
+                    "minResolution": 0,
+                    "maxResolution": 120,
+                    "label": false,
+                    "hoverable": true,
+                    "style": {
+                        "type": "line",
+                        "strokeColor": "#0062B4",
+                        "strokeWidth": 3,
+                        "hoverTextColor": "black",
+                        "hoverBackgroundColor": "#000000"
+                    }
                 },
                 {
                     "type": "VECTOR",
@@ -455,9 +458,9 @@
                     "displayInLegend": false,
                     "format": "GeoJSON",
                     "visible": true,
-                    "zIndex": 10000,
+                    "zIndex": 100000,
                     "minResolution": 0,
-                    "maxResolution": 100,
+                    "maxResolution": 1000,
                     "label": true,
                     "hoverable": true,
                     "style": {
@@ -490,49 +493,46 @@
                     },
                     {
                         "type": "VECTOR",
-                        "name": "cmr_rio",
-                        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:cmr_rio&outputFormat=application/json&srsname=EPSG:3857",
+                        "name": "cmr_puntos",
+                        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:cmr_puntos&outputFormat=application/json&srsname=EPSG:3857",
                         "group": "valle",
                         "queryable": true,
-                        "isInteractive": true,
+                        "displayInLegend": false,
                         "format": "GeoJSON",
                         "visible": true,
-                        "zIndex": 100,
+                        "zIndex": 100000,
                         "minResolution": 0,
-                        "maxResolution": 120,
-                        "label": false,
+                        "maxResolution": 100,
+                        "label": true,
                         "hoverable": true,
                         "style": {
-                            "type": "line",
-                            "strokeColor": "#0062B4",
-                            "strokeWidth": 3,
-                            "hoverTextColor": "black",
-                            "hoverBackgroundColor": "#000000"
+                            "label": {
+                                "text": "name",
+                                "fill": {
+                                    "color": "black"
+                                },
+                                "stroke": {
+                                    "color": "rgba( 255, 250, 240, 0.8 )",
+                                    "width": 3
+                                },
+                                "offsetX": 0,
+                                "offsetY": -10,
+                                "maxResolution": 1,
+                                "placement": "point",
+                                "textAlign": "center",
+                                "textWrap": "normal",
+                                "fontType": "Roboto",
+                                "fontSize": "14px",
+                                "fontWeight": "normal",
+                                "zIndex": 1000
+                            },
+                            "type": "circle",
+                            "radius": 4,
+                            "fillColor": "rgba( 185, 143, 215, 0.70 )",
+                            "strokeColor": "rgba( 255, 255, 255, 1.0 )",
+                            "strokeWidth": 1
+                          }
                         }
-                    },
-                {
-                    "type": "VECTOR",
-                    "name": "cmr_componentes",
-                    "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:cmr_componentes&outputFormat=application/json&srsname=EPSG:3857",
-                    "group": "valle",
-                    "queryable": true,
-                    "format": "GeoJSON",
-                    "visible": true,
-                    "zIndex": 100,
-                    "minResolution": 0,
-                    "maxResolution": 120,
-                    "label": null,
-                    "hoverable": true,
-                    "style": {
-                        "hoverTextColor": "white",
-                        "hoverBackgroundColor": "#000000",
-                        "stylePropFnRef": {
-                            "fillColor": "variable1"
-                        },
-                        "strokeColor": "black",
-                        "strokeWidth": 1
-                    }
-                }
               ]
             },
             {
@@ -1075,7 +1075,10 @@
                         "regiones",
                         "ESRI-World-Imagery",
                         "calles",
-                        "puertos"
+                        "puertos",
+                        "audios",
+                        "videos",
+                        "fotos"
                     ],
                     "center": null,
                     "resolution": null,
@@ -1161,7 +1164,10 @@
                         "ESRI-World-Imagery",
                         "hidrovia",
                         "calles",
-                        "puertos"
+                        "puertos",
+                        "audios",
+                        "videos",
+                        "fotos"
                     ],
                     "center": null,
                     "resolution": null,
@@ -1242,7 +1248,10 @@
                         "ESRI-World-Imagery",
                         "hidrovia",
                         "calles",
-                        "puertos"
+                        "puertos",
+                        "audios",
+                        "videos",
+                        "fotos"
                     ],
                     "center": null,
                     "resolution": null,
@@ -1323,7 +1332,10 @@
                         "ESRI-World-Imagery",
                         "hidrovia",
                         "calles",
-                        "puertos"
+                        "puertos",
+                        "audios",
+                        "videos",
+                        "fotos"
                     ],
                     "center": null,
                     "resolution": null,
@@ -1404,7 +1416,10 @@
                         "ESRI-World-Imagery",
                         "hidrovia",
                         "calles",
-                        "puertos"
+                        "puertos",
+                        "audios",
+                        "videos",
+                        "fotos"
                     ],
                     "center": null,
                     "resolution": null,
@@ -1485,7 +1500,10 @@
                         "ESRI-World-Imagery",
                         "hidrovia",
                         "calles",
-                        "puertos"
+                        "puertos",
+                        "audios",
+                        "videos",
+                        "fotos"
                     ],
                     "center": null,
                     "resolution": null,
