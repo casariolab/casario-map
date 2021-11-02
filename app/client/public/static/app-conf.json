@@ -717,19 +717,63 @@
                 "updatewhileanimating": true
             },
             {
-                "type": "XYZ",
+                "type": "GROUP",
                 "name": "soja_2001-2020",
-                "group": "one",
-                "url": "https://s3-sa-east-1.amazonaws.com/casario-mapa/assets/tiles/soja_2001-2020/{z}/{x}/{y}.png",
-                "minResolution": 1,
-                "maxResolution": 64000,
-                "displayInLegend": true,
-                "displaySidebarInfo": true,
-                "legendDisplayName": "Soja 2001-20",
                 "legendIcon": "https://casario-mapa.s3.sa-east-1.amazonaws.com/assets/icons/legends/leyenda_soja_2001-2020.png",
-                "opacity": 0.99,
+                "minResolution": 2,
+                "maxResolution": 60000,
+                "displayInLegend": true,
+                "legendDisplayName": "Cobertura de Soja",
                 "visible": false,
-                "updatewhileanimating": true
+                "displaySidebarInfo": true,
+                "group": "valle",
+                "attributions": "Test attributions",
+                "displaySeries": true,
+                "defaultSeriesLayerIndex": 3,
+                "layers": [
+                    {
+                        "type": "XYZ",
+                        "name": "2001",
+                        "group": "valle",
+                        "url": "https://s3-sa-east-1.amazonaws.com/casario-mapa/assets/tiles/soja_2001-20/2001/{z}/{x}/{y}.png",
+                        "minResolution": 1,
+                        "maxResolution": 64000,
+                        "displayInLegend": false,
+                        "displaySidebarInfo": false,
+                        "legendDisplayName": "Soja 2001",
+                        "opacity": 0.99,
+                        "visible": false,
+                        "updatewhileanimating": true
+                    },
+                    {
+                        "type": "XYZ",
+                        "name": "2010",
+                        "group": "valle",
+                        "url": "https://s3-sa-east-1.amazonaws.com/casario-mapa/assets/tiles/soja_2001-20/2010/{z}/{x}/{y}.png",
+                        "minResolution": 1,
+                        "maxResolution": 64000,
+                        "displayInLegend": false,
+                        "displaySidebarInfo": false,
+                        "legendDisplayName": "Soja 2010",
+                        "opacity": 0.99,
+                        "visible": false,
+                        "updatewhileanimating": true
+                    },
+                    {
+                        "type": "XYZ",
+                        "name": "2020",
+                        "group": "valle",
+                        "url": "https://s3-sa-east-1.amazonaws.com/casario-mapa/assets/tiles/soja_2001-20/2020/{z}/{x}/{y}.png",
+                        "minResolution": 1,
+                        "maxResolution": 64000,
+                        "displayInLegend": false,
+                        "displaySidebarInfo": false,
+                        "legendDisplayName": "Soja 2020",
+                        "opacity": 0.99,
+                        "visible": false,
+                        "updatewhileanimating": true
+                    }
+                ]
             },
             {
                 "type": "VECTOR",
@@ -797,6 +841,34 @@
                 "displaySeries": true,
                 "defaultSeriesLayerIndex": 1,
                 "layers": [
+                    {
+                        "type": "XYZ",
+                        "name": "Julio-Agosto 2017",
+                        "group": "extractivista",
+                        "url": "https://s3-sa-east-1.amazonaws.com/casario-mapa/assets/tiles/focos_de_incendio/Julio-Agosto_2017/{z}/{x}/{y}.png",
+                        "minResolution": 1,
+                        "maxResolution": 64000,
+                        "zIndex": 100,
+                        "displayInLegend": true,
+                        "displaySidebarInfo": true,
+                        "legendDisplayName": "2017",
+                        "opacity": 0.99,
+                        "updatewhileanimating": true
+                    },
+                    {
+                        "type": "XYZ",
+                        "name": "Julio-Agosto 2018",
+                        "group": "extractivista",
+                        "url": "https://s3-sa-east-1.amazonaws.com/casario-mapa/assets/tiles/focos_de_incendio/Julio-Agosto_2018/{z}/{x}/{y}.png",
+                        "minResolution": 1,
+                        "maxResolution": 64000,
+                        "zIndex": 100,
+                        "displayInLegend": true,
+                        "displaySidebarInfo": true,
+                        "legendDisplayName": "2018",
+                        "opacity": 0.99,
+                        "updatewhileanimating": true
+                    },
                     {
                         "type": "XYZ",
                         "name": "Julio-Agosto 2019",
