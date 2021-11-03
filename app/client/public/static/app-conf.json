@@ -73,29 +73,6 @@
             },
             {
                 "type": "VECTOR",
-                "name": "puertos",
-                "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:puertos&outputFormat=application/json&srsname=EPSG:3857",
-                "group": "valle",
-                "queryable": true,
-                "displayInLegend": true,
-                "legendDisplayName": "Puertos",
-                "format": "GeoJSON",
-                "visible": false,
-                "zIndex": 10000,
-                "minResolution": 1,
-                "maxResolution": 64000,
-                "label": null,
-                "hoverable": true,
-                "style": {
-                    "type": "circle",
-                    "radius": 5,
-                    "fillColor": "#FF7900",
-                    "strokeColor": "black",
-                    "strokeWidth": 1
-                }
-            },
-            {
-                "type": "VECTOR",
                 "name": "colaboradores",
                 "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:colaboradores&outputFormat=application/json&srsname=EPSG:3857",
                 "group": "valle",
@@ -138,10 +115,10 @@
                 "hoverable": true,
                 "style": {
                     "type": "circle",
-                    "radius": 3,
-                    "fillColor": "#FEFC5A",
-                    "strokeColor": "#FF0809",
-                    "strokeWidth": 1,
+                    "radius": 5,
+                    "fillColor": "#7a49a5",
+                    "strokeColor": "#030303",
+                    "strokeWidth": 0.5,
                     "hoverTextColor": "white",
                     "hoverBackgroundColor": "#000000"
                 }
@@ -406,29 +383,6 @@
                 "layers": [
                 {
                     "type": "VECTOR",
-                    "name": "cmr_componentes",
-                    "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:cmr_componentes&outputFormat=application/json&srsname=EPSG:3857",
-                    "group": "valle",
-                    "queryable": true,
-                    "format": "GeoJSON",
-                    "visible": true,
-                    "zIndex": 100,
-                    "minResolution": 0,
-                    "maxResolution": 120,
-                    "label": null,
-                    "hoverable": true,
-                    "style": {
-                        "hoverTextColor": "white",
-                        "hoverBackgroundColor": "#000000",
-                        "stylePropFnRef": {
-                            "fillColor": "variable1"
-                        },
-                        "strokeColor": "black",
-                        "strokeWidth": 1
-                    }
-                },
-                {
-                    "type": "VECTOR",
                     "name": "cmr_rio",
                     "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:cmr_rio&outputFormat=application/json&srsname=EPSG:3857",
                     "group": "valle",
@@ -535,6 +489,30 @@
                         }
               ]
             },
+                {
+                    "type": "VECTOR",
+                    "name": "cmr_componentes",
+                    "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:cmr_componentes&outputFormat=application/json&srsname=EPSG:3857",
+                    "group": "valle",
+                    "queryable": true,
+                    "format": "GeoJSON",
+                    "visible": true,
+                    "legendDisplayName": "CMR polígonos",
+                    "zIndex": 100,
+                    "minResolution": 0,
+                    "maxResolution": 120,
+                    "label": null,
+                    "hoverable": true,
+                    "style": {
+                        "hoverTextColor": "white",
+                        "hoverBackgroundColor": "#000000",
+                        "stylePropFnRef": {
+                            "fillColor": "variable1"
+                        },
+                        "strokeColor": "black",
+                        "strokeWidth": 1
+                    }
+                },
             {
                 "type": "VECTOR",
                 "name": "fire_puntos",
@@ -717,19 +695,32 @@
                 "updatewhileanimating": true
             },
             {
+                "type": "XYZ",
+                "name": "forest_loss",
+                "group": "one",
+                "url": "https://geo.timetochange.today/geoserver/gwc/service/tms/1.0.0/osm%3AForestLossTiledCutOvr@EPSG%3A900913@png/{z}/{x}/{-y}.png",
+                "minResolution": 1,
+                "maxResolution": 64000,
+                "displayInLegend": false,
+                "legendDisplayName": "Desmonte 2000-2020",
+                "opacity": 0.99,
+                "visible": false,
+                "updatewhileanimating": true
+            },
+            {
                 "type": "GROUP",
                 "name": "soja_2001-2020",
                 "legendIcon": "https://casario-mapa.s3.sa-east-1.amazonaws.com/assets/icons/legends/leyenda_soja_2001-2020.png",
                 "minResolution": 2,
                 "maxResolution": 60000,
                 "displayInLegend": true,
-                "legendDisplayName": "Cobertura de Soja",
+                "legendDisplayName": "Soja",
                 "visible": false,
                 "displaySidebarInfo": true,
                 "group": "valle",
                 "attributions": "Test attributions",
                 "displaySeries": true,
-                "defaultSeriesLayerIndex": 3,
+                "defaultSeriesLayerIndex": 0,
                 "layers": [
                     {
                         "type": "XYZ",
@@ -839,7 +830,7 @@
                 "group": "valle",
                 "attributions": "Test attributions",
                 "displaySeries": true,
-                "defaultSeriesLayerIndex": 1,
+                "defaultSeriesLayerIndex": 3,
                 "layers": [
                     {
                         "type": "XYZ",
@@ -975,17 +966,27 @@
                 ]
             },
             {
-                "type": "XYZ",
-                "name": "forest_loss",
-                "group": "one",
-                "url": "https://geo.timetochange.today/geoserver/gwc/service/tms/1.0.0/osm%3AForestLossTiledCutOvr@EPSG%3A900913@png/{z}/{x}/{-y}.png",
+                "type": "VECTOR",
+                "name": "puertos",
+                "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:puertos&outputFormat=application/json&srsname=EPSG:3857",
+                "group": "valle",
+                "queryable": true,
+                "displayInLegend": true,
+                "legendDisplayName": "Puertos",
+                "format": "GeoJSON",
+                "visible": false,
+                "zIndex": 10000,
                 "minResolution": 1,
                 "maxResolution": 64000,
-                "displayInLegend": false,
-                "legendDisplayName": "Desmonte 2000-2020",
-                "opacity": 0.99,
-                "visible": false,
-                "updatewhileanimating": true
+                "label": null,
+                "hoverable": true,
+                "style": {
+                    "type": "circle",
+                    "radius": 5,
+                    "fillColor": "#FF7900",
+                    "strokeColor": "black",
+                    "strokeWidth": 1
+                }
             },
             {
                 "type": "XYZ",
@@ -1072,7 +1073,7 @@
             "valle": {
                 "default": {
                     "layers": [
-                        "osm_cuenca",
+                         "osm_cuenca",
                         "bioculturales",
                         "biocultural",
                         "estuario",
@@ -1085,6 +1086,7 @@
                         "colaboradores",
                         "sitios",
                         "glp_componentes",
+                        "cmr_componentes",
                         "cmr_conjunto",
                         "fire_conjunto",
                         "fire_puntos",
@@ -1121,6 +1123,7 @@
                         "colaboradores",
                         "sitios",
                         "glp_componentes",
+                        "cmr_componentes",
                         "cmr_conjunto",
                         "fire_conjunto",
                         "fire_puntos",
@@ -1166,7 +1169,7 @@
             "estuario": {
                 "default": {
                     "layers": [
-                        "osm_cuenca",
+                         "osm_cuenca",
                         "bioculturales",
                         "biocultural",
                         "estuario",
@@ -1179,6 +1182,7 @@
                         "colaboradores",
                         "sitios",
                         "glp_componentes",
+                        "cmr_componentes",
                         "cmr_conjunto",
                         "fire_conjunto",
                         "fire_puntos",
@@ -1197,7 +1201,7 @@
                 },
                 "biocultural": {
                     "layers": [
-                        "osm_cuenca",
+                         "osm_cuenca",
                         "bioculturales",
                         "biocultural",
                         "estuario",
@@ -1210,6 +1214,7 @@
                         "colaboradores",
                         "sitios",
                         "glp_componentes",
+                        "cmr_componentes",
                         "cmr_conjunto",
                         "fire_conjunto",
                         "fire_puntos",
@@ -1250,7 +1255,7 @@
             "delta": {
                 "default": {
                     "layers": [
-                        "osm_cuenca",
+                         "osm_cuenca",
                         "bioculturales",
                         "biocultural",
                         "estuario",
@@ -1263,6 +1268,7 @@
                         "colaboradores",
                         "sitios",
                         "glp_componentes",
+                        "cmr_componentes",
                         "cmr_conjunto",
                         "fire_conjunto",
                         "fire_puntos",
@@ -1281,7 +1287,7 @@
                 },
                 "biocultural": {
                     "layers": [
-                        "osm_cuenca",
+                         "osm_cuenca",
                         "bioculturales",
                         "biocultural",
                         "estuario",
@@ -1294,6 +1300,93 @@
                         "colaboradores",
                         "sitios",
                         "glp_componentes",
+                        "cmr_componentes",
+                        "cmr_conjunto",
+                        "fire_conjunto",
+                        "fire_puntos",
+                        "audios",
+                        "videos",
+                        "fotos",
+                        "regiones"
+                    ],
+                    "center": null,
+                    "resolution": null,
+                    "minResolution": 0.5,
+                    "maxResolution": 32000
+                },
+                "extractivista": {
+                    "layers": [
+                        "cuenca_extractivista",
+                        "extractivista",
+                        "republica_soja",
+                        "republica_actual",
+                        "soja_2001-2020",
+                        "desmonte",
+                        "quemas",
+                        "regiones",
+                        "ESRI-World-Imagery",
+                        "hidrovia",
+                        "calles",
+                        "puertos",
+                        "audios",
+                        "videos",
+                        "fotos"
+                    ],
+                    "center": null,
+                    "resolution": null,
+                    "minResolution": 0.5,
+                    "maxResolution": 64000
+                }
+            },
+            "parana_medio": {
+                "default": {
+                    "layers": [
+                         "osm_cuenca",
+                        "bioculturales",
+                        "biocultural",
+                        "estuario",
+                        "gran_valle",
+                        "humedales",
+                        "areas_protegidas",
+                        "territorios_bioculturales",
+                        "imagen_satelital",
+                        "transiciones_acuáticas",
+                        "colaboradores",
+                        "sitios",
+                        "glp_componentes",
+                        "cmr_componentes",
+                        "cmr_conjunto",
+                        "fire_conjunto",
+                        "fire_puntos",
+                        "audios",
+                        "videos",
+                        "fotos",
+                        "regiones"
+                    ],
+                    "center": [
+                        -60.136,
+                        -30.315
+                    ],
+                    "resolution": 600,
+                    "minResolution": 0.5,
+                    "maxResolution": 64000
+                },
+                "biocultural": {
+                    "layers": [
+                         "osm_cuenca",
+                        "bioculturales",
+                        "biocultural",
+                        "estuario",
+                        "gran_valle",
+                        "humedales",
+                        "areas_protegidas",
+                        "territorios_bioculturales",
+                        "imagen_satelital",
+                        "transiciones_acuáticas",
+                        "colaboradores",
+                        "sitios",
+                        "glp_componentes",
+                        "cmr_componentes",
                         "cmr_conjunto",
                         "fire_conjunto",
                         "fire_puntos",
@@ -1334,7 +1427,7 @@
             "esteros": {
                 "default": {
                     "layers": [
-                        "osm_cuenca",
+                         "osm_cuenca",
                         "bioculturales",
                         "biocultural",
                         "estuario",
@@ -1347,6 +1440,7 @@
                         "colaboradores",
                         "sitios",
                         "glp_componentes",
+                        "cmr_componentes",
                         "cmr_conjunto",
                         "fire_conjunto",
                         "fire_puntos",
@@ -1356,8 +1450,8 @@
                         "regiones"
                     ],
                     "center": [
-                      -59.212,
-                      -29.380
+                        -58.561,
+                        -27.366
                     ],
                     "resolution": 950,
                     "minResolution": 0.5,
@@ -1378,90 +1472,7 @@
                         "colaboradores",
                         "sitios",
                         "glp_componentes",
-                        "cmr_conjunto",
-                        "fire_conjunto",
-                        "fire_puntos",
-                        "audios",
-                        "videos",
-                        "fotos",
-                        "regiones"
-                    ],
-                    "center": null,
-                    "resolution": null,
-                    "minResolution": 0.5,
-                    "maxResolution": 64000
-                },
-                "extractivista": {
-                    "layers": [
-                        "cuenca_extractivista",
-                        "extractivista",
-                        "republica_soja",
-                        "republica_actual",
-                        "soja_2001-2020",
-                        "desmonte",
-                        "quemas",
-                        "regiones",
-                        "ESRI-World-Imagery",
-                        "hidrovia",
-                        "calles",
-                        "puertos",
-                        "audios",
-                        "videos",
-                        "fotos"
-                    ],
-                    "center": null,
-                    "resolution": null,
-                    "minResolution": 0.5,
-                    "maxResolution": 64000
-                }
-            },
-            "paraguay": {
-                "default": {
-                    "layers": [
-                        "osm_cuenca",
-                        "bioculturales",
-                        "biocultural",
-                        "estuario",
-                        "gran_valle",
-                        "humedales",
-                        "areas_protegidas",
-                        "territorios_bioculturales",
-                        "imagen_satelital",
-                        "transiciones_acuáticas",
-                        "colaboradores",
-                        "sitios",
-                        "glp_componentes",
-                        "cmr_conjunto",
-                        "fire_conjunto",
-                        "fire_puntos",
-                        "audios",
-                        "videos",
-                        "fotos",
-                        "regiones"
-                    ],
-                    "center": [
-                        -57.703,
-                        -25.336
-                    ],
-                    "resolution": 280,
-                    "minResolution": 0.5,
-                    "maxResolution": 64000
-                },
-                "biocultural": {
-                    "layers": [
-                        "osm_cuenca",
-                        "bioculturales",
-                        "biocultural",
-                        "estuario",
-                        "gran_valle",
-                        "humedales",
-                        "areas_protegidas",
-                        "territorios_bioculturales",
-                        "imagen_satelital",
-                        "transiciones_acuáticas",
-                        "colaboradores",
-                        "sitios",
-                        "glp_componentes",
+                        "cmr_componentes",
                         "cmr_conjunto",
                         "fire_conjunto",
                         "fire_puntos",
@@ -1502,7 +1513,7 @@
             "pantanal": {
                 "default": {
                     "layers": [
-                        "osm_cuenca",
+                         "osm_cuenca",
                         "bioculturales",
                         "biocultural",
                         "estuario",
@@ -1515,6 +1526,7 @@
                         "colaboradores",
                         "sitios",
                         "glp_componentes",
+                        "cmr_componentes",
                         "cmr_conjunto",
                         "fire_conjunto",
                         "fire_puntos",
@@ -1533,7 +1545,7 @@
                 },
                 "biocultural": {
                     "layers": [
-                        "osm_cuenca",
+                         "osm_cuenca",
                         "bioculturales",
                         "biocultural",
                         "estuario",
@@ -1546,6 +1558,7 @@
                         "colaboradores",
                         "sitios",
                         "glp_componentes",
+                        "cmr_componentes",
                         "cmr_conjunto",
                         "fire_conjunto",
                         "fire_puntos",
@@ -1571,6 +1584,7 @@
                         "regiones",
                         "ESRI-World-Imagery",
                         "hidrovia",
+                        "AHEs",
                         "calles",
                         "puertos",
                         "audios",
@@ -1589,8 +1603,8 @@
             "valle": "Valle Central",
             "estuario": "Estuario",
             "delta": "Delta",
+            "parana_medio": "Paraná Medio",
             "esteros": "Esteros",
-            "paraguay": "Bajo Paraguay",
             "pantanal": "Pantanal"
         },
         "regionTitles": {
