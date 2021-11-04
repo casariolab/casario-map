@@ -605,6 +605,16 @@ export const layersStylePropFn = {
       return propertyValue;
     }
   },
+  cmr_puntos: {
+    fillColor: propertyValue => {
+      return propertyValue;
+    }
+  },
+  cmr_lineas: {
+    strokeColor: propertyValue => {
+      return propertyValue;
+    }
+  },
   fire_puntos: {
     fillColor: propertyValue => {
       return propertyValue;
