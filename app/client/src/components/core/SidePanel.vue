@@ -262,6 +262,19 @@
                       "
                     ></span>
                   </template>
+                  <div
+                    align="center"
+                    style="display:flex;justify-content:center;align-items: center;width:100%;"
+                    class="caption font-italic font-weight-medium"
+                    v-if="
+                      popup.showInSidePanel === true &&
+                        popup.activeFeature &&
+                        popup.activeFeature.get('caption2')
+                    "
+                    tabindex="0"
+                  >
+                    <span v-html="popup.activeFeature.get('caption2')"></span>
+                  </div>
                 </v-col>
               </v-row>
             </div>
