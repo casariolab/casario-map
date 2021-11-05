@@ -600,7 +600,7 @@ export const layersStylePropFn = {
       return propertyValue;
     }
   },
-  cmr_componentes: {
+  cmr_poligonos: {
     fillColor: propertyValue => {
       return propertyValue;
     }
