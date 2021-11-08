@@ -620,7 +620,7 @@ export default {
      */
     showPopup(clickCoord) {
       // Clear highligh feature (Don't clear if a corporate network entity is selected)
-      if (!this.selectedCoorpNetworkEntity) {
+      if (this.selectedCoorpNetworkEntity) {
         this.popup.highlightLayer.getSource().clear();
       }
 
