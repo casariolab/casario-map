@@ -571,12 +571,6 @@ export default {
         return false;
       }
     },
-    visibleGroup() {
-      const visibleGroup = this.$appConfig.map.groups[
-        this.activeLayerGroup.navbarGroup
-      ][this.activeLayerGroup.region];
-      return visibleGroup;
-    },
     iframeUrl() {
       return getIframeUrl(
         this.splittedEntities,
@@ -638,7 +632,8 @@ export default {
       postIconTitle: 'postIconTitle',
       groupName: 'groupName',
       editLayer: 'editLayer',
-      highlightLayer: 'highlightLayer'
+      highlightLayer: 'highlightLayer',
+      visibleGroup: 'visibleGroup',
     }),
     ...mapGetters('app', {
       sidebarHtml: 'sidebarHtml',
