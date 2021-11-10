@@ -76,7 +76,7 @@
         "group": "valle",
         "queryable": true,
         "displayInLegend": true,
-        "legendDisplayName": "Colaboradores",
+        "legendDisplayName": "Red HsF",
         "displaySidebarInfo": true,
         "format": "GeoJSON",
         "visible": false,
@@ -327,7 +327,7 @@
         "legendDisplayName": "Bioculturas",
         "displaySidebarInfo": true,
         "format": "GeoJSON",
-        "visible": true,
+        "visible": false,
         "zIndex": 10000,
         "minResolution": 120,
         "maxResolution": 64000,
@@ -1003,8 +1003,8 @@
         "maxResolution": 64000
       },
       "estuario": {
-        "center": null,
-        "resolution": null,
+        "center": [-57.835, -34.671],
+        "resolution": 200,
         "minResolution": 0.5,
         "maxResolution": 64000
       },
@@ -1021,8 +1021,8 @@
         "maxResolution": 64000
       },
       "esteros": {
-        "center": null,
-        "resolution": null,
+        "center": [-58.561, -27.366],
+        "resolution": 950,
         "minResolution": 0.5,
         "maxResolution": 64000
       },
@@ -1123,4 +1123,5 @@
     "corporateEntitiesUrls": {
       "Enbridge": ""
     }
+  }
 }
