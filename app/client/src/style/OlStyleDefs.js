@@ -600,6 +600,32 @@ export const layersStylePropFn = {
       return propertyValue;
     }
   },
+  fcs_poligonos: {
+    fillColor: propertyValue => {
+      return propertyValue;
+    }
+  },
+  fcs_lineas: {
+    strokeColor: propertyValue => {
+      return propertyValue;
+    },
+    strokeWidth: propertyValue => {
+      return propertyValue;
+    }
+  },
+  cld_lineas: {
+    strokeColor: propertyValue => {
+      return propertyValue;
+    },
+    strokeWidth: propertyValue => {
+      return propertyValue;
+    }
+  },
+  cld_poligonos: {
+    fillColor: propertyValue => {
+      return propertyValue;
+    }
+  },
   cmr_poligonos: {
     fillColor: propertyValue => {
       return propertyValue;

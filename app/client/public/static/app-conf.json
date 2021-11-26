@@ -1,6 +1,6 @@
 {
   "app": {
-    "title": "BIOCULTURAS",
+    "title": "CORREDORES",
     "projectWebsite": "https://casariolab.art",
     "color": {
       "primary": "#00000e",
@@ -427,6 +427,31 @@
         "format": "GeoJSON",
         "visible": true,
         "legendDisplayName": "CMR polígonos",
+        "zIndex": 100,
+        "minResolution": 1,
+        "maxResolution": 120,
+        "label": null,
+        "hoverable": true,
+        "style": {
+          "hoverTextColor": "white",
+          "hoverBackgroundColor": "#000000",
+          "stylePropFnRef": {
+            "fillColor": "variable1"
+          },
+          "strokeColor": "black",
+          "strokeWidth": 1
+        }
+      },
+      {
+        "type": "VECTOR",
+        "name": "fcs_poligonos",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:fcs_poligonos&outputFormat=application/json&srsname=EPSG:3857",
+        "group": "valle",
+        "queryable": true,
+        "format": "GeoJSON",
+        "visible": true,
+        "displayInLegend": false,
+        "legendDisplayName": "FCS polígonos",
         "zIndex": 100,
         "minResolution": 1,
         "maxResolution": 120,
