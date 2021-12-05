@@ -9,7 +9,7 @@
           dark
           x-small
           :color="color"
-          @click="zoom(1)"
+          @click="zoom(2)"
         >
           <span style="font-size:22px;">+</span>
         </v-btn>
@@ -26,7 +26,7 @@
           dark
           x-small
           :color="color"
-          @click="zoom(-1)"
+          @click="zoom(-2)"
         >
           <span style="font-size:22px;">−</span>
         </v-btn>
