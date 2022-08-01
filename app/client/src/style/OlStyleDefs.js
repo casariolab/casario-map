@@ -62,6 +62,30 @@ export function getFeatureHighlightStyle() {
   ];
 }
 
+export function getSearchHighlightStyle() {
+  return [
+    new OlStyle({
+      fill: new OlFill({
+        color: 'rgba(255,0,0,0.2)'
+      }),
+      stroke: new OlStroke({
+        color: '#FF0000',
+        width: 3
+      }),
+      image: new OlCircle({
+        radius: 8,
+        stroke: new OlStroke({
+          color: '#FF0000',
+          width: 3
+        }),
+        fill: new OlFill({
+          color: 'rgba(255,0,0,0.2)'
+        })
+      })
+    })
+  ];
+}
+
 /**
  * Style used for popup selected feature highlight
  */
@@ -651,7 +675,20 @@ export const layersStylePropFn = {
       return propertyValue;
     }
   },
-  coal_global2: {
+  cancelled_pipelines: {
+    strokeColor: propertyValue => propertyValue
+  },
+  coal_global: {
+    iconScaleFn: propertyValue => {
+      return getIconScaleValue(propertyValue, 1000, 0.5, 1.4);
+    }
+  },
+  gas: {
+    iconScaleFn: propertyValue => {
+      return getIconScaleValue(propertyValue, 1400, 0.3, 1.4);
+    }
+  },
+  oil: {
     circleRadiusFn: propertyValue => {
       return getRadiusValue(propertyValue, 0.3, 4, 50);
     }

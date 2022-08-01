@@ -4,7 +4,10 @@ FROM alpine:3.6
 RUN apk add --no-cache libressl ca-certificates gettext
 
 # Install rclone
-RUN wget https://downloads.rclone.org/v1.40/rclone-v1.40-linux-amd64.zip
+# If it fails replace first line below with:
+RUN wget https://crystalball-mapkit.s3.us-east-2.amazonaws.com/assets/programs/rclone-v1.40-linux-amd64.zip
+# If that fails, download the rclone folder from the link below and install it in your own s3 bucket 
+# RUN wget https://downloads.rclone.org/v1.40/rclone-v1.40-linux-amd64.zip
 RUN unzip /rclone-v1.40-linux-amd64.zip
 RUN mv /rclone-v1.40-linux-amd64/rclone /usr/bin
 RUN rm /rclone-v1.40-linux-amd64.zip
