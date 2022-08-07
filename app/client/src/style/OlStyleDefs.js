@@ -665,6 +665,36 @@ export const layersStylePropFn = {
       return propertyValue;
     }
   },
+  poligonos_extractivistas: {
+    fillColor: propertyValue => {
+      return propertyValue;
+    }
+  },
+  puntos_extractivistas: {
+    fillColor: propertyValue => {
+      return propertyValue;
+    }
+  },
+  lineas_extractivistas: {
+    strokeColor: propertyValue => {
+      return propertyValue;
+    }
+  },
+  poligonos_bioculturales: {
+    fillColor: propertyValue => {
+      return propertyValue;
+    }
+  },
+  puntos_bioculturales: {
+    fillColor: propertyValue => {
+      return propertyValue;
+    }
+  },
+  lineas_bioculturales: {
+    strokeColor: propertyValue => {
+      return propertyValue;
+    }
+  },
   fire_puntos: {
     fillColor: propertyValue => {
       return propertyValue;
