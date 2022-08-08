@@ -426,22 +426,22 @@ export default {
       {
         icon: 'add',
         action: 'addFeature',
-        tooltip: 'Add Feature'
+        tooltip: 'Añadir un rasgo'
       },
       {
         icon: 'edit',
         action: 'modifyFeature',
-        tooltip: 'Modify Geometry'
-      },
-      {
-        icon: 'delete',
-        action: 'deleteFeature',
-        tooltip: 'Delete Feature'
+        tooltip: 'Modificar la forma'
       },
       {
         icon: 'subject',
         action: 'modifyAttributes',
-        tooltip: 'Modify Attributes'
+        tooltip: 'Modificar los datos'
+      },
+      {
+        icon: 'delete',
+        action: 'deleteFeature',
+        tooltip: 'Borrar un rasgo'
       }
     ],
     layersDialog: false,

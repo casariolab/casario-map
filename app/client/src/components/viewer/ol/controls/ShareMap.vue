@@ -13,7 +13,7 @@
           ><v-icon medium>fas fa-share</v-icon></v-btn
         >
       </template>
-      <span>Share Map</span>
+      <span>Compartir la vista</span>
     </v-tooltip>
     <v-dialog v-model="show" max-width="400" @keydown.esc="visible = false">
       <v-card class="pb-1">

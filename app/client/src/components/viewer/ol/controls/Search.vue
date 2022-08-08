@@ -15,7 +15,7 @@
           <v-icon medium>fas fa-search</v-icon>
         </v-btn>
       </template>
-      <span>Search</span>
+      <span>Buscar un lugar</span>
     </v-tooltip>
     <v-autocomplete
       v-if="isVisible"
@@ -25,7 +25,7 @@
       v-model="model"
       :items="items"
       :loading="isLoading"
-      label="Search..."
+      label="Dirreción, ciudad, etc"
       :search-input.sync="search"
       item-text="display_name"
       append-icon=""

@@ -16,7 +16,7 @@
           }}</v-icon>
         </v-btn>
       </template>
-      <span>Toggle Fullscreen</span>
+      <span>Pantalla completa</span>
     </v-tooltip>
   </div>
 </template>

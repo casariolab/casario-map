@@ -14,7 +14,7 @@
           <v-icon medium>fas fa-location-arrow</v-icon>
         </v-btn>
       </template>
-      <span>Locate Me</span>
+      <span>Localisarse</span>
     </v-tooltip>
     <confirm-location ref="confirm" :color="color"></confirm-location>
   </div>

@@ -16,7 +16,7 @@
             <v-icon medium>fas fa-user</v-icon>
           </v-btn>
         </template>
-        <span>Log In</span>
+        <span>Iniciar sesión</span>
       </v-tooltip>
     </template>
     <!-- USER INFO AND LOGOUT (AUTHENTICATED)-->

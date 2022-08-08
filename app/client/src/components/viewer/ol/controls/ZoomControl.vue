@@ -14,7 +14,7 @@
           <span style="font-size:22px;">+</span>
         </v-btn>
       </template>
-      <span>Zoom In</span>
+      <span>Acercarse</span>
     </v-tooltip>
     <br />
     <v-tooltip right>
@@ -31,7 +31,7 @@
           <span style="font-size:22px;">−</span>
         </v-btn>
       </template>
-      <span>Zoom Out</span>
+      <span>Alejarse</span>
     </v-tooltip>
   </div>
 </template>

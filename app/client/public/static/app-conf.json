@@ -237,6 +237,28 @@
         }
       },
       {
+        "type": "VECTOR",
+        "name": "videos_bioculturales",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:videos_bioculturales&outputFormat=application/json&srsname=EPSG:3857",
+        "group": "valle",
+        "queryable": true,
+        "displayInLegend": false,
+        "legendDisplayName": "Videos Bioculturales",
+        "format": "GeoJSON",
+        "visible": true,
+        "zIndex": 10000,
+        "minResolution": 0.5,
+        "maxResolution": 1200,
+        "label": false,
+        "hoverable": true,
+        "style": {
+          "iconUrl": "https://casario-mapa.s3.sa-east-1.amazonaws.com/assets/icons/triangulo_biocultural.png",
+          "scale": 1.3,
+          "hoverTextColor": "white",
+          "hoverBackgroundColor": "#000000"
+        }
+      },
+      {
         "type": "GROUP",
         "name": "hidrovia",
         "minResolution": 1,
@@ -1298,7 +1320,8 @@
         "fire_puntos",
         "audios",
         "videos",
-        "fotos"
+        "fotos",
+        "videos_bioculturales"
       ],
       "extractivista": [
         "cuenca_extractivista",
