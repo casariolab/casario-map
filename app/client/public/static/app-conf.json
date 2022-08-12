@@ -405,7 +405,7 @@
         "displayInLegend": true,
         "legendDisplayName": "Hidrovía",
         "legendIcon": "https://casario-mapa.s3.sa-east-1.amazonaws.com/assets/icons/legends/leyenda_hidrovia.png",
-        "visible": true,
+        "visible": false,
         "displaySidebarInfo": true,
         "group": "valle",
         "attributions": "Test attributions",
