@@ -55,119 +55,214 @@
     "layers": [
       {
         "type": "VECTOR",
-        "name": "republica_soja",
-        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:republica_soja&outputFormat=application/json&srsname=EPSG:3857",
-        "group": "two",
-        "queryable": false,
+        "name": "poligonos_extractivistas",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:poligonos_extractivistas&outputFormat=application/json&srsname=EPSG:3857",
+        "group": "valle",
+        "queryable": true,
+        "format": "GeoJSON",
+        "visible": true,
+        "legendDisplayName": "Polígonos extractivistas",
+        "zIndex": 100,
+        "minResolution": 1,
+        "maxResolution": 1200,
+        "label": null,
+        "hoverable": true,
+        "style": {
+          "hoverTextColor": "white",
+          "hoverBackgroundColor": "#000000",
+          "fillColor": "rgba(255, 0, 0, 0.2)",
+          "strokeColor": "rgba(255, 0, 0, 0.95)",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "type": "VECTOR",
+        "name": "puntos_extractivistas",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:puntos_extractivistas&outputFormat=application/json&srsname=EPSG:3857",
+        "group": "valle",
+        "queryable": true,
         "displayInLegend": false,
         "format": "GeoJSON",
-        "visible": false,
+        "legendDisplayName": "Puntos extractivistas",
+        "visible": true,
+        "zIndex": 100,
+        "minResolution": 0,
+        "maxResolution": 1200,
+        "label": true,
+        "hoverable": true,
+        "style": {
+          "iconUrl": "https://casario-mapa.s3.sa-east-1.amazonaws.com/assets/icons/stop.png",
+          "scale": 0.6,
+          "hoverTextColor": "white",
+          "hoverBackgroundColor": "#000000"
+        }
+      },
+      {
+        "type": "VECTOR",
+        "name": "lineas_extractivistas",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:lineas_extractivistas&outputFormat=application/json&srsname=EPSG:3857",
+        "group": "valle",
+        "queryable": true,
+        "displayInLegend": false,
+        "legendDisplayName": "Líneas extractivistas",
+        "format": "GeoJSON",
+        "visible": true,
+        "zIndex": 100,
+        "minResolution": 0,
+        "maxResolution": 1200,
+        "label": false,
+        "hoverable": true,
+        "style": {
+          "type": "line",
+          "strokeColor": "white",
+          "strokeWidth": "2",
+          "hoverTextColor": "white",
+          "hoverBackgroundColor": "#000000"
+        }
+      },
+      {
+        "type": "VECTOR",
+        "name": "glp_componentes",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:glp_componentes&outputFormat=application/json&srsname=EPSG:3857",
+        "group": "valle",
+        "queryable": true,
+        "displayInLegend": false,
+        "displaySidebarInfo": true,
+        "legendDisplayName": "CB Gran La Plata",
+        "format": "GeoJSON",
+        "visible": true,
+        "zIndex": 100,
+        "minResolution": 1,
+        "maxResolution": 120,
+        "label": null,
+        "hoverable": true,
+        "style": {
+          "hoverTextColor": "white",
+          "hoverBackgroundColor": "#000000",
+          "stylePropFnRef": {
+            "fillColor": "variable1"
+          },
+          "strokeColor": "black",
+          "strokeWidth": 1
+        }
+      },
+      {
+        "type": "VECTOR",
+        "name": "territorios_bioculturales",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:territorios_bioculturales&outputFormat=application/json&srsname=EPSG:3857",
+        "group": "valle",
+        "queryable": true,
+        "displayInLegend": true,
+        "legendDisplayName": "Bioculturas",
+        "displaySidebarInfo": true,
+        "format": "GeoJSON",
+        "visible": true,
         "zIndex": 10000,
-        "minResolution": 0.5,
+        "minResolution": 0,
         "maxResolution": 64000,
         "label": false,
         "hoverable": false,
         "style": {
-          "fillColor": "rgba( 93, 142, 42, 0.15 )",
-          "strokeColor": "rgba( 93, 142, 42, 1.00 )",
-          "strokeWidth": 4
+          "fillColor": "rgba( 233, 233, 70, 0.50 )",
+          "strokeColor": "rgba( 233, 233, 70, 0.95 )",
+          "strokeWidth": 2
         }
       },
       {
         "type": "VECTOR",
-        "name": "colaboradores",
-        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:colaboradores&outputFormat=application/json&srsname=EPSG:3857",
+        "name": "poligonos_bioculturales",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:poligonos_bioculturales&outputFormat=application/json&srsname=EPSG:3857",
         "group": "valle",
         "queryable": true,
-        "displayInLegend": true,
-        "legendDisplayName": "Red HsF",
-        "displaySidebarInfo": true,
-        "format": "GeoJSON",
-        "visible": false,
-        "zIndex": 10000,
-        "minResolution": 80,
-        "maxResolution": 64000,
-        "label": null,
-        "hoverable": true,
-        "style": {
-          "type": "circle",
-          "radius": 6,
-          "fillColor": "black",
-          "strokeColor": "white",
-          "strokeWidth": 1,
-          "hoverTextColor": "white",
-          "hoverBackgroundColor": "#000000"
-        }
-      },
-      {
-        "type": "VECTOR",
-        "name": "AHEs",
-        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:AHEs&outputFormat=application/json&srsname=EPSG:3857",
-        "group": "valle",
-        "queryable": true,
-        "displayInLegend": true,
-        "legendDisplayName": "Pequeños centrales",
-        "displaySidebarInfo": false,
         "format": "GeoJSON",
         "visible": true,
-        "zIndex": 10000,
+        "legendDisplayName": "Polígonos bioculturales",
+        "zIndex": 100,
         "minResolution": 1,
-        "maxResolution": 800,
+        "maxResolution": 120,
+        "opacity": 0.5,
         "label": null,
         "hoverable": true,
         "style": {
+          "hoverTextColor": "white",
+          "hoverBackgroundColor": "#000000",
+          "fillColor": "#2372AB",
+          "strokeColor": "black",
+          "strokeWidth": 1
+        }
+      },
+      {
+        "type": "VECTOR",
+        "name": "puntos_bioculturales",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:puntos_bioculturales&outputFormat=application/json&srsname=EPSG:3857",
+        "group": "valle",
+        "queryable": true,
+        "displayInLegend": false,
+        "format": "GeoJSON",
+        "legendDisplayName": "Puntos bioculturales",
+        "visible": true,
+        "zIndex": 100,
+        "minResolution": 0,
+        "maxResolution": 120,
+        "label": true,
+        "hoverable": true,
+        "style": {
+          "hoverTextColor": "white",
+          "hoverBackgroundColor": "#000000",
           "type": "circle",
-          "radius": 5,
-          "fillColor": "#7a49a5",
-          "strokeColor": "#030303",
-          "strokeWidth": 0.5,
+          "radius": 4,
+          "stylePropFnRef": {
+            "fillColor": "variable1"
+          },
+          "strokeColor": "rgba( 255, 255, 255, 1.0 )",
+          "strokeWidth": 1
+        }
+      },
+      {
+        "type": "VECTOR",
+        "name": "lineas_bioculturales",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:lineas_bioculturales&outputFormat=application/json&srsname=EPSG:3857",
+        "group": "valle",
+        "queryable": true,
+        "displayInLegend": false,
+        "legendDisplayName": "Líneas bioculturales",
+        "format": "GeoJSON",
+        "visible": true,
+        "zIndex": 100,
+        "minResolution": 0,
+        "maxResolution": 120,
+        "label": false,
+        "hoverable": true,
+        "style": {
+          "type": "line",
+          "stylePropFnRef": {
+            "strokeColor": "variable1",
+            "strokeWidth": "variable2"  
+          },
           "hoverTextColor": "white",
           "hoverBackgroundColor": "#000000"
         }
       },
       {
         "type": "VECTOR",
-        "name": "regiones",
-        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:regiones&outputFormat=application/json&srsname=EPSG:3857",
+        "name": "videos_bioculturales",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:videos_bioculturales&outputFormat=application/json&srsname=EPSG:3857",
         "group": "valle",
-        "queryable": false,
+        "queryable": true,
         "displayInLegend": false,
-        "isInteractive": false,
-        "legendDisplayName": "Regiones",
+        "legendDisplayName": "Videos Bioculturales",
         "format": "GeoJSON",
         "visible": true,
         "zIndex": 10000,
-        "minResolution": 1000,
-        "maxResolution": 8000,
-        "label": true,
-        "hoverable": false,
-        "legendIcon": "https://casario-mapa.s3.sa-east-1.amazonaws.com/assets/icons/legends/leyenda_regiones.png",
+        "minResolution": 0.5,
+        "maxResolution": 800,
+        "label": false,
+        "hoverable": true,
         "style": {
-          "label": {
-            "text": "label",
-            "fill": {
-              "color": "white"
-            },
-            "stroke": {
-              "color": "rgba( 255, 250, 240, 0.0 )",
-              "width": 0
-            },
-            "offsetX": -1,
-            "offsetY": 0,
-            "maxResolution": 32000,
-            "placement": "point",
-            "textAlign": "center",
-            "textWrap": "normal",
-            "fontType": "Roboto",
-            "fontSize": "13px",
-            "fontWeight": "normal",
-            "zIndex": 100000
-          },
-          "type": "circle",
-          "radius": 1,
-          "fillColor": "rgba( 255, 250, 240, 0 )",
-          "strokeWidth": 0.5,
-          "strokeColor": "rgba( 255, 250, 240, 0 )"
+          "iconUrl": "https://casario-mapa.s3.sa-east-1.amazonaws.com/assets/icons/triangulo_biocultural.png",
+          "scale": 1.3,
+          "hoverTextColor": "white",
+          "hoverBackgroundColor": "#000000"
         }
       },
       {
@@ -238,24 +333,93 @@
       },
       {
         "type": "VECTOR",
-        "name": "videos_bioculturales",
-        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:videos_bioculturales&outputFormat=application/json&srsname=EPSG:3857",
+        "name": "republica_soja",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:republica_soja&outputFormat=application/json&srsname=EPSG:3857",
+        "group": "two",
+        "queryable": false,
+        "displayInLegend": false,
+        "format": "GeoJSON",
+        "visible": false,
+        "zIndex": 10000,
+        "minResolution": 0.5,
+        "maxResolution": 64000,
+        "label": false,
+        "hoverable": false,
+        "style": {
+          "fillColor": "rgba( 93, 142, 42, 0.15 )",
+          "strokeColor": "rgba( 93, 142, 42, 1.00 )",
+          "strokeWidth": 4
+        }
+      },
+      {
+        "type": "VECTOR",
+        "name": "colaboradores",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:colaboradores&outputFormat=application/json&srsname=EPSG:3857",
         "group": "valle",
         "queryable": true,
+        "displayInLegend": true,
+        "legendDisplayName": "Red HsF",
+        "displaySidebarInfo": true,
+        "format": "GeoJSON",
+        "visible": false,
+        "zIndex": 10000,
+        "minResolution": 80,
+        "maxResolution": 64000,
+        "label": null,
+        "hoverable": true,
+        "style": {
+          "type": "circle",
+          "radius": 6,
+          "fillColor": "black",
+          "strokeColor": "white",
+          "strokeWidth": 1,
+          "hoverTextColor": "white",
+          "hoverBackgroundColor": "#000000"
+        }
+      },
+      {
+        "type": "VECTOR",
+        "name": "regiones",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:regiones&outputFormat=application/json&srsname=EPSG:3857",
+        "group": "valle",
+        "queryable": false,
         "displayInLegend": false,
-        "legendDisplayName": "Videos Bioculturales",
+        "isInteractive": false,
+        "legendDisplayName": "Regiones",
         "format": "GeoJSON",
         "visible": true,
         "zIndex": 10000,
-        "minResolution": 0.5,
-        "maxResolution": 1200,
-        "label": false,
-        "hoverable": true,
+        "minResolution": 1000,
+        "maxResolution": 8000,
+        "label": true,
+        "hoverable": false,
+        "legendIcon": "https://casario-mapa.s3.sa-east-1.amazonaws.com/assets/icons/legends/leyenda_regiones.png",
         "style": {
-          "iconUrl": "https://casario-mapa.s3.sa-east-1.amazonaws.com/assets/icons/triangulo_biocultural.png",
-          "scale": 1.3,
-          "hoverTextColor": "white",
-          "hoverBackgroundColor": "#000000"
+          "label": {
+            "text": "label",
+            "fill": {
+              "color": "white"
+            },
+            "stroke": {
+              "color": "rgba( 255, 250, 240, 0.0 )",
+              "width": 0
+            },
+            "offsetX": -1,
+            "offsetY": 0,
+            "maxResolution": 32000,
+            "placement": "point",
+            "textAlign": "center",
+            "textWrap": "normal",
+            "fontType": "Roboto",
+            "fontSize": "13px",
+            "fontWeight": "normal",
+            "zIndex": 100000
+          },
+          "type": "circle",
+          "radius": 1,
+          "fillColor": "rgba( 255, 250, 240, 0 )",
+          "strokeWidth": 0.5,
+          "strokeColor": "rgba( 255, 250, 240, 0 )"
         }
       },
       {
@@ -266,7 +430,7 @@
         "displayInLegend": true,
         "legendDisplayName": "Hidrovía",
         "legendIcon": "https://casario-mapa.s3.sa-east-1.amazonaws.com/assets/icons/legends/leyenda_hidrovia.png",
-        "visible": false,
+        "visible": true,
         "displaySidebarInfo": true,
         "group": "valle",
         "attributions": "Test attributions",
@@ -426,197 +590,6 @@
       },
       {
         "type": "VECTOR",
-        "name": "territorios_bioculturales",
-        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:territorios_bioculturales&outputFormat=application/json&srsname=EPSG:3857",
-        "group": "valle",
-        "queryable": true,
-        "displayInLegend": true,
-        "legendDisplayName": "Bioculturas",
-        "displaySidebarInfo": true,
-        "format": "GeoJSON",
-        "visible": false,
-        "zIndex": 10000,
-        "minResolution": 120,
-        "maxResolution": 64000,
-        "label": false,
-        "hoverable": false,
-        "style": {
-          "fillColor": "rgba( 233, 233, 70, 0.50 )",
-          "strokeColor": "rgba( 233, 233, 70, 0.95 )",
-          "strokeWidth": 2
-        }
-      },
-      {
-        "type": "VECTOR",
-        "name": "poligonos_bioculturales",
-        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:poligonos_bioculturales&outputFormat=application/json&srsname=EPSG:3857",
-        "group": "valle",
-        "queryable": true,
-        "format": "GeoJSON",
-        "visible": true,
-        "legendDisplayName": "Polígonos bioculturales",
-        "zIndex": 100,
-        "minResolution": 1,
-        "maxResolution": 120,
-        "label": null,
-        "hoverable": true,
-        "style": {
-          "hoverTextColor": "white",
-          "hoverBackgroundColor": "#000000",
-          "stylePropFnRef": {
-            "fillColor": "variable1"
-          },
-          "strokeColor": "black",
-          "strokeWidth": 1
-        }
-      },
-      {
-        "type": "VECTOR",
-        "name": "puntos_bioculturales",
-        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:puntos_bioculturales&outputFormat=application/json&srsname=EPSG:3857",
-        "group": "valle",
-        "queryable": true,
-        "displayInLegend": false,
-        "format": "GeoJSON",
-        "legendDisplayName": "Puntos bioculturales",
-        "visible": true,
-        "zIndex": 100,
-        "minResolution": 0,
-        "maxResolution": 120,
-        "label": true,
-        "hoverable": true,
-        "style": {
-          "hoverTextColor": "white",
-          "hoverBackgroundColor": "#000000",
-          "type": "circle",
-          "radius": 4,
-          "stylePropFnRef": {
-            "fillColor": "variable1"
-          },
-          "strokeColor": "rgba( 255, 255, 255, 1.0 )",
-          "strokeWidth": 1
-        }
-      },
-      {
-        "type": "VECTOR",
-        "name": "lineas_bioculturales",
-        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:lineas_bioculturales&outputFormat=application/json&srsname=EPSG:3857",
-        "group": "valle",
-        "queryable": true,
-        "displayInLegend": false,
-        "legendDisplayName": "Líneas bioculturales",
-        "format": "GeoJSON",
-        "visible": true,
-        "zIndex": 100,
-        "minResolution": 0,
-        "maxResolution": 120,
-        "label": false,
-        "hoverable": true,
-        "style": {
-          "type": "line",
-          "stylePropFnRef": {
-            "strokeColor": "variable1",
-            "strokeWidth": "variable2"  
-          },
-          "hoverTextColor": "white",
-          "hoverBackgroundColor": "#000000"
-        }
-      },
-      {
-        "type": "VECTOR",
-        "name": "poligonos_extractivistas",
-        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:poligonos_extractivistas&outputFormat=application/json&srsname=EPSG:3857",
-        "group": "valle",
-        "queryable": true,
-        "format": "GeoJSON",
-        "visible": true,
-        "legendDisplayName": "Polígonos extractivistas",
-        "zIndex": 100,
-        "minResolution": 1,
-        "maxResolution": 1200,
-        "label": null,
-        "hoverable": true,
-        "style": {
-          "hoverTextColor": "white",
-          "hoverBackgroundColor": "#000000",
-          "fillColor": "rgba(255, 0, 0, 0.2)",
-          "strokeColor": "rgba(255, 0, 0, 0.95)",
-          "strokeWidth": 2
-        }
-      },
-      {
-        "type": "VECTOR",
-        "name": "puntos_extractivistas",
-        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:puntos_extractivistas&outputFormat=application/json&srsname=EPSG:3857",
-        "group": "valle",
-        "queryable": true,
-        "displayInLegend": false,
-        "format": "GeoJSON",
-        "legendDisplayName": "Puntos extractivistas",
-        "visible": true,
-        "zIndex": 100,
-        "minResolution": 0,
-        "maxResolution": 1200,
-        "label": true,
-        "hoverable": true,
-        "style": {
-          "iconUrl": "https://casario-mapa.s3.sa-east-1.amazonaws.com/assets/icons/stop.png",
-          "scale": 0.6,
-          "hoverTextColor": "white",
-          "hoverBackgroundColor": "#000000"
-        }
-      },
-      {
-        "type": "VECTOR",
-        "name": "lineas_extractivistas",
-        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:lineas_extractivistas&outputFormat=application/json&srsname=EPSG:3857",
-        "group": "valle",
-        "queryable": true,
-        "displayInLegend": false,
-        "legendDisplayName": "Líneas extractivistas",
-        "format": "GeoJSON",
-        "visible": true,
-        "zIndex": 100,
-        "minResolution": 0,
-        "maxResolution": 1200,
-        "label": false,
-        "hoverable": true,
-        "style": {
-          "type": "line",
-          "strokeColor": "white",
-          "strokeWidth": "2",
-          "hoverTextColor": "white",
-          "hoverBackgroundColor": "#000000"
-        }
-      },
-      {
-        "type": "VECTOR",
-        "name": "glp_componentes",
-        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:glp_componentes&outputFormat=application/json&srsname=EPSG:3857",
-        "group": "valle",
-        "queryable": true,
-        "displayInLegend": false,
-        "displaySidebarInfo": true,
-        "legendDisplayName": "CB Gran La Plata",
-        "format": "GeoJSON",
-        "visible": true,
-        "zIndex": 100,
-        "minResolution": 1,
-        "maxResolution": 120,
-        "label": null,
-        "hoverable": true,
-        "style": {
-          "hoverTextColor": "white",
-          "hoverBackgroundColor": "#000000",
-          "stylePropFnRef": {
-            "fillColor": "variable1"
-          },
-          "strokeColor": "black",
-          "strokeWidth": 1
-        }
-      },
-      {
-        "type": "VECTOR",
         "name": "cmr_lineas",
         "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:cmr_lineas&outputFormat=application/json&srsname=EPSG:3857",
         "group": "valle",
@@ -702,31 +675,6 @@
         "visible": true,
         "displayInLegend": false,
         "legendDisplayName": "FCS polígonos",
-        "zIndex": 100,
-        "minResolution": 1,
-        "maxResolution": 120,
-        "label": null,
-        "hoverable": true,
-        "style": {
-          "hoverTextColor": "white",
-          "hoverBackgroundColor": "#000000",
-          "stylePropFnRef": {
-            "fillColor": "variable1"
-          },
-          "strokeColor": "black",
-          "strokeWidth": 0.5
-        }
-      },
-      {
-        "type": "VECTOR",
-        "name": "cld_poligonos",
-        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:cld_poligonos&outputFormat=application/json&srsname=EPSG:3857",
-        "group": "valle",
-        "queryable": true,
-        "format": "GeoJSON",
-        "visible": true,
-        "displayInLegend": false,
-        "legendDisplayName": "CLD polígonos",
         "zIndex": 100,
         "minResolution": 1,
         "maxResolution": 120,
@@ -1177,6 +1125,32 @@
         "updatewhileanimating": true
       },
       {
+        "type": "VECTOR",
+        "name": "AHEs",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:AHEs&outputFormat=application/json&srsname=EPSG:3857",
+        "group": "valle",
+        "queryable": true,
+        "displayInLegend": true,
+        "legendDisplayName": "Pequeñas centrales",
+        "displaySidebarInfo": false,
+        "format": "GeoJSON",
+        "visible": true,
+        "zIndex": 10000,
+        "minResolution": 1,
+        "maxResolution": 800,
+        "label": null,
+        "hoverable": true,
+        "style": {
+          "type": "circle",
+          "radius": 5,
+          "fillColor": "#7a49a5",
+          "strokeColor": "#030303",
+          "strokeWidth": 0.5,
+          "hoverTextColor": "white",
+          "hoverBackgroundColor": "#000000"
+        }
+      },
+      {
         "type": "XYZ",
         "name": "calles",
         "group": "one",
@@ -1211,7 +1185,7 @@
         "group": "backgroundLayers",
         "url": "https://api.mapbox.com/styles/v1/bkholmes/ckqb0kvi23mxz17n203e8ravx/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYmtob2xtZXMiLCJhIjoiNjlkYjI4MDUyYTRlZWEyYzkwYTdmOTgxNmMzOGYwMTUifQ.VSUo52PYOUzS60NR6jqXTw",
         "minResolution": 0.5,
-        "maxResolution": 8,
+        "maxResolution": 16,
         "opacity": 1,
         "queryable": false,
         "visible": true
@@ -1221,11 +1195,25 @@
         "name": "aerial",
         "group": "two",
         "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-        "minResolution": 0,
-        "maxResolution": 10,
-        "opacity": 0.99,
+        "minResolution": 8,
+        "maxResolution": 800,
+        "opacity": 0.2,
         "queryable": false,
         "visible": true
+      },
+      {
+        "type": "XYZ",
+        "name": "aerial2",
+        "group": "valle",
+        "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+        "minResolution": 0.5,
+        "maxResolution": 40,
+        "displayInLegend": true,
+        "legendIcon": "https://casario-mapa.s3.sa-east-1.amazonaws.com/assets/icons/legends/leyenda_aerial.png",
+        "legendDisplayName": "Imagen satelital",
+        "opacity": 0.6,
+        "queryable": false,
+        "visible": false
       },
       {
         "type": "XYZ",
@@ -1294,10 +1282,10 @@
     },
     "buttons": {
       "biocultural": [
-        "osm_cuenca",
-        "bioculturales",
         "imagen_satelital",
         "mapa_verde",
+        "aerial",
+        "osm_cuenca",
         "pajaros",
         "gran_valle",
         "humedales",
@@ -1311,7 +1299,6 @@
         "glp_componentes",
         "fcs_poligonos",
         "fcs_lineas",
-        "cld_poligonos",
         "cld_lineas",
         "cmr_poligonos",
         "cmr_lineas",
@@ -1326,6 +1313,7 @@
       "extractivista": [
         "cuenca_extractivista",
         "extractivista",
+        "aerial2",
         "republica_soja",
         "republica_actual",
         "soja_2001-2020",
