@@ -678,6 +678,9 @@ export const layersStylePropFn = {
   lineas_extractivistas: {
     strokeColor: propertyValue => {
       return propertyValue;
+    },
+    strokeWidth: propertyValue => {
+      return propertyValue;
     }
   },
   poligonos_bioculturales: {
@@ -692,6 +695,9 @@ export const layersStylePropFn = {
   },
   lineas_bioculturales: {
     strokeColor: propertyValue => {
+      return propertyValue;
+    },
+    strokeWidth: propertyValue => {
       return propertyValue;
     }
   },
