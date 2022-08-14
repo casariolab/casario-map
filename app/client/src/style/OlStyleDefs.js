@@ -24,7 +24,7 @@ export function defaultStyle(feature) {
     fill: new OlFill({
       color: ['MultiPolygon', 'Polygon'].includes(geomType)
         ? '#FF0000'
-        : [0, 0, 0, 0]
+        : [255, 255, 255, 0]
     }),
     stroke: new OlStroke({
       color: ['MultiPolygon', 'Polygon'].includes(geomType)

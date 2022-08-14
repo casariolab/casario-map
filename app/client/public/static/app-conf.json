@@ -156,14 +156,16 @@
         "legendDisplayName": "Polígonos bioculturales",
         "zIndex": 100,
         "minResolution": 1,
-        "maxResolution": 120,
+        "maxResolution": 800,
         "opacity": 0.5,
         "label": null,
         "hoverable": true,
         "style": {
           "hoverTextColor": "white",
           "hoverBackgroundColor": "#000000",
-          "fillColor": "#2372AB",
+          "stylePropFnRef": {
+            "fillColor": "variable1" 
+          },
           "strokeColor": "black",
           "strokeWidth": 1
         }
@@ -180,7 +182,7 @@
         "visible": true,
         "zIndex": 100,
         "minResolution": 0,
-        "maxResolution": 120,
+        "maxResolution": 800,
         "label": true,
         "hoverable": true,
         "style": {
@@ -205,15 +207,15 @@
         "visible": true,
         "zIndex": 100,
         "minResolution": 0,
-        "maxResolution": 120,
+        "maxResolution": 800,
         "label": false,
         "hoverable": true,
         "style": {
           "type": "line",
           "stylePropFnRef": {
-            "strokeColor": "variable1",
-            "strokeWidth": "variable2"  
+            "strokeColor": "variable1" 
           },
+          "strokeWidth": 2, 
           "hoverTextColor": "white",
           "hoverBackgroundColor": "#000000"
         }
@@ -1344,7 +1346,12 @@
         "entity": "CATEGORÍA",
         "description": "DESCRIPTIVO",
         "MUNIC_1": "MUNICIPALIDAD 1",
-        "MUNIC_2": "MUNICIPALIDAD 2"
+        "MUNIC_2": "MUNICIPALIDAD 2",
+        "sidebarMediaTop": "FOTO/VIDEO ARRIBA",
+        "sidebarMediaBottom": "FOTO/VIDEO ABAJO",
+        "caption": "LEYENDA ARRIBA",
+        "caption2": "LEYENDA ABAJO",
+        "variable1": "COLOR"
       }
     },
     "featureInfoHiddenProps": [
