@@ -56,7 +56,7 @@
                 <v-icon>layers</v-icon>
               </v-list-item-icon>
               <v-list-item-content>
-                <v-list-item-title>Select layer to edit</v-list-item-title>
+                <v-list-item-title>Seleccionar la capa para editarla</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
             <v-list-item @click="closeEdit">
@@ -64,7 +64,7 @@
                 <v-icon>close</v-icon>
               </v-list-item-icon>
               <v-list-item-content>
-                <v-list-item-title>Close Edit</v-list-item-title>
+                <v-list-item-title>Cerrar</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
           </v-list>
@@ -360,18 +360,18 @@
       <v-card>
         <v-app-bar :color="color.primary" dark dense flat>
           <v-app-bar-nav-icon><v-icon>delete</v-icon></v-app-bar-nav-icon>
-          <v-toolbar-title class="white--text">Confirm?</v-toolbar-title>
+          <v-toolbar-title class="white--text">Confirmar?</v-toolbar-title>
         </v-app-bar>
 
         <v-card-text class="body-1 font-weight-medium mt-3 mb-3 pb-0"
-          >Are you sure you want to delete the selected feature?</v-card-text
+          >Quieres borrar el rasgo?</v-card-text
         >
         <v-divider></v-divider>
 
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="primary darken-1" text @click.native="popupOk"
-            >Yes</v-btn
+            >Sí</v-btn
           >
           <v-btn color="grey" @click.native="popupCancel">No</v-btn>
         </v-card-actions>
@@ -456,26 +456,26 @@ export default {
     helpTooltipElement: null,
     helpTooltip: null,
     helpTooltipMessages: {
-      delete: 'Click on the feature to delete. \nPress ESC to exit.',
-      select: 'Click to select feature. \nPress ESC to exit.',
-      edit: 'Click on the feature and drag to move it. \nPress ESC to exit.',
+      delete: 'Cliquear en el rasgo para borrarlo. \nESC para salir.',
+      select: 'Cliquear en el rasgo para seleccionarlo. \nESC para salir.',
+      edit: 'Cliquear en el rasgo y arrastrarlo adonde quieres. \nESC para salir.',
       modifyAttributes:
-        'Click on the feature to modify attributes. \nPress ESC to exit.',
+        'Cliquear en el rasgo para modificar los datos. \nESC para salir.',
       polygonAndLine: {
-        start: 'Click to start drawing. \nPress ESC to exit.',
-        continue: 'Click to continue drawing. \nPress ESC to exit.',
+        start: 'Cliquear para dibujar. \nESC para salir.',
+        continue: 'Cliquear dos veces para terminar. \nESC para salir.',
         close:
-          'Click to add another point (double-click to finish) \nPress ESC to exit.'
+          'Cliquear dos veces para terminar. \nESC para salir.'
       },
       point: {
-        start: 'Click to place the point. \nPres ESC to exit.'
+        start: 'Cliquear para poner el punto. \nESC para salir.'
       }
     },
     editSnackbarMessages: {
-      modifyAttributes: 'Feature updated successfully!',
-      deleteFeature: 'Feature deleted successfully!',
-      addFeature: 'Feature added successfully!',
-      modifyFeature: 'Feature modified successfully!'
+      modifyAttributes: 'Los datos se modificaron!',
+      deleteFeature: 'El rasgo se borró!',
+      addFeature: 'El rasgo se añadió!',
+      modifyFeature: 'El rasgo se borró!'
     },
     // Popup
     popupOverlay: null,
