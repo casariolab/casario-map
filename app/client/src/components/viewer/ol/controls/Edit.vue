@@ -71,7 +71,10 @@
         </v-menu>
       </v-layout>
     </div>
-    <div v-if="!selectedLayer">
+
+    <!-- TO RESTORE POST ICON UNCOMMENT DIV BELOW -->
+    
+   <!-- <div v-if>="!selectedLayer">
       <v-tooltip left>
         <template v-slot:activator="{ on }">
           <v-btn
@@ -90,7 +93,7 @@
         </template>
         <span>{{ isEditingPost ? 'Cerrar' : 'Postear' }}</span>
       </v-tooltip>
-    </div>
+    </div> -->
     <div v-if="selectedLayer">
       <div v-for="(item, index) in editButtons" :key="index">
         <v-layout>
@@ -142,7 +145,7 @@
           v-model="dialogSelectedLayer"
           return-object
           item-value="values_.name"
-          label="Layers"
+          label="Capas"
         >
           <template slot="selection" slot-scope="{ item }">
             {{ item.get('legendDisplayName') }}
