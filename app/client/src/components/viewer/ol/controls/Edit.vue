@@ -23,7 +23,7 @@
                 <v-icon small>far fa-edit</v-icon>
               </v-btn>
             </template>
-            <span>Edit</span>
+            <span>Editar</span>
           </v-tooltip>
         </div>
 
@@ -56,7 +56,7 @@
                 <v-icon>layers</v-icon>
               </v-list-item-icon>
               <v-list-item-content>
-                <v-list-item-title>Seleccionar la capa para editarla</v-list-item-title>
+                <v-list-item-title>Seleccionar una capa para editar</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
             <v-list-item @click="closeEdit">
@@ -88,7 +88,7 @@
             }}</v-icon>
           </v-btn>
         </template>
-        <span>{{ isEditingPost ? 'Close' : 'Add Post' }}</span>
+        <span>{{ isEditingPost ? 'Cerrar' : 'Postear' }}</span>
       </v-tooltip>
     </div>
     <div v-if="selectedLayer">
@@ -125,7 +125,7 @@
       <v-card>
         <v-app-bar flat :color="color.primary" height="50" dark>
           <v-icon class="mr-3">layers</v-icon>
-          <v-toolbar-title>Select Layer</v-toolbar-title>
+          <v-toolbar-title>Seleccionar</v-toolbar-title>
         </v-app-bar>
 
         <v-select
@@ -194,7 +194,7 @@
       </template>
       <template v-slot:body>
         <div v-if="editType === 'deleteFeature'">
-          <b>Are you sure you want to delete the selected feature ?</b>
+          <b>Quieres realmente borrar este rasgo ?</b>
         </div>
         <div v-else-if="['addFeature', 'modifyAttributes'].includes(editType)">
           <vue-scroll ref="vs">
@@ -332,7 +332,7 @@
 
         <v-spacer></v-spacer>
         <template v-if="editType === 'deleteFeature'">
-          <v-btn color="primary darken-1" @click="popupOk" text>Yes</v-btn>
+          <v-btn color="primary darken-1" @click="popupOk" text>OK</v-btn>
           <v-btn color="grey" text @click="popupCancel">Cancel</v-btn>
         </template>
         <template
@@ -472,10 +472,10 @@ export default {
       }
     },
     editSnackbarMessages: {
-      modifyAttributes: 'Los datos se modificaron!',
-      deleteFeature: 'El rasgo se borró!',
-      addFeature: 'El rasgo se añadió!',
-      modifyFeature: 'El rasgo se borró!'
+      modifyAttributes: 'Los datos se modificaron !',
+      deleteFeature: 'El rasgo se borró !',
+      addFeature: 'El rasgo se añadió !',
+      modifyFeature: 'El rasgo se cambió !'
     },
     // Popup
     popupOverlay: null,

@@ -8,14 +8,14 @@
       dark
       @click="addPost"
     >
-      ADD POST
+      POSTEAR
     </v-btn>
     <v-alert
       v-if="currentResolution && currentResolution > minResolution"
       dense
       border="left"
       type="warning"
-      >Zoom in close to add your post.</v-alert
+      >Acercarse para postear</v-alert
     >
   </div>
 </template>
