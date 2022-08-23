@@ -101,7 +101,7 @@ const state = {
   },
   formData: {},
   imageUpload: {
-    defaultButtonText: 'Upload',
+    defaultButtonText: 'Cargar',
     selectedFile: null,
     isSelecting: false,
     errorMessage: '',

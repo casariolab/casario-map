@@ -254,7 +254,7 @@
                   </span>
                 </v-btn>
               </template>
-              <span>Upload jpg or png image</span>
+              <span>Cargar imágen jpg o png</span>
             </v-tooltip>
             <input
               ref="imageUploader"
@@ -306,8 +306,8 @@
                     >Sidebar:
                     {{
                       imageUpload.position === 'sidebarMediaTop'
-                        ? 'Top'
-                        : 'Bottom'
+                        ? 'Arriba'
+                        : 'Abajo'
                     }}</span
                   >
                 </v-btn>
@@ -323,8 +323,8 @@
                   <v-list-item-content>
                     <v-list-item-title>{{
                       imageUpload.position === 'sidebarMediaTop'
-                        ? 'Bottom'
-                        : 'Top'
+                        ? 'Abajo'
+                        : 'Arriba'
                     }}</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>

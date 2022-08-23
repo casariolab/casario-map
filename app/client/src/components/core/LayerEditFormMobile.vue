@@ -67,7 +67,7 @@
                 </span>
               </v-btn>
             </template>
-            <span>Upload jpg or png image</span>
+            <span>Cargar imágen jpg o png</span>
           </v-tooltip>
           <input
             ref="imageUploader"
