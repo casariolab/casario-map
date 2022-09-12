@@ -8,7 +8,14 @@ Vue.use(Vuetify);
 const vuetify = new Vuetify({
   icons: {
     iconfont: 'md' // default - only for display purposes
-  }
+  },
+  theme: {
+    themes: {
+      light: {
+        anchor: '#B8D162',
+      },
+    },
+  },
 });
 
 Vue.use(TiptapVuetifyPlugin, {

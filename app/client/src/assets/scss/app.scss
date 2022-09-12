@@ -182,7 +182,7 @@ body,
   height: auto;
   overflow: visible;
   padding: 15px;
-  border: 1px solid #e8e8e8;
+  border: 2px solid #0066AC;
   border-top: 0;
 }
 
@@ -194,16 +194,17 @@ body,
 
 .ep-accordion label {
   display: block;
-  color: #333;
+  color: #fff;
   cursor: pointer;
   font-weight: normal;
   padding: 15px;
-  background: #e8e8e8;
+  background: #0066AC;
 }
 
 .ep-accordion label:hover,
 .ep-accordion label:focus {
   background: #d8d8d8;
+  color: #333;
 }
 
 .ep-accordion .handle label:before {
