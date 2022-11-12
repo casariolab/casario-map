@@ -701,6 +701,14 @@ export const layersStylePropFn = {
       return propertyValue;
     }
   },
+  fire_hidrografia: {
+    strokeColor: propertyValue => {
+      return propertyValue;
+    },
+    strokeWidth: propertyValue => {
+      return propertyValue;
+    }
+  },
   fire_puntos: {
     fillColor: propertyValue => {
       return propertyValue;
