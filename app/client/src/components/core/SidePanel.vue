@@ -175,7 +175,7 @@
                         "
                       >
                         <v-icon small class="mr-1" color="grey">fas fa-arrow-left</v-icon>
-                        BACK
+                        VOLVER
                       </v-btn>
                       <v-spacer></v-spacer>
                       <v-btn
@@ -201,7 +201,7 @@
                         color="grey"
                       >
                         <v-icon small class="mr-1" color="grey">close</v-icon>
-                        Close
+                        Cerrar
                       </v-btn>
                     </v-layout>
 

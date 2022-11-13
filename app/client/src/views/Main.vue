@@ -86,7 +86,7 @@
           </v-list>
         </v-menu>
 
-        <v-spacer></v-spacer>
+        <v-spacer></v-spacer><v-spacer></v-spacer>
         <template
           v-if="
             ($appConfig.app.navbar &&
