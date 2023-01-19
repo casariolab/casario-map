@@ -7,6 +7,15 @@ body,
   height: 100%;
 }
 
+.row {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.row + .row {
+  margin-top: 0 !important;
+}
+
 @media only screen and (min-width: 960px) {
   html {
     overflow: hidden;
@@ -22,9 +31,8 @@ body,
 .wg-app {
   position: relative;
   width: 100%;
-  //  "Change 'Roboto' to your font name
-  font-family: 'Roboto';
 }
+
 .wg-app-embedded {
   width: 100%;
   height: 100%;

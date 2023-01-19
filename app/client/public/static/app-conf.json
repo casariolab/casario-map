@@ -1,13 +1,15 @@
 {
   "app": {
     "title": "CORREDORES",
+    "tagline": "",
     "projectWebsite": "https://casariolab.art",
     "color": {
       "primary": "#00000e",
-      "secondary": "#00000e"
+      "secondary": "red"
     },
+
     "legend": {
-      "isVisible": true
+      "isVisible": false
     },
     "controls": {
       "locate_me": true,
@@ -31,27 +33,12 @@
     "zoom": 1,
     "geoserverWorkspace": "workspace1",
     "resolutions": [
-      156543.03,
-      78271.52,
-      39135.76,
-      19567.88,
-      9783.94,
-      4891.97,
-      2445.98,
-      1222.99,
-      611.5,
-      305.75,
-      152.87,
-      76.437,
-      38.219,
-      19.109,
-      9.5546,
-      4.7773,
-      2.3887,
-      1.1943,
-      0.5972
+      156543.03, 78271.52, 39135.76, 19567.88, 9783.94, 4891.97, 2445.98, 1222.99, 611.5, 305.75, 152.87, 76.437,
+      38.219, 19.109, 9.5546, 4.7773, 2.3887, 1.1943, 0.5972
     ],
     "center": [0, 0],
+    "minResolution": 0.25,
+    "maxResolution": 64000,
     "layers": [
       {
         "type": "VECTOR",
@@ -60,6 +47,7 @@
         "group": "valle",
         "queryable": true,
         "format": "GeoJSON",
+        "legendDisplayName": "Points",
         "visible": true,
         "legendDisplayName": "Polígonos extractivistas",
         "zIndex": 100,
@@ -739,6 +727,7 @@
         "queryable": true,
         "corporateNetwork": false,
         "displayInLegend": false,
+        "legendDisplayName": "Lines",
         "format": "GeoJSON",
         "visible": true,
         "legendDisplayName": "CMR puntos",
