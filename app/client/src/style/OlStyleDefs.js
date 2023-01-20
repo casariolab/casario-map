@@ -598,126 +598,66 @@ export const layersStylePropFn = {
     iconUrl: propertyValue => propertyValue,
   },
   colaboradores: {
-    fillColor: propertyValue => {
-      return propertyValue;
-    },
+    fillColor: propertyValue => propertyValue,
   },
   glp_componentes: {
-    fillColor: propertyValue => {
-      return propertyValue;
-    },
+    fillColor: propertyValue => propertyValue,
   },
   fcs_poligonos: {
-    fillColor: propertyValue => {
-      return propertyValue;
-    },
+    fillColor: propertyValue => propertyValue,
   },
   fcs_lineas: {
-    strokeColor: propertyValue => {
-      return propertyValue;
-    },
-    strokeWidth: propertyValue => {
-      return propertyValue;
-    },
+    strokeColor: propertyValue => propertyValue,
+    strokeWidth: propertyValue => propertyValue,
   },
   cld_lineas: {
-    strokeColor: propertyValue => {
-      return propertyValue;
-    },
-    strokeWidth: propertyValue => {
-      return propertyValue;
-    },
+    strokeColor: propertyValue => propertyValue,
+    strokeWidth: propertyValue => propertyValue,
   },
   cld_poligonos: {
-    fillColor: propertyValue => {
-      return propertyValue;
-    },
+    fillColor: propertyValue => propertyValue,
   },
   cmr_poligonos: {
-    fillColor: propertyValue => {
-      return propertyValue;
-    },
+    fillColor: propertyValue => propertyValue,
   },
   cmr_puntos: {
-    fillColor: propertyValue => {
-      return propertyValue;
-    },
+    fillColor: propertyValue => propertyValue,
   },
   cmr_lineas: {
-    strokeColor: propertyValue => {
-      return propertyValue;
-    },
+    strokeColor: propertyValue => propertyValue,
   },
   poligonos_extractivistas: {
-    fillColor: propertyValue => {
-      return propertyValue;
-    },
+    fillColor: propertyValue => propertyValue,
   },
   puntos_extractivistas: {
-    fillColor: propertyValue => {
-      return propertyValue;
-    },
+    fillColor: propertyValue => propertyValue,
   },
   lineas_extractivistas: {
-    strokeColor: propertyValue => {
-      return propertyValue;
-    },
-    strokeWidth: propertyValue => {
-      return propertyValue;
-    },
+    strokeColor: propertyValue => propertyValue,
+    strokeWidth: propertyValue => propertyValue,
   },
   poligonos_bioculturales: {
-    fillColor: propertyValue => {
-      return propertyValue;
-    },
+    fillColor: propertyValue => propertyValue,
   },
   puntos_bioculturales: {
-    fillColor: propertyValue => {
-      return propertyValue;
-    },
+    fillColor: propertyValue => propertyValue,
   },
   lineas_bioculturales: {
-    strokeColor: propertyValue => {
-      return propertyValue;
-    },
-    strokeWidth: propertyValue => {
-      return propertyValue;
-    },
+    strokeColor: propertyValue => propertyValue,
+    strokeWidth: propertyValue => propertyValue,
   },
   fire_hidrografia: {
-    strokeColor: propertyValue => {
-      return propertyValue;
-    },
-    strokeWidth: propertyValue => {
-      return propertyValue;
-    },
+    strokeColor: propertyValue => propertyValue,
+    strokeWidth: propertyValue => propertyValue,
   },
   fire_puntos: {
-    fillColor: propertyValue => {
-      return propertyValue;
-    },
+    fillColor: propertyValue => propertyValue,
   },
   hidrovia3_calados: {
-    strokeColor: propertyValue => {
-      return propertyValue;
-    },
+    strokeColor: propertyValue => propertyValue,
   },
   points: {
     strokeColor: propertyValue => propertyValue,
     fillColor: propertyValue => propertyValue,
-  },
-  lines: {
-    strokeColor: propertyValue => propertyValue,
-    strokeWidth: propertyValue => propertyValue,
-  },
-  gas: {
-    iconScaleFn: propertyValue => {
-      return getIconScaleValue(propertyValue, 1400, 0.3, 1.4);
-    },
-  },
-  oil: {
-    circleRadiusFn: propertyValue => {
-      return getRadiusValue(propertyValue, 0.3, 4, 50);
-    },
   },
 };
