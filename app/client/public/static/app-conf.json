@@ -153,7 +153,7 @@
           "hoverTextColor": "white",
           "hoverBackgroundColor": "#000000",
           "stylePropFnRef": {
-            "fillColor": "variable1" 
+            "fillColor": "variable1"
           },
           "strokeColor": "black",
           "strokeWidth": 1
@@ -203,7 +203,7 @@
           "type": "line",
           "stylePropFnRef": {
             "strokeColor": "variable1",
-            "strokeWidth": "variable2"  
+            "strokeWidth": "variable2"
           },
           "hoverTextColor": "white",
           "hoverBackgroundColor": "#000000"
@@ -294,7 +294,7 @@
           "type": "line",
           "stylePropFnRef": {
             "strokeColor": "variable1",
-            "strokeWidth": "variable2"  
+            "strokeWidth": "variable2"
           },
           "hoverTextColor": "white",
           "hoverBackgroundColor": "#000000"
@@ -1431,4 +1431,3 @@
     }
   }
 }
-

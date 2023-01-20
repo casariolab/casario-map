@@ -26,7 +26,7 @@
       :width="isVisible ? '250px' : '0px'"
       :style="`position:absolute;${$vuetify.breakpoint.smAndDown ? 'right' : 'left'}:25px;bottom:${
         $vuetify.breakpoint.smAndDown && !mobilePanelState ? 70 : 20
-      }px;max-width:190px;opacity:85%;z-index:1000;`"
+      }px;max-width:200px;opacity:90%;z-index:1000;`"
     >
       <v-btn
         v-show="isVisible"
@@ -40,7 +40,7 @@
         <v-icon class="ml-0" x-small>fas fa-chevron-up</v-icon></v-btn
       >
       <v-expansion-panel class="my-0" :style="`background-color: white;`">
-        <v-row class="my-1" justify="center"> <!--
+        <v-row class="my-1" justify="center">
           <span class="grey--text text--darken-2 subtitle-2">
             <a @click="toggleAllLayersVisibility(true)">{{ $t(`form.legend.selectAll`) }}</a> |
             <a @click="toggleAllLayersVisibility(false)"> {{ $t(`form.legend.clearAll`) }}</a>
@@ -115,14 +115,13 @@
               </v-row>
             </template>
           </vue-scroll>
-        </v-expansion-panel-content> -->
-        <!--
+        </v-expansion-panel-content>
         <v-divider></v-divider>
         <v-row class="my-1" justify="center">
           <span class="black--text text--darken-2 subtitle-2">
             {{ title }}
           </span>
-        </v-row> -->
+        </v-row>
       </v-expansion-panel>
     </v-expansion-panels>
   </div>
@@ -319,6 +318,7 @@ export default {
 .layer-input >>> .v-messages {
   min-height: 0px;
 }
+
 .legend-toggle-button {
   transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);

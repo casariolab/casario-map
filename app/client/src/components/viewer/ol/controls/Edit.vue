@@ -52,8 +52,8 @@
     </div>
 
     <!-- TO RESTORE POST ICON UNCOMMENT DIV BELOW -->
-    
-   <!-- <div v-if>="!selectedLayer">
+
+    <!-- <div v-if>="!selectedLayer">
       <v-tooltip left>
         <template v-slot:activator="{on}">
           <v-btn

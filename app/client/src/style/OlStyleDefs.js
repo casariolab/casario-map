@@ -600,17 +600,17 @@ export const layersStylePropFn = {
   colaboradores: {
     fillColor: propertyValue => {
       return propertyValue;
-    }
+    },
   },
   glp_componentes: {
     fillColor: propertyValue => {
       return propertyValue;
-    }
+    },
   },
   fcs_poligonos: {
     fillColor: propertyValue => {
       return propertyValue;
-    }
+    },
   },
   fcs_lineas: {
     strokeColor: propertyValue => {
@@ -618,7 +618,7 @@ export const layersStylePropFn = {
     },
     strokeWidth: propertyValue => {
       return propertyValue;
-    }
+    },
   },
   cld_lineas: {
     strokeColor: propertyValue => {
@@ -626,37 +626,37 @@ export const layersStylePropFn = {
     },
     strokeWidth: propertyValue => {
       return propertyValue;
-    }
+    },
   },
   cld_poligonos: {
     fillColor: propertyValue => {
       return propertyValue;
-    }
+    },
   },
   cmr_poligonos: {
     fillColor: propertyValue => {
       return propertyValue;
-    }
+    },
   },
   cmr_puntos: {
     fillColor: propertyValue => {
       return propertyValue;
-    }
+    },
   },
   cmr_lineas: {
     strokeColor: propertyValue => {
       return propertyValue;
-    }
+    },
   },
   poligonos_extractivistas: {
     fillColor: propertyValue => {
       return propertyValue;
-    }
+    },
   },
   puntos_extractivistas: {
     fillColor: propertyValue => {
       return propertyValue;
-    }
+    },
   },
   lineas_extractivistas: {
     strokeColor: propertyValue => {
@@ -664,17 +664,17 @@ export const layersStylePropFn = {
     },
     strokeWidth: propertyValue => {
       return propertyValue;
-    }
+    },
   },
   poligonos_bioculturales: {
     fillColor: propertyValue => {
       return propertyValue;
-    }
+    },
   },
   puntos_bioculturales: {
     fillColor: propertyValue => {
       return propertyValue;
-    }
+    },
   },
   lineas_bioculturales: {
     strokeColor: propertyValue => {
@@ -682,7 +682,7 @@ export const layersStylePropFn = {
     },
     strokeWidth: propertyValue => {
       return propertyValue;
-    }
+    },
   },
   fire_hidrografia: {
     strokeColor: propertyValue => {
@@ -690,17 +690,17 @@ export const layersStylePropFn = {
     },
     strokeWidth: propertyValue => {
       return propertyValue;
-    }
+    },
   },
   fire_puntos: {
     fillColor: propertyValue => {
       return propertyValue;
-    }
+    },
   },
   hidrovia3_calados: {
     strokeColor: propertyValue => {
       return propertyValue;
-    }
+    },
   },
   points: {
     strokeColor: propertyValue => propertyValue,
@@ -713,11 +713,11 @@ export const layersStylePropFn = {
   gas: {
     iconScaleFn: propertyValue => {
       return getIconScaleValue(propertyValue, 1400, 0.3, 1.4);
-    }
+    },
   },
   oil: {
     circleRadiusFn: propertyValue => {
       return getRadiusValue(propertyValue, 0.3, 4, 50);
-    }
-  }
+    },
+  },
 };

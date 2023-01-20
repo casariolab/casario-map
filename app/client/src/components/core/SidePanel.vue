@@ -68,7 +68,8 @@
                           <template v-slot:activator="{on}">
                             <v-btn v-on="on" @click="editHtml()" icon class="mr-3">
                               <v-icon>edit</v-icon>
-                            > <!-- added 'color="grey"' --> 
+                              >
+                              <!-- added 'color="grey"' -->
                               <v-icon color="grey">edit</v-icon>
                             </v-btn> </template
                           ><span>{{ $t('general.edit') }}</span></v-tooltip
@@ -193,13 +194,9 @@
                   </template>
                   <div
                     align="center"
-                    style="display:flex;justify-content:center;align-items: center;width:100%;"
+                    style="display: flex; justify-content: center; align-items: center; width: 100%"
                     class="caption font-italic font-weight-medium"
-                    v-if="
-                      popup.showInSidePanel === true &&
-                        popup.activeFeature &&
-                        popup.activeFeature.get('caption2')
-                    "
+                    v-if="popup.showInSidePanel === true && popup.activeFeature && popup.activeFeature.get('caption2')"
                     tabindex="0"
                   >
                     <span v-html="popup.activeFeature.get('caption2')"></span>
