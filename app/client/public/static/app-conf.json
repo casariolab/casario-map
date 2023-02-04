@@ -1,15 +1,14 @@
 {
   "app": {
     "title": "CORREDORES",
-    "tagline": "",
     "projectWebsite": "https://casariolab.art",
+    "defaultLanguage": "en",
     "color": {
       "primary": "#00000e",
-      "secondary": "red"
+      "secondary": "#00000e"
     },
-
     "legend": {
-      "isVisible": false
+      "isVisible": true
     },
     "controls": {
       "locate_me": true,
@@ -33,11 +32,28 @@
     "zoom": 1,
     "geoserverWorkspace": "workspace1",
     "resolutions": [
-      156543.03, 78271.52, 39135.76, 19567.88, 9783.94, 4891.97, 2445.98, 1222.99, 611.5, 305.75, 152.87, 76.437,
-      38.219, 19.109, 9.5546, 4.7773, 2.3887, 1.1943, 0.5972
+      156543.03,
+      78271.52,
+      39135.76,
+      19567.88,
+      9783.94,
+      4891.97,
+      2445.98,
+      1222.99,
+      611.5,
+      305.75,
+      152.87,
+      76.437,
+      38.219,
+      19.109,
+      9.5546,
+      4.7773,
+      2.3887,
+      1.1943,
+      0.5972
     ],
     "center": [0, 0],
-    "minResolution": 0.25,
+    "minResolution": 0.5,
     "maxResolution": 64000,
     "layers": [
       {
@@ -47,7 +63,6 @@
         "group": "valle",
         "queryable": true,
         "format": "GeoJSON",
-        "legendDisplayName": "Points",
         "visible": true,
         "legendDisplayName": "Polígonos extractivistas",
         "zIndex": 100,
@@ -129,8 +144,8 @@
         "label": false,
         "hoverable": false,
         "style": {
-          "fillColor": "rgba( 233, 233, 70, 0.40 )",
-          "strokeColor": "rgba( 233, 233, 70, 0.85 )",
+          "fillColor": "rgba( 233, 233, 70, 0.50 )",
+          "strokeColor": "rgba( 233, 233, 70, 0.95 )",
           "strokeWidth": 2
         }
       },
@@ -153,7 +168,7 @@
           "hoverTextColor": "white",
           "hoverBackgroundColor": "#000000",
           "stylePropFnRef": {
-            "fillColor": "variable1"
+            "fillColor": "variable1" 
           },
           "strokeColor": "black",
           "strokeWidth": 1
@@ -203,7 +218,7 @@
           "type": "line",
           "stylePropFnRef": {
             "strokeColor": "variable1",
-            "strokeWidth": "variable2"
+            "strokeWidth": "variable2"  
           },
           "hoverTextColor": "white",
           "hoverBackgroundColor": "#000000"
@@ -221,7 +236,7 @@
         "visible": true,
         "zIndex": 10000,
         "minResolution": 0.5,
-        "maxResolution": 140,
+        "maxResolution": 120,
         "label": false,
         "hoverable": true,
         "style": {
@@ -243,7 +258,7 @@
         "visible": true,
         "zIndex": 10000,
         "minResolution": 0.5,
-        "maxResolution": 140,
+        "maxResolution": 120,
         "label": false,
         "hoverable": true,
         "style": {
@@ -265,7 +280,7 @@
         "visible": true,
         "zIndex": 10000,
         "minResolution": 0.5,
-        "maxResolution": 180,
+        "maxResolution": 120,
         "label": false,
         "hoverable": true,
         "style": {
@@ -294,7 +309,7 @@
           "type": "line",
           "stylePropFnRef": {
             "strokeColor": "variable1",
-            "strokeWidth": "variable2"
+            "strokeWidth": "variable2"  
           },
           "hoverTextColor": "white",
           "hoverBackgroundColor": "#000000"
@@ -421,15 +436,15 @@
         "format": "GeoJSON",
         "visible": false,
         "zIndex": 10000,
-        "minResolution": 80,
+        "minResolution": 2,
         "maxResolution": 64000,
         "label": null,
         "hoverable": true,
         "style": {
           "type": "circle",
-          "radius": 6,
+          "radius": 5,
           "fillColor": "black",
-          "strokeColor": "white",
+          "strokeColor": "black",
           "strokeWidth": 1,
           "hoverTextColor": "white",
           "hoverBackgroundColor": "#000000"
@@ -727,7 +742,6 @@
         "queryable": true,
         "corporateNetwork": false,
         "displayInLegend": false,
-        "legendDisplayName": "Lines",
         "format": "GeoJSON",
         "visible": true,
         "legendDisplayName": "CMR puntos",
@@ -1208,7 +1222,7 @@
         "name": "calles",
         "group": "one",
         "url": "https://geo.timetochange.today/geoserver/gwc/service/tms/1.0.0/osm%3Ablack_white@EPSG%3A900913@png/{z}/{x}/{-y}.png",
-        "minResolution": 4,
+        "minResolution": 8,
         "maxResolution": 1600,
         "displayInLegend": true,
         "legendIcon": "https://casario-mapa.s3.sa-east-1.amazonaws.com/assets/icons/legends/leyenda_red_urbana.png",
@@ -1280,8 +1294,8 @@
       }
     ],
     "flyToSlideshow": {
-      "delayInSecondsForInitialStart": 900000000,
-      "delayInSecondsBetweenFrames": 3,
+      "delayInSecondsForInitialStart": 90000,
+      "delayInSecondsBetweenFrames": 12,
       "maplinks": [""]
     },
     "groups": {
@@ -1431,3 +1445,5 @@
     }
   }
 }
+
+
