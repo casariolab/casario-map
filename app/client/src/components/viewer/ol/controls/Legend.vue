@@ -1,20 +1,44 @@
 <template>
   <div>
     <v-tooltip v-show="!isVisible" right>
-      <template v-slot:activator="{ on }">
-        <v-btn v-on="on" :style="`position:absolute;${$vuetify.breakpoint.smAndDown ? 'right' : 'left'}:16px;bottom:${$vuetify.breakpoint.smAndDown && !mobilePanelState ? 70 : 40
-          }px;z-index:1;`" v-show="!isVisible" :color="color" @click="toggleLegend" fab small class="white--text">
+      <template v-slot:activator="{on}">
+        <v-btn
+          v-on="on"
+          :style="`position:absolute;${$vuetify.breakpoint.smAndDown ? 'right' : 'left'}:16px;bottom:${
+            $vuetify.breakpoint.smAndDown && !mobilePanelState ? 70 : 40
+          }px;z-index:1;`"
+          v-show="!isVisible"
+          :color="color"
+          @click="toggleLegend"
+          fab
+          small
+          class="white--text"
+        >
           <v-icon>fas fa-layer-group</v-icon>
         </v-btn>
       </template>
       <span>{{ $t('general.layers') }}</span>
     </v-tooltip>
-    <v-expansion-panels v-model="panel" v-show="isVisible" class="elevation-3" :width="isVisible ? '250px' : '0px'"
-      :style="`position:absolute;${$vuetify.breakpoint.smAndDown ? 'right' : 'left'}:25px;bottom:${$vuetify.breakpoint.smAndDown && !mobilePanelState ? 70 : 20
-        }px;max-width:190px;opacity:85%;z-index:1000;`">
-      <v-btn v-show="isVisible" @click="toggleLegend" class="legend-toggle-button white--text" text min-width="30px"
-        x-small :style="`z-index:100;background-color:${color};position:absolute;bottom:30px;right:-19px;`">
-        <v-icon class="ml-0" x-small>fas fa-chevron-up</v-icon></v-btn>
+    <v-expansion-panels
+      v-model="panel"
+      v-show="isVisible"
+      class="elevation-3"
+      :width="isVisible ? '250px' : '0px'"
+      :style="`position:absolute;${$vuetify.breakpoint.smAndDown ? 'right' : 'left'}:25px;bottom:${
+        $vuetify.breakpoint.smAndDown && !mobilePanelState ? 70 : 20
+      }px;max-width:190px;opacity:85%;z-index:1000;`"
+    >
+      <v-btn
+        v-show="isVisible"
+        @click="toggleLegend"
+        class="legend-toggle-button white--text"
+        text
+        min-width="30px"
+        x-small
+        :style="`z-index:100;background-color:${color};position:absolute;bottom:30px;right:-19px;`"
+      >
+        <v-icon class="ml-0" x-small>fas fa-chevron-up</v-icon></v-btn
+      >
       <v-expansion-panel class="my-0" :style="`background-color: white;`">
         <v-row class="my-1" justify="center">
           <!-- 
@@ -105,17 +129,17 @@
   </div>
 </template>
 <script>
-import { mapGetters } from 'vuex';
-import { mapFields } from 'vuex-map-fields';
-import { Mapable } from '../../../../mixins/Mapable';
-import { humanize, debounce } from '../../../../utils/Helpers';
-import { getLayerType } from '../../../../utils/Layer';
+import {mapGetters} from 'vuex';
+import {mapFields} from 'vuex-map-fields';
+import {Mapable} from '../../../../mixins/Mapable';
+import {humanize, debounce} from '../../../../utils/Helpers';
+import {getLayerType} from '../../../../utils/Layer';
 
 export default {
   mixins: [Mapable],
   name: 'map-legend',
   props: {
-    color: { type: String, default: '#4CAF50' },
+    color: {type: String, default: '#4CAF50'},
   },
   data() {
     return {
@@ -289,11 +313,11 @@ export default {
   padding: 5px;
 }
 
-.v-expansion-panel-content>>>.v-expansion-panel-content__wrap {
+.v-expansion-panel-content >>> .v-expansion-panel-content__wrap {
   padding: 2px 0px 0px 5px;
 }
 
-.layer-input>>>.v-messages {
+.layer-input >>> .v-messages {
   min-height: 0px;
 }
 

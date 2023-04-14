@@ -1,14 +1,28 @@
 <template>
   <div id="site-wrap">
     <!-- ===DESKTOP=== -->
-    <v-app v-if="!$vuetify.breakpoint.smAndDown" id="wg-app" data-app :class="{ 'wg-app': true }" :style="`font-family:${$appConfig.app.font && $appConfig.app.font.family ? $appConfig.app.font.family : 'Roboto'
-      }, 'Roboto', serif;`">
+    <v-app
+      v-if="!$vuetify.breakpoint.smAndDown"
+      id="wg-app"
+      data-app
+      :class="{'wg-app': true}"
+      :style="`font-family:${
+        $appConfig.app.font && $appConfig.app.font.family ? $appConfig.app.font.family : 'Roboto'
+      }, 'Roboto', serif;`"
+    >
       <template>
         <v-expand-transition>
-          <v-navigation-drawer v-model="sidebarState"
+          <v-navigation-drawer
+            v-model="sidebarState"
             :width="!selectedCoorpNetworkEntity ? sidebarWidth.default : sidebarWidth.corporateNetworkSelected"
-            class="elevation-6" :color="$appConfig.app.sideBar.backgroundColor" stateless app clipped right
-            :style="`color:${$appConfig.app.sideBar.textColor};`">
+            class="elevation-6"
+            :color="$appConfig.app.sideBar.backgroundColor"
+            stateless
+            app
+            clipped
+            right
+            :style="`color:${$appConfig.app.sideBar.textColor};`"
+          >
             <side-panel></side-panel>
           </v-navigation-drawer>
         </v-expand-transition>
@@ -16,20 +30,33 @@
 
       <!-- APP BAR DESKTOP -->
       <v-app-bar app clipped-right height="60" :color="color.primary" dark>
-        <v-toolbar-title @click="$appConfig.app.projectWebsite ? openWebsite() : resetMap()" flat
+        <v-toolbar-title
+          @click="$appConfig.app.projectWebsite ? openWebsite() : resetMap()"
+          flat
           :style="`background-color:${color.primary};text-color:white;`"
-          class="logo headline font-weight-bold gray--text ml-1 dark mx-2">{{ $appConfig.app.title }}</v-toolbar-title>
-        <v-btn small depressed fab color="gray" class="ml-0" @click="goToHome()"><v-icon small>fas
-            fa-home</v-icon></v-btn>
+          class="logo headline font-weight-bold gray--text ml-1 dark mx-2"
+          >{{ $appConfig.app.title }}</v-toolbar-title
+        >
+        <v-btn small depressed fab color="gray" class="ml-0" @click="goToHome()"
+          ><v-icon small>fas fa-home</v-icon></v-btn
+        >
 
         <v-spacer></v-spacer><v-spacer></v-spacer>
-        <v-menu offset-y v-model="dropdownMenu"
-          v-if="$appConfig.app.navbar && $appConfig.app.navbar.dropdownMenu === true">
-          <template v-slot:activator="{ on, attrs }">
-            <v-btn text v-bind="attrs" v-on="on" :class="{
-              active: dropdownMenu,
-              'mx-2': true,
-            }">
+        <v-menu
+          offset-y
+          v-model="dropdownMenu"
+          v-if="$appConfig.app.navbar && $appConfig.app.navbar.dropdownMenu === true"
+        >
+          <template v-slot:activator="{on, attrs}">
+            <v-btn
+              text
+              v-bind="attrs"
+              v-on="on"
+              :class="{
+                active: dropdownMenu,
+                'mx-2': true,
+              }"
+            >
               {{ `${$appConfig.map.groupTitles[activeLayerGroup.navbarGroup]}` }}
               <v-icon class="mx-2" left> expand_more </v-icon>
             </v-btn>
@@ -37,22 +64,32 @@
           <v-list>
             <v-list-item
               :style="`background-color:${activeLayerGroup.navbarGroup === navbarGroup.name ? '#EEEEEE' : ''};`"
-              v-for="(navbarGroup, index) in navbarGroups" @click="changeNavbarGroup(navbarGroup)" :key="index">
+              v-for="(navbarGroup, index) in navbarGroups"
+              @click="changeNavbarGroup(navbarGroup)"
+              :key="index"
+            >
               <v-list-item-title>{{ navbarGroup.title }}</v-list-item-title>
             </v-list-item>
           </v-list>
         </v-menu>
 
         <v-spacer></v-spacer><v-spacer></v-spacer>
-        <template v-if="($appConfig.app.navbar && $appConfig.app.navbar.dropdownMenu !== true) || !$appConfig.app.navbar">
+        <template
+          v-if="($appConfig.app.navbar && $appConfig.app.navbar.dropdownMenu !== true) || !$appConfig.app.navbar"
+        >
           <div v-for="(navbarGroup, index) in navbarGroups" :key="index">
-            <v-btn min-width="200" class="mx-10" :dark="activeLayerGroup.navbarGroup === navbarGroup.name ? false : true"
+            <v-btn
+              min-width="200"
+              class="mx-10"
+              :dark="activeLayerGroup.navbarGroup === navbarGroup.name ? false : true"
               @click="changeNavbarGroup(navbarGroup)"
-              :color="activeLayerGroup.navbarGroup === navbarGroup.name ? 'white' : color.primary" :class="{
+              :color="activeLayerGroup.navbarGroup === navbarGroup.name ? 'white' : color.primary"
+              :class="{
                 'elevation-0': activeLayerGroup.navbarGroup !== navbarGroup.name,
                 'font-weight-bold black--text': activeLayerGroup.navbarGroup === navbarGroup.name,
                 'elevation-6': activeLayerGroup.navbarGroup === navbarGroup.name,
-              }">
+              }"
+            >
               {{ navbarGroup.title }}
             </v-btn>
           </div>
@@ -62,19 +99,24 @@
 
         <span class="title pr-5">{{ $appConfig.app.tagline || '' }}</span>
         <v-menu offset-y>
-          <template v-slot:activator="{ on, attrs }">
+          <template v-slot:activator="{on, attrs}">
             <v-btn v-bind="attrs" v-on="on" icon>
               {{ $i18n.locale }}
             </v-btn>
           </template>
           <v-list dense>
-            <v-list-item v-for="language in availableLanguages" :key="language.code" @click="switchLocale(language.code)">
+            <v-list-item
+              v-for="language in availableLanguages"
+              :key="language.code"
+              @click="switchLocale(language.code)"
+            >
               <v-list-item-title>{{ language.value }}</v-list-item-title>
             </v-list-item>
           </v-list>
         </v-menu>
-        <v-btn icon @click.stop="sidebarState = !sidebarState"><v-icon medium>{{ sidebarState ? '$close' : '$menu'
-        }}</v-icon></v-btn>
+        <v-btn icon @click.stop="sidebarState = !sidebarState"
+          ><v-icon medium>{{ sidebarState ? '$close' : '$menu' }}</v-icon></v-btn
+        >
       </v-app-bar>
 
       <v-content>
@@ -88,7 +130,9 @@
     <v-app data-app v-if="$vuetify.breakpoint.smAndDown" class="mobile-parent-wrap">
       <!-- APP BAR MOBILE -->
       <v-app-bar :color="color.primary" height="60" absolute dark>
-        <v-btn icon @click="navDrawer = !navDrawer"><v-icon medium>{{ navDrawer ? '$close' : '$menu' }}</v-icon></v-btn>
+        <v-btn icon @click="navDrawer = !navDrawer"
+          ><v-icon medium>{{ navDrawer ? '$close' : '$menu' }}</v-icon></v-btn
+        >
 
         <v-toolbar-title>{{ title }}</v-toolbar-title>
         <v-spacer></v-spacer>
@@ -112,23 +156,33 @@
                 <v-spacer></v-spacer>
               </v-list-item-content>
               <v-menu offset-y>
-                <template v-slot:activator="{ on, attrs }">
+                <template v-slot:activator="{on, attrs}">
                   <v-btn v-bind="attrs" v-on="on" icon>
                     {{ $i18n.locale }}
                   </v-btn>
                 </template>
                 <v-list dense>
-                  <v-list-item v-for="language in availableLanguages" :key="language.code"
-                    @click="switchLocale(language.code)">
+                  <v-list-item
+                    v-for="language in availableLanguages"
+                    :key="language.code"
+                    @click="switchLocale(language.code)"
+                  >
                     <v-list-item-title>{{ language.value }}</v-list-item-title>
                   </v-list-item>
                 </v-list>
               </v-menu>
             </v-list-item>
             <v-divider></v-divider>
-            <v-list-item :dark="activeLayerGroup.navbarGroup === navbarGroup.name ? true : false" :style="`background-color:${activeLayerGroup.navbarGroup === navbarGroup.name ? color.primary : 'white'
-              };`" @click="changeNavbarGroup(navbarGroup)" v-for="(navbarGroup, index) in navbarGroups"
-              :color="activeLayerGroup.navbarGroup === navbarGroup.name ? 'white' : color.primary" :key="index">
+            <v-list-item
+              :dark="activeLayerGroup.navbarGroup === navbarGroup.name ? true : false"
+              :style="`background-color:${
+                activeLayerGroup.navbarGroup === navbarGroup.name ? color.primary : 'white'
+              };`"
+              @click="changeNavbarGroup(navbarGroup)"
+              v-for="(navbarGroup, index) in navbarGroups"
+              :color="activeLayerGroup.navbarGroup === navbarGroup.name ? 'white' : color.primary"
+              :key="index"
+            >
               <v-list-item-title>{{ navbarGroup.title.toUpperCase() }}</v-list-item-title>
             </v-list-item>
           </v-list>
@@ -146,10 +200,13 @@
             </v-list-item>
             <v-divider class="mb-4"></v-divider>
             <template v-for="(region, index) in regions">
-              <v-list-item @click="changeRegion(region)" v-if="hasRegion(region)"
+              <v-list-item
+                @click="changeRegion(region)"
+                v-if="hasRegion(region)"
                 :dark="activeLayerGroup.region === region.name ? true : false"
                 :style="`background-color:${activeLayerGroup.region === region.name ? color.primary : 'white'};`"
-                :key="index">
+                :key="index"
+              >
                 <v-list-item-title>{{ region.title.toUpperCase() }}</v-list-item-title>
               </v-list-item>
             </template>
@@ -157,13 +214,21 @@
 
           <!-- Project link -->
           <v-spacer></v-spacer>
-          <a v-if="$appConfig.app.projectWebsite" style="text-decoration: none" class="mb-3 ml-4"
-            :href="$appConfig.app.projectWebsite" target="_blank">Project Website</a>
+          <a
+            v-if="$appConfig.app.projectWebsite"
+            style="text-decoration: none"
+            class="mb-3 ml-4"
+            :href="$appConfig.app.projectWebsite"
+            target="_blank"
+            >Project Website</a
+          >
         </v-layout>
       </v-navigation-drawer>
 
-      <app-viewer :style="`height: calc(${mobilePanelState ? 60 : 100}% - 60px);touch-action: none;`"
-        class="mobile-map-viewer"></app-viewer>
+      <app-viewer
+        :style="`height: calc(${mobilePanelState ? 60 : 100}% - 60px);touch-action: none;`"
+        class="mobile-map-viewer"
+      ></app-viewer>
 
       <div class="mobile-bottom-sheet" v-show="mobilePanelState">
         <side-panel></side-panel>
@@ -174,9 +239,9 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters } from 'vuex';
-import { mapFields } from 'vuex-map-fields';
-import { EventBus } from '../EventBus';
+import {mapMutations, mapGetters} from 'vuex';
+import {mapFields} from 'vuex-map-fields';
+import {EventBus} from '../EventBus';
 import Viewer from '../components/viewer/viewer.vue';
 import SidePanel from '../components/core/SidePanel.vue';
 // import i18n from '@/plugins/i18n';
@@ -477,11 +542,11 @@ export default {
     // components are available
     EventBus.$emit('app-mounted');
     this.onResize();
-    window.addEventListener('resize', this.onResize, { passive: true });
+    window.addEventListener('resize', this.onResize, {passive: true});
   },
   beforeDestroy() {
     if (typeof window === 'undefined') return;
-    window.removeEventListener('resize', this.onResize, { passive: true });
+    window.removeEventListener('resize', this.onResize, {passive: true});
   },
 };
 </script>

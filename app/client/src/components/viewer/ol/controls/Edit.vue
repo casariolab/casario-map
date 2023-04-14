@@ -5,7 +5,7 @@
         <v-spacer></v-spacer>
         <div v-if="!selectedLayer">
           <v-tooltip left>
-            <template v-slot:activator="{ on }">
+            <template v-slot:activator="{on}">
               <v-btn class="edit-buttons" v-on="on" @click="activateEdit" :color="color.primary" fab dark small>
                 <v-icon small>far fa-edit</v-icon>
               </v-btn>
@@ -14,12 +14,19 @@
           </v-tooltip>
         </div>
 
-        <v-menu v-if="selectedLayer" class="edit-buttons" origin="center center" offset-y :nudge-bottom="5"
-          transition="slide-y-transition">
-          <template v-slot:activator="{ on, attrs }">
-            <v-btn v-bind="attrs" v-on="on" class="edit-buttons" dark rounded :color="color.primary"><v-icon small
-                left>far fa-edit</v-icon>
-              {{ selectedLayer ? selectedLayer.get('legendDisplayName') : '' }}</v-btn>
+        <v-menu
+          v-if="selectedLayer"
+          class="edit-buttons"
+          origin="center center"
+          offset-y
+          :nudge-bottom="5"
+          transition="slide-y-transition"
+        >
+          <template v-slot:activator="{on, attrs}">
+            <v-btn v-bind="attrs" v-on="on" class="edit-buttons" dark rounded :color="color.primary"
+              ><v-icon small left>far fa-edit</v-icon>
+              {{ selectedLayer ? selectedLayer.get('legendDisplayName') : '' }}</v-btn
+            >
           </template>
 
           <v-list dense>
@@ -69,9 +76,17 @@
         <v-layout>
           <v-spacer></v-spacer>
           <v-tooltip left>
-            <template v-slot:activator="{ on }">
-              <v-btn class="edit-buttons mt-2" v-on="on" fab dark right x-small
-                :color="isEditingPost ? color.activeButton : color.primary" @click="edit(item.action)">
+            <template v-slot:activator="{on}">
+              <v-btn
+                class="edit-buttons mt-2"
+                v-on="on"
+                fab
+                dark
+                right
+                x-small
+                :color="isEditingPost ? color.activeButton : color.primary"
+                @click="edit(item.action)"
+              >
                 <v-icon medium>{{ item.icon }}</v-icon>
               </v-btn>
             </template>
@@ -89,15 +104,22 @@
           <v-toolbar-title>{{ $t(`form.edit.selectLayer`) }}</v-toolbar-title>
         </v-app-bar>
 
-        <v-select class="mx-4 my-2" :items="
-          flatLayers.filter(
-            l =>
-              ['VECTORTILE', 'VECTOR'].includes(l.get('type')) &&
-              l.get('name') &&
-              l.get('legendDisplayName') &&
-              l.get('canEdit') !== false
-          )
-        " v-model="dialogSelectedLayer" return-object item-value="values_.name" :label="$t(`general.layers`)">
+        <v-select
+          class="mx-4 my-2"
+          :items="
+            flatLayers.filter(
+              l =>
+                ['VECTORTILE', 'VECTOR'].includes(l.get('type')) &&
+                l.get('name') &&
+                l.get('legendDisplayName') &&
+                l.get('canEdit') !== false
+            )
+          "
+          v-model="dialogSelectedLayer"
+          return-object
+          item-value="values_.name"
+          :label="$t(`general.layers`)"
+        >
           <template slot="selection" slot-scope="{item}">
             {{ item.get('legendDisplayName') }}
           </template>
@@ -107,11 +129,17 @@
         </v-select>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="primary darken-1" text :disabled="!dialogSelectedLayer" @click.native="
-            removeInteraction();
-          selectedLayer = dialogSelectedLayer;
-          layersDialog = false;
-                        ">{{ $t('general.ok') }}</v-btn>
+          <v-btn
+            color="primary darken-1"
+            text
+            :disabled="!dialogSelectedLayer"
+            @click.native="
+              removeInteraction();
+              selectedLayer = dialogSelectedLayer;
+              layersDialog = false;
+            "
+            >{{ $t('general.ok') }}</v-btn
+          >
           <v-btn :color="color.primary" text @click.native="layersDialog = false">{{ $t('general.cancel') }}</v-btn>
         </v-card-actions>
       </v-card>
@@ -120,8 +148,13 @@
     <!-- LIGHTBOX DIALOG -->
     <lightbox-dialog></lightbox-dialog>
     <!-- POPUP OVERLAY  -->
-    <overlay-popup v-if="!$vuetify.breakpoint.smAndDown" style="cursor: default" :title="popup.title"
-      v-show="popup.isVisible" ref="popup">
+    <overlay-popup
+      v-if="!$vuetify.breakpoint.smAndDown"
+      style="cursor: default"
+      :title="popup.title"
+      v-show="popup.isVisible"
+      ref="popup"
+    >
       <v-btn icon>
         <v-icon>close</v-icon>
       </v-btn>
@@ -141,11 +174,19 @@
                 <editor-form v-model="formData" :schema="formSchema" :options="formOptions">
                   <template slot="lightbox-append">
                     <v-tooltip left>
-                      <template v-slot:activator="{ on }">
-                        <v-btn style="cursor: pointer" v-on="on" @click="lightboxDialogState = true"
-                          class="mx-2 mb-2 lock-button elevation-1" depressed fab small>
+                      <template v-slot:activator="{on}">
+                        <v-btn
+                          style="cursor: pointer"
+                          v-on="on"
+                          @click="lightboxDialogState = true"
+                          class="mx-2 mb-2 lock-button elevation-1"
+                          depressed
+                          fab
+                          small
+                        >
                           <v-icon> fas fa-image </v-icon>
-                        </v-btn> </template><span>{{ $t('form.edit.lightBoxImagesPanel') }}</span>
+                        </v-btn> </template
+                      ><span>{{ $t('form.edit.lightBoxImagesPanel') }}</span>
                     </v-tooltip>
                   </template>
                 </editor-form>
@@ -158,7 +199,7 @@
         <div v-show="editType !== 'deleteFeature'">
           <div v-show="!imageUpload.errorMessage">
             <v-tooltip top>
-              <template v-slot:activator="{ on }">
+              <template v-slot:activator="{on}">
                 <v-btn v-on="on" rounded small depressed :loading="imageUpload.isSelecting" @click="openImageUpload">
                   <v-icon left> insert_photo </v-icon>
                   <span class="image-upload-btn">
@@ -179,21 +220,25 @@
 
           <div v-if="imageUpload.selectedFile">
             <v-menu class="mt-2" origin="center center" transition="scale-transition">
-              <template v-slot:activator="{ on, attrs }">
+              <template v-slot:activator="{on, attrs}">
                 <v-btn class="mt-2" rounded small depressed v-on="on" v-bind="attrs">
-                  <v-icon left>{{ imageUpload.position === 'sidebarMediaTop' ? 'picture_in_picture' :
-                    'picture_in_picture_alt' }}
+                  <v-icon left
+                    >{{ imageUpload.position === 'sidebarMediaTop' ? 'picture_in_picture' : 'picture_in_picture_alt' }}
                   </v-icon>
-                  <span>{{ $t(`general.sidebar`) }}:
-                    {{ imageUpload.position === 'sidebarMediaTop' ? $t(`general.top`) : $t(`general.bottom`) }}</span>
+                  <span
+                    >{{ $t(`general.sidebar`) }}:
+                    {{ imageUpload.position === 'sidebarMediaTop' ? $t(`general.top`) : $t(`general.bottom`) }}</span
+                  >
                 </v-btn>
               </template>
               <v-list dense>
-                <v-list-item @click="
-                  imageUpload.position === 'sidebarMediaTop'
-                    ? (imageUpload.position = 'sidebarMediaBottom')
-                    : (imageUpload.position = 'sidebarMediaTop')
-                ">
+                <v-list-item
+                  @click="
+                    imageUpload.position === 'sidebarMediaTop'
+                      ? (imageUpload.position = 'sidebarMediaBottom')
+                      : (imageUpload.position = 'sidebarMediaTop')
+                  "
+                >
                   <v-list-item-content>
                     <v-list-item-title>{{
                       imageUpload.position === 'sidebarMediaTop' ? $t(`general.bottom`) : $t(`general.top`)
@@ -221,7 +266,11 @@
     </overlay-popup>
 
     <!-- Mobile delete confirmation bottom sheet  -->
-    <v-bottom-sheet v-if="$vuetify.breakpoint.smAndDown && editType === 'deleteFeature'" v-model="showDeleteDialog" inset>
+    <v-bottom-sheet
+      v-if="$vuetify.breakpoint.smAndDown && editType === 'deleteFeature'"
+      v-model="showDeleteDialog"
+      inset
+    >
       <v-card>
         <v-app-bar :color="color.primary" dark dense flat>
           <v-app-bar-nav-icon><v-icon>delete</v-icon></v-app-bar-nav-icon>
@@ -247,27 +296,27 @@ import VectorSource from 'ol/source/Vector';
 import VectorLayer from 'ol/layer/Vector';
 import Feature from 'ol/Feature';
 import RenderFeature from 'ol/render/Feature';
-import { LineString, MultiLineString, Polygon, MultiPolygon } from 'ol/geom';
-import { Modify, Draw } from 'ol/interaction';
-import { unByKey } from 'ol/Observable';
+import {LineString, MultiLineString, Polygon, MultiPolygon} from 'ol/geom';
+import {Modify, Draw} from 'ol/interaction';
+import {unByKey} from 'ol/Observable';
 import Overlay from 'ol/Overlay';
-import { mapFields } from 'vuex-map-fields';
-import { mapGetters, mapMutations } from 'vuex';
+import {mapFields} from 'vuex-map-fields';
+import {mapGetters, mapMutations} from 'vuex';
 import axios from 'axios';
 import GeoJSON from 'ol/format/GeoJSON';
 import VJsf from '@koumoul/vjsf';
-import { getFeatureHighlightStyle } from '../../../../style/OlStyleDefs';
+import {getFeatureHighlightStyle} from '../../../../style/OlStyleDefs';
 import OverlayPopup from './Overlay.vue';
-import { geojsonToFeature } from '../../../../utils/MapUtils';
-import { getNestedProperty, parseVideoUrl } from '../../../../utils/Helpers';
+import {geojsonToFeature} from '../../../../utils/MapUtils';
+import {getNestedProperty, parseVideoUrl} from '../../../../utils/Helpers';
 import PostMapMarkerLayer from '../../../../utils/PostMapMarker';
-import { Mapable } from '../../../../mixins/Mapable';
+import {Mapable} from '../../../../mixins/Mapable';
 import '@koumoul/vjsf/lib/VJsf.css';
 // load third-party dependencies (markdown-it, vuedraggable)
 // you can also load them separately based on your needs
 import '@koumoul/vjsf/lib/deps/third-party';
 import authHeader from '../../../../services/auth-header';
-import { EventBus } from '../../../../EventBus';
+import {EventBus} from '../../../../EventBus';
 
 import Lightbox from '../../../core/Lightbox.vue';
 
@@ -279,8 +328,8 @@ export default {
   },
   mixins: [Mapable],
   props: {
-    map: { type: Object, required: true },
-    color: { type: Object },
+    map: {type: Object, required: true},
+    color: {type: Object},
   },
   data: () => ({
     dialogSelectedLayer: null, // Temporary selection (not active if user doesn't press ok)
@@ -419,7 +468,7 @@ export default {
 
       // - create highligh layer
       // Create highlight layer
-      const highlightSource = new VectorSource({ wrapX: false });
+      const highlightSource = new VectorSource({wrapX: false});
       const highlightLayer = new VectorLayer({
         name: 'highlight_layer',
         isInteractive: false,
@@ -986,7 +1035,7 @@ export default {
               // this.selectedLayer.getSource().clear();
               // this.selectedLayer.getSource().tileCache.clear();
               this.selectedLayer.getSource().clear();
-              this.selectedLayer.getSource().refresh({ force: true });
+              this.selectedLayer.getSource().refresh({force: true});
               this.selectedLayer.redraw();
             }
             this.toggleSnackbar({
