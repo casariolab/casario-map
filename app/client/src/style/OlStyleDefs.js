@@ -1,19 +1,23 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-use-before-define */
 import OlStyle from 'ol/style/Style';
 import OlStroke from 'ol/style/Stroke';
 import OlFill from 'ol/style/Fill';
 import OlCircle from 'ol/style/Circle';
+import OlRegularShape from 'ol/style/RegularShape';
 import OlIconStyle from 'ol/style/Icon';
 import OlText from 'ol/style/Text';
 import store from '../store/modules/map';
 
-let strokeColor = 'rgba(236, 236, 236, 0.7)';
-let fillColor = 'rgba(255,0,0, 0.2)';
-let imageColor = 'blue';
-let radiusHighlightColor = 'rgba(232,223,181,0.3)';
-let zIndex = 100;
-
 // Resets cache when map groups is changed.
-import { EventBus } from '../EventBus';
+import {EventBus} from '../EventBus';
+
+const strokeColor = 'rgba(236, 236, 236, 0.7)';
+const fillColor = 'rgba(255,0,0, 0.2)';
+const imageColor = 'blue';
+const radiusHighlightColor = 'rgba(232,223,181,0.3)';
+const zIndex = 100;
 EventBus.$on('group-changed', () => {
   styleCache = {};
 });
@@ -22,22 +26,18 @@ export function defaultStyle(feature) {
   const geomType = feature.getGeometry().getType();
   const style = new OlStyle({
     fill: new OlFill({
-      color: ['MultiPolygon', 'Polygon'].includes(geomType)
-        ? '#FF0000'
-        : [39, 127, 190, 0]
+      color: ['MultiPolygon', 'Polygon'].includes(geomType) ? '#FF0000' : [39, 127, 190, 0],
     }),
     stroke: new OlStroke({
-      color: ['MultiPolygon', 'Polygon'].includes(geomType)
-        ? '#FF0000'
-        : '#FF0000',
-      width: 3
+      color: ['MultiPolygon', 'Polygon'].includes(geomType) ? '#FF0000' : '#FF0000',
+      width: 3,
     }),
     image: new OlCircle({
       radius: 7,
       fill: new OlFill({
-        color: '#FF0000'
-      })
-    })
+        color: '#FF0000',
+      }),
+    }),
   });
   return [style];
 }
@@ -46,19 +46,19 @@ export function getFeatureHighlightStyle() {
   return [
     new OlStyle({
       fill: new OlFill({
-        color: [0, 0, 0, 0]
+        color: [0, 0, 0, 0],
       }),
       stroke: new OlStroke({
         color: '#FF0000',
-        width: 10
+        width: 10,
       }),
       image: new OlCircle({
         radius: 10,
         fill: new OlFill({
-          color: '#FF0000'
-        })
-      })
-    })
+          color: '#FF0000',
+        }),
+      }),
+    }),
   ];
 }
 
@@ -66,23 +66,23 @@ export function getSearchHighlightStyle() {
   return [
     new OlStyle({
       fill: new OlFill({
-        color: 'rgba(255,0,0,0.2)'
+        color: 'rgba(255,0,0,0.2)',
       }),
       stroke: new OlStroke({
         color: '#FF0000',
-        width: 3
+        width: 3,
       }),
       image: new OlCircle({
         radius: 8,
         stroke: new OlStroke({
           color: '#FF0000',
-          width: 3
+          width: 3,
         }),
         fill: new OlFill({
-          color: 'rgba(255,0,0,0.2)'
-        })
-      })
-    })
+          color: 'rgba(255,0,0,0.2)',
+        }),
+      }),
+    }),
   ];
 }
 
@@ -98,27 +98,27 @@ export function popupInfoStyle() {
       new OlStyle({
         stroke: new OlStroke({
           color: strokeColor,
-          width: 20
+          width: 20,
         }),
-        zIndex: zIndex
+        zIndex,
       })
     );
     styles.push(
       new OlStyle({
         fill: new OlFill({
-          color: fillColor
+          color: fillColor,
         }),
         stroke: new OlStroke({
           color: imageColor,
-          width: 4
+          width: 4,
         }),
         image: new OlCircle({
           radius: 25,
           fill: new OlFill({
-            color: radiusHighlightColor
-          })
+            color: radiusHighlightColor,
+          }),
         }),
-        zIndex: zIndex
+        zIndex,
       })
     );
 
@@ -135,13 +135,13 @@ export function postEditLayerStyle() {
         radius: 27,
         stroke: new OlStroke({
           color: 'red',
-          width: 3
+          width: 3,
         }),
         fill: new OlFill({
-          color: 'rgba(236, 236, 236, 0.5)'
-        })
+          color: 'rgba(236, 236, 236, 0.5)',
+        }),
       }),
-      zIndex: 1000
+      zIndex: 1000,
     })
   );
 
@@ -152,9 +152,9 @@ export function postEditLayerStyle() {
         scale: 1,
         anchorXUnits: 'fraction',
         anchorYUnits: 'pixels',
-        src: 'icons/marker-focused.png'
+        src: 'icons/marker-focused.png',
       }),
-      zIndex: 1001
+      zIndex: 1001,
     })
   );
 
@@ -167,18 +167,18 @@ export function networkCorpHighlightStyle() {
     styles.push(
       new OlStyle({
         fill: new OlFill({
-          color: fillColor
+          color: fillColor,
         }),
         stroke: new OlStroke({
           color: imageColor,
-          width: 4
+          width: 4,
         }),
         image: new OlCircle({
           radius: 7,
           fill: new OlFill({
-            color: imageColor
-          })
-        })
+            color: imageColor,
+          }),
+        }),
       })
     );
 
@@ -197,9 +197,9 @@ export function worldOverlayFill() {
     styles.push(
       new OlStyle({
         fill: new OlFill({
-          color: 'rgba(236, 236, 236, 0.75)'
+          color: 'rgba(236, 236, 236, 0.75)',
         }),
-        zIndex: 300
+        zIndex: 300,
       })
     );
     return styles;
@@ -227,21 +227,24 @@ export function baseStyle(config) {
 
     let _style;
     if (!styleCache[cacheId]) {
-      let {
+      const {
         strokeColor,
         fillColor,
         strokeWidth,
         lineDash,
         label,
-        circleRadiusFn,
+        radius,
+        radius2,
+        points,
+        angle,
         iconUrl,
-        iconScaleFn,
+        iconScale,
         scale,
         opacity,
         iconAnchor,
         iconAnchorXUnits,
         iconAnchorYUnits,
-        stylePropFnRef
+        stylePropFnRef,
       } = config;
 
       const geometryType = feature.getGeometry().getType();
@@ -250,30 +253,23 @@ export function baseStyle(config) {
         const fontWeight = label.fontWeight || 'normal';
         const fontSize = label.fontSize || 12;
         const fontType = label.fontType || 'Arial';
-        const font = fontWeight + ' ' + fontSize + '/' + 1 + ' ' + fontType;
+        const font = `${fontWeight} ${fontSize}/${1} ${fontType}`;
         const placement =
-          (!['Point', 'MultiPoint'].includes(geometryType) &&
-            label.placement !== 'point') ||
-            !label.placement
+          (!['Point', 'MultiPoint'].includes(geometryType) && label.placement !== 'point') || !label.placement
             ? 'point'
             : label.placement;
 
         labelText = new OlText({
           font,
           textAlign: label.textAlign,
-          text: getText(
-            feature.get(label.text),
-            resolution,
-            label.maxResolution || 1200,
-            placement
-          ),
+          text: getText(feature.get(label.text), resolution, label.maxResolution || 1200, placement),
           offsetX: label.offsetX || 12,
           offsetY: label.offsetY || 0,
-          fill: new OlFill({ color: label.fill.color || 'black' }),
+          fill: new OlFill({color: label.fill.color || 'black'}),
           stroke: new OlStroke({
             color: label.stroke.color || 'white',
-            width: label.stroke.width || 3
-          })
+            width: label.stroke.width || 3,
+          }),
         });
       }
 
@@ -284,62 +280,81 @@ export function baseStyle(config) {
         case 'Point':
         case 'MultiPoint': {
           let style;
-          if (iconUrl || iconScaleFn) {
+          if (iconUrl || iconScale) {
             const options = {
               image: new OlIconStyle({
                 src:
-                  stylePropFnRef &&
-                    stylePropFnRef.iconUrl &&
-                    iconUrl instanceof Function
+                  stylePropFnRef && stylePropFnRef.iconUrl && iconUrl instanceof Function
                     ? iconUrl(feature.get(stylePropFnRef.iconUrl))
                     : iconUrl,
                 scale:
-                  stylePropFnRef && stylePropFnRef.iconScaleFn && iconScaleFn
-                    ? iconScaleFn(feature.get(stylePropFnRef.iconScaleFn))
+                  stylePropFnRef && stylePropFnRef.iconScale && iconScale
+                    ? iconScale(feature.get(stylePropFnRef.iconScale))
                     : scale || 1,
                 opacity: opacity || 1,
                 anchor: iconAnchor,
                 anchorXUnits: iconAnchorXUnits,
-                anchorYUnits: iconAnchorYUnits
-              })
+                anchorYUnits: iconAnchorYUnits,
+              }),
             };
             if (labelText) {
               options.text = labelText;
             }
             style = new OlStyle(options);
           } else {
-            const options = {
-              image: new OlCircle({
-                stroke: new OlStroke({
-                  color:
-                    stylePropFnRef &&
-                      stylePropFnRef.strokeColor &&
-                      strokeColor instanceof Function
-                      ? strokeColor(feature.get(stylePropFnRef.strokeColor))
-                      : strokeColor || 'rgba(255, 255, 255, 1)',
-                  width:
-                    stylePropFnRef &&
-                      stylePropFnRef.strokeWidth &&
-                      strokeWidth instanceof Function
-                      ? strokeWidth(feature.get(stylePropFnRef.strokeWidth))
-                      : strokeWidth || 1
-                }),
-                fill: new OlFill({
-                  color:
-                    stylePropFnRef &&
-                      stylePropFnRef.fillColor &&
-                      fillColor instanceof Function
-                      ? fillColor(feature.get(stylePropFnRef.fillColor))
-                      : fillColor || 'rgba(129, 56, 17, 0.7)'
-                }),
-                radius:
-                  stylePropFnRef &&
-                    stylePropFnRef.circleRadiusFn &&
-                    circleRadiusFn instanceof Function
-                    ? circleRadiusFn(feature.get(stylePropFnRef.circleRadiusFn))
-                    : 5
-              })
+            const baseImageOptions = {
+              stroke: new OlStroke({
+                color:
+                  stylePropFnRef && stylePropFnRef.strokeColor && strokeColor instanceof Function
+                    ? strokeColor(feature.get(stylePropFnRef.strokeColor))
+                    : strokeColor || 'rgba(255, 255, 255, 1)',
+                width:
+                  stylePropFnRef && stylePropFnRef.strokeWidth && strokeWidth instanceof Function
+                    ? strokeWidth(feature.get(stylePropFnRef.strokeWidth))
+                    : strokeWidth || 1,
+              }),
+              fill: new OlFill({
+                color:
+                  stylePropFnRef && stylePropFnRef.fillColor && fillColor instanceof Function
+                    ? fillColor(feature.get(stylePropFnRef.fillColor))
+                    : fillColor || 'rgba(129, 56, 17, 0.7)',
+              }),
+              radius:
+                stylePropFnRef && stylePropFnRef.radius && radius instanceof Function
+                  ? radius(feature.get(stylePropFnRef.radius))
+                  : radius || 5,
             };
+            let image;
+            if (config.type === 'circle') {
+              image = new OlCircle({
+                ...baseImageOptions,
+              });
+            } else {
+              image = new OlRegularShape({
+                ...baseImageOptions,
+                radius2:
+                  stylePropFnRef && stylePropFnRef.radius2 && radius2 instanceof Function
+                    ? radius2(feature.get(stylePropFnRef.radius2))
+                    : radius2,
+                points:
+                  stylePropFnRef && stylePropFnRef.points && points instanceof Function
+                    ? points(feature.get(stylePropFnRef.points))
+                    : points || 4,
+                angle:
+                  stylePropFnRef && stylePropFnRef.angle && angle instanceof Function
+                    ? angle(feature.get(stylePropFnRef.angle))
+                    : angle || 0,
+                scale:
+                  stylePropFnRef && stylePropFnRef.scale && scale instanceof Function
+                    ? scale(feature.get(stylePropFnRef.scale))
+                    : scale,
+              });
+            }
+
+            const options = {
+              image,
+            };
+
             if (labelText) {
               options.text = labelText;
             }
@@ -361,20 +376,15 @@ export function baseStyle(config) {
           const options = {
             stroke: new OlStroke({
               color:
-                stylePropFnRef &&
-                  stylePropFnRef.strokeColor &&
-                  strokeColor instanceof Function
+                stylePropFnRef && stylePropFnRef.strokeColor && strokeColor instanceof Function
                   ? strokeColor(feature.get(stylePropFnRef.strokeColor))
                   : strokeColor || 'rgba(255, 255, 255, 1)',
               width:
-                stylePropFnRef &&
-                  stylePropFnRef.strokeWidth &&
-                  strokeWidth instanceof Function
+                stylePropFnRef && stylePropFnRef.strokeWidth && strokeWidth instanceof Function
                   ? strokeWidth(feature.get(stylePropFnRef.strokeWidth))
-                  : strokeWidth || 4
-                  /* Here I removed a comma and this line, which was giving me an unwanted dash: 
-            lineDash: lineDash || [6] */
-            })
+                  : strokeWidth || 4,
+              lineDash,
+            }),
           };
           if (labelText) {
             options.text = labelText;
@@ -392,30 +402,24 @@ export function baseStyle(config) {
           const options = {
             fill: new OlFill({
               color:
-                stylePropFnRef &&
-                  stylePropFnRef.fillColor &&
-                  fillColor instanceof Function
+                stylePropFnRef && stylePropFnRef.fillColor && fillColor instanceof Function
                   ? fillColor(feature.get(stylePropFnRef.fillColor))
                   : fillColor || 'rgba(255, 255, 255, 1)',
-            })
+            }),
           };
 
           if ((stylePropFnRef && stylePropFnRef.strokeColor) || strokeColor) {
             options.stroke = new OlStroke({
               color:
-                stylePropFnRef &&
-                  stylePropFnRef.strokeColor &&
-                  strokeColor instanceof Function
+                stylePropFnRef && stylePropFnRef.strokeColor && strokeColor instanceof Function
                   ? strokeColor(feature.get(stylePropFnRef.strokeColor))
                   : strokeColor || '#ffffff',
               width:
-                stylePropFnRef &&
-                  stylePropFnRef.strokeWidth &&
-                  strokeWidth instanceof Function
+                stylePropFnRef && stylePropFnRef.strokeWidth && strokeWidth instanceof Function
                   ? strokeWidth(feature.get(stylePropFnRef.strokeWidth))
                   : strokeWidth || 0,
-              lineDash: lineDash || null
-            })
+              lineDash: lineDash || null,
+            });
           }
           if (labelText) {
             options.text = labelText;
@@ -446,38 +450,37 @@ export function colorMapStyle(layerName, colorField) {
       if (!styleCache[entity]) {
         styleCache[entity] = new OlStyle({
           fill: new OlFill({
-            color: colors[entity]
+            color: colors[entity],
           }),
           stroke: new OlStroke({
             color: colors[entity],
-            width: 2
+            width: 2,
           }),
           image: new OlCircle({
             radius: 4,
             fill: new OlFill({
-              color: colors[entity]
-            })
-          })
+              color: colors[entity],
+            }),
+          }),
         });
       }
       return styleCache[entity];
-    } else {
-      return new OlStyle({
-        fill: new OlFill({
-          color: '#00c8f0'
-        }),
-        stroke: new OlStroke({
-          color: '#00c8f0',
-          width: 1.5
-        }),
-        image: new OlCircle({
-          radius: 4,
-          fill: new OlFill({
-            color: '#00c8f0'
-          })
-        })
-      });
     }
+    return new OlStyle({
+      fill: new OlFill({
+        color: '#00c8f0',
+      }),
+      stroke: new OlStroke({
+        color: '#00c8f0',
+        width: 1.5,
+      }),
+      image: new OlCircle({
+        radius: 4,
+        fill: new OlFill({
+          color: '#00c8f0',
+        }),
+      }),
+    });
   };
   return styleFunction;
 }
@@ -490,35 +493,39 @@ export function htmlLayerStyle() {
         image: new OlIconStyle({
           src: feature.get('icon'),
           scale: 1,
-          opacity: 1
-        })
+          opacity: 1,
+        }),
       });
-    } else {
-      return [];
     }
+    return [];
   };
   return styleFunction;
 }
 
 export const styleRefs = {
-  defaultStyle: defaultStyle,
-  popupInfoStyle: popupInfoStyle,
-  baseStyle: baseStyle,
-  colorMapStyle: colorMapStyle,
-  htmlLayerStyle: htmlLayerStyle
+  defaultStyle,
+  popupInfoStyle,
+  baseStyle,
+  colorMapStyle,
+  htmlLayerStyle,
 };
 
 export const defaultLimits = {
-  iconScaleFn: {
+  iconScale: {
     smallestDefaultScale: 0.2,
     largestDefaultScale: 1,
-    defaultMultiplier: 603000
+    defaultMultiplier: 603000,
   },
-  circleRadiusFn: {
+  radius: {
     smallestDefaultRadius: 5,
     largestDefaultRadius: 30,
-    defaultMultiplier: 0.3
-  }
+    defaultMultiplier: 0.3,
+  },
+  radius2: {
+    smallestDefaultRadius: 5,
+    largestDefaultRadius: 30,
+    defaultMultiplier: 0.3,
+  },
 };
 
 const getText = function (text, resolution, maxResolution, placement, textWrap) {
@@ -556,17 +563,8 @@ function stringDivider(str, width, spaceReplacer) {
   return str;
 }
 
-const getIconScaleValue = (
-  propertyValue,
-  multiplier,
-  smallestScale,
-  largestScale
-) => {
-  const {
-    smallestDefaultScale,
-    largestDefaultScale,
-    defaultMultiplier
-  } = defaultLimits.iconScaleFn;
+const getIconScaleValue = (propertyValue, multiplier, smallestScale, largestScale) => {
+  const {smallestDefaultScale, largestDefaultScale, defaultMultiplier} = defaultLimits.iconScale;
   const smallestValue = smallestScale || smallestDefaultScale;
   const largestValue = largestScale || largestDefaultScale;
   let scale = propertyValue / (multiplier || defaultMultiplier);
@@ -579,17 +577,8 @@ const getIconScaleValue = (
   return scale;
 };
 
-const getRadiusValue = (
-  propertyValue,
-  multiplier,
-  smallestRadius,
-  largestRadius,
-  defaultMultiplier
-) => {
-  const {
-    smallestDefaultRadius,
-    largestDefaultRadius
-  } = defaultLimits.circleRadiusFn;
+const getRadiusValue = (propertyValue, multiplier, smallestRadius, largestRadius, defaultMultiplier) => {
+  const {smallestDefaultRadius, largestDefaultRadius} = defaultLimits.radius;
   const smallestValue = smallestRadius || smallestDefaultRadius;
   const largestValue = largestRadius || largestDefaultRadius;
   let radius = Math.sqrt(propertyValue) * multiplier || defaultMultiplier;
@@ -604,15 +593,9 @@ const getRadiusValue = (
 
 export const layersStylePropFn = {
   default: {
-    iconScaleFn: propertyValue => {
-      return getIconScaleValue(propertyValue);
-    },
-    circleRadiusFn: propertyValue => {
-      return getRadiusValue(propertyValue);
-    },
-    iconUrl: propertyValue => {
-      return propertyValue;
-    }
+    iconScale: propertyValue => getIconScaleValue(propertyValue),
+    radius: propertyValue => getRadiusValue(propertyValue),
+    iconUrl: propertyValue => propertyValue,
   },
   colaboradores: {
     fillColor: propertyValue => {
@@ -719,13 +702,13 @@ export const layersStylePropFn = {
       return propertyValue;
     }
   },
-  cancelled_pipelines: {
-    strokeColor: propertyValue => propertyValue
+  points: {
+    strokeColor: propertyValue => propertyValue,
+    fillColor: propertyValue => propertyValue,
   },
-  coal_global: {
-    iconScaleFn: propertyValue => {
-      return getIconScaleValue(propertyValue, 1000, 0.5, 1.4);
-    }
+  lines: {
+    strokeColor: propertyValue => propertyValue,
+    strokeWidth: propertyValue => propertyValue,
   },
   gas: {
     iconScaleFn: propertyValue => {
