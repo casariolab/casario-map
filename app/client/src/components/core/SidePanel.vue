@@ -1,14 +1,12 @@
 <template>
   <v-layout class=".sidebar-content" justify-space-between column fill-height>
-    <template
-      v-if="
-        !selectedCoorpNetworkEntity &&
-        !isEditingPost &&
-        !isEditingHtml &&
-        !editType &&
-        (!highlightLayer || !highlightLayer.getSource().getFeatures().length > 0)
-      "
-    >
+    <template v-if="
+      !selectedCoorpNetworkEntity &&
+      !isEditingPost &&
+      !isEditingHtml &&
+      !editType &&
+      (!highlightLayer || !highlightLayer.getSource().getFeatures().length > 0)
+    ">
       <vue-scroll ref="vs">
         <v-row class="mx-0 px-0">
           <v-col class="mt-0 pt-0">
@@ -20,39 +18,28 @@
                   </div>
 
                   <!-- SIDEBAR TOP MEDIA PLAYER -->
-                  <template
-                    v-if="
-                      popup.showInSidePanel === true &&
-                      popup.activeFeature &&
-                      popup.activeFeature.get('sidebarMediaTop')
-                    "
-                  >
-                    <span
-                      id="sidebar-media-top"
-                      v-html="renderMediaHtml(popup.activeFeature.get('sidebarMediaTop'))"
-                    ></span>
+                  <template v-if="
+                    popup.showInSidePanel === true &&
+                    popup.activeFeature &&
+                    popup.activeFeature.get('sidebarMediaTop')
+                  ">
+                    <span id="sidebar-media-top"
+                      v-html="renderMediaHtml(popup.activeFeature.get('sidebarMediaTop'))"></span>
                   </template>
                   <!-- (default top media url) -->
-                  <template
-                    v-else-if="
-                      popup.showInSidePanel === true &&
-                      popup.activeFeature &&
-                      popup.activeLayer.get('sidebarDefaultMedia') &&
-                      popup.activeLayer.get('sidebarDefaultMedia').top
-                    "
-                  >
-                    <span
-                      id="sidebar-default-media-top"
-                      v-html="renderMediaHtml(popup.activeLayer.get('sidebarDefaultMedia').top)"
-                    ></span>
+                  <template v-else-if="
+                    popup.showInSidePanel === true &&
+                    popup.activeFeature &&
+                    popup.activeLayer.get('sidebarDefaultMedia') &&
+                    popup.activeLayer.get('sidebarDefaultMedia').top
+                  ">
+                    <span id="sidebar-default-media-top"
+                      v-html="renderMediaHtml(popup.activeLayer.get('sidebarDefaultMedia').top)"></span>
                   </template>
-                  <div
-                    align="center"
-                    style="display: flex; justify-content: center; align-items: center; width: 100%"
+                  <div align="center" style="display: flex; justify-content: center; align-items: center; width: 100%"
                     class="caption font-italic font-weight-medium"
                     v-if="popup.showInSidePanel === true && popup.activeFeature && popup.activeFeature.get('caption')"
-                    tabindex="0"
-                  >
+                    tabindex="0">
                     <span v-html="popup.activeFeature.get('caption')"></span>
                   </div>
                   <!-- HTML DISPLAY FOR GROUPS AND LAYERS -->
@@ -65,12 +52,10 @@
                       <!-- EDIT SIDEBAR TEXT BUTTON -->
                       <div v-if="canEditSidebar">
                         <v-tooltip left>
-                          <template v-slot:activator="{on}">
+                          <template v-slot:activator="{ on }">
                             <v-btn v-on="on" @click="editHtml()" icon class="mr-3">
                               <v-icon color="grey">edit</v-icon>
-                            </v-btn> </template
-                          ><span>{{ $t('general.edit') }}</span></v-tooltip
-                        >
+                            </v-btn> </template><span>{{ $t('general.edit') }}</span></v-tooltip>
                       </div>
                     </v-row>
                     <v-divider v-if="canEditSidebar"></v-divider>
@@ -93,16 +78,12 @@
                 <p v-html="visibleGroup.sidePanel.bodyText2"></p> -->
                     <v-row>
                       <v-col>
-                        <p
-                          v-if="lastSelectedLayer && sidebarHtml.layers"
-                          v-html="
-                            getHtml(sidebarHtml.layers[lastSelectedLayer], $appConfig.app.defaultLanguage, $i18n.locale)
-                          "
-                        ></p>
-                        <p
-                          v-else-if="sidebarHtml.groups && sidebarHtml.groups[groupName]"
-                          v-html="getHtml(sidebarHtml.groups[groupName], $appConfig.app.defaultLanguage, $i18n.locale)"
-                        ></p>
+                        <p v-if="lastSelectedLayer && sidebarHtml.layers" v-html="
+                          getHtml(sidebarHtml.layers[lastSelectedLayer], $appConfig.app.defaultLanguage, $i18n.locale)
+                        "></p>
+                        <p v-else-if="sidebarHtml.groups && sidebarHtml.groups[groupName]"
+                          v-html="getHtml(sidebarHtml.groups[groupName], $appConfig.app.defaultLanguage, $i18n.locale)">
+                        </p>
                       </v-col>
                     </v-row>
                   </template>
@@ -111,43 +92,26 @@
                   <div class="mt-4 ml-1" style="width: 100%" v-if="popup.showInSidePanel">
                     <v-divider class="mb-1"></v-divider>
                     <v-layout>
-                      <v-btn
-                        @click="dive"
-                        text
-                        small
-                        class="mb-2 mt-1 mr-2"
-                        color="grey"
-                        v-if="
-                          ['Point', 'MultiPoint'].includes(popup.activeFeature.getGeometry().getType()) &&
-                          !previousMapPosition
-                        "
-                      >
+                      <v-btn @click="dive" text small class="mb-2 mt-1 mr-2" color="grey" v-if="
+                        ['Point', 'MultiPoint'].includes(popup.activeFeature.getGeometry().getType()) &&
+                        !previousMapPosition
+                      ">
                         <v-icon small class="mr-1" color="grey">fas fa-search-plus</v-icon>
                         {{ $t('general.zoom') }}
                       </v-btn>
-                      <v-btn
-                        @click="back"
-                        text
-                        small
-                        class="mb-2 mt-1 mr-2"
-                        color="grey"
-                        v-if="previousMapPosition && previousMapPosition.zoom && previousMapPosition.center"
-                      >
+                      <v-btn @click="back" text small class="mb-2 mt-1 mr-2" color="grey"
+                        v-if="previousMapPosition && previousMapPosition.zoom && previousMapPosition.center">
                         <v-icon small class="mr-1" color="grey">fas fa-arrow-left</v-icon>
                         {{ $t('general.back') }}
                       </v-btn>
                       <v-spacer></v-spacer>
-                      <v-btn
-                        @click="findCorporateNetwork"
-                        text
-                        small
-                        class="mb-2 mt-1 mr-2"
-                        v-if="popup.activeFeature.get('entity') && popup.activeLayer.get('includeInSearch') !== false"
-                      >
+                      <v-btn @click="findCorporateNetwork" text small class="mb-2 mt-1 mr-2"
+                        v-if="popup.activeFeature.get('entity') && popup.activeLayer.get('includeInSearch') !== false">
                         <v-icon small class="mr-1">public</v-icon>
                         {{ searchLabel }}
                       </v-btn>
-                      <v-btn v-if="!$vuetify.breakpoint.smAndDown" @click="closePopupInfo" text small class="mb-2 mt-1" color="grey">
+                      <v-btn v-if="!$vuetify.breakpoint.smAndDown" @click="closePopupInfo" text small class="mb-2 mt-1"
+                        color="grey">
                         <v-icon small class="mr-1" color="grey">close</v-icon>
                         {{ $t('general.close') }}
                       </v-btn>
@@ -155,52 +119,35 @@
 
                     <v-divider class="mb-4"></v-divider>
                     <div class="body-2" v-for="item in popupInfo" :key="item.property">
-                      <span
-                        v-if="!hiddenProps.includes(item.property) && !['null', '---'].includes(item.value)"
-                        v-html="`<strong>${mapPopupPropName(item, popup.activeLayer)}: </strong>` + item.value"
-                      ></span>
+                      <span v-if="!hiddenProps.includes(item.property) && !['null', '---'].includes(item.value)"
+                        v-html="`<strong>${mapPopupPropName(item, popup.activeLayer)}: </strong>` + item.value"></span>
                     </div>
                     <v-divider class="mt-4"></v-divider>
                   </div>
                   <!-- SIDEBAR BOTTOM MEDIA PLAYER -->
                   <!-- (feature media url) -->
-                  <template
-                    v-if="
-                      popup.showInSidePanel === true &&
-                      popup.activeFeature &&
-                      popup.activeFeature.get('sidebarMediaBottom')
-                    "
-                  >
-                    <span
-                      id="sidebar-media-bottom"
-                      v-html="renderMediaHtml(popup.activeFeature.get('sidebarMediaBottom'))"
-                    ></span>
+                  <template v-if="
+                    popup.showInSidePanel === true &&
+                    popup.activeFeature &&
+                    popup.activeFeature.get('sidebarMediaBottom')
+                  ">
+                    <span id="sidebar-media-bottom"
+                      v-html="renderMediaHtml(popup.activeFeature.get('sidebarMediaBottom'))"></span>
                   </template>
                   <!-- (default bottom media url) -->
-                  <template
-                    v-else-if="
-                      popup.showInSidePanel === true &&
-                      popup.activeFeature &&
-                      popup.activeLayer.get('sidebarDefaultMedia') &&
-                      popup.activeLayer.get('sidebarDefaultMedia').bottom
-                    "
-                  >
-                    <span
-                      id="sidebar-default-media-bottom"
-                      v-html="renderMediaHtml(popup.activeLayer.get('sidebarDefaultMedia').bottom)"
-                    ></span>
+                  <template v-else-if="
+                    popup.showInSidePanel === true &&
+                    popup.activeFeature &&
+                    popup.activeLayer.get('sidebarDefaultMedia') &&
+                    popup.activeLayer.get('sidebarDefaultMedia').bottom
+                  ">
+                    <span id="sidebar-default-media-bottom"
+                      v-html="renderMediaHtml(popup.activeLayer.get('sidebarDefaultMedia').bottom)"></span>
                   </template>
-                  <div
-                    align="center"
-                    style="display:flex;justify-content:center;align-items: center;width:100%;"
+                  <div align="center" style="display: flex; justify-content: center; align-items: center; width: 100%"
                     class="caption font-italic font-weight-medium"
-                    v-if="
-                      popup.showInSidePanel === true &&
-                        popup.activeFeature &&
-                        popup.activeFeature.get('caption2')
-                    "
-                    tabindex="0"
-                  >
+                    v-if="popup.showInSidePanel === true && popup.activeFeature && popup.activeFeature.get('caption2')"
+                    tabindex="0">
                     <span v-html="popup.activeFeature.get('caption2')"></span>
                   </div>
                 </v-col>
@@ -212,28 +159,23 @@
                 <v-spacer></v-spacer>
                 <div v-if="canEditPost">
                   <v-tooltip left>
-                    <template v-slot:activator="{on}">
+                    <template v-slot:activator="{ on }">
                       <v-btn v-on="on" @click="deletePost(popup.activeFeature)" icon class="mr-3" color="grey">
                         <v-icon>delete</v-icon>
-                      </v-btn> </template
-                    ><span>{{ $t('form.htmlPostEditor.deletePost') }}</span>
+                      </v-btn> </template><span>{{ $t('form.htmlPostEditor.deletePost') }}</span>
                   </v-tooltip>
                   <v-tooltip left>
-                    <template v-slot:activator="{on}">
+                    <template v-slot:activator="{ on }">
                       <v-btn v-on="on" @click="editPost(popup.activeFeature)" icon class="mr-3" color="grey">
                         <v-icon>edit</v-icon>
-                      </v-btn> </template
-                    ><span>{{ $t('form.htmlPostEditor.editPost') }}</span></v-tooltip
-                  >
+                      </v-btn> </template><span>{{ $t('form.htmlPostEditor.editPost') }}</span></v-tooltip>
                 </div>
                 <div v-if="!$vuetify.breakpoint.smAndDown">
                   <v-tooltip left>
-                    <template v-slot:activator="{on}">
+                    <template v-slot:activator="{ on }">
                       <v-btn v-on="on" @click="closePopupInfo" icon class="mr-3" color="grey">
                         <v-icon>close</v-icon>
-                      </v-btn> </template
-                    ><span>{{ $t('general.close') }}</span></v-tooltip
-                  >
+                      </v-btn> </template><span>{{ $t('general.close') }}</span></v-tooltip>
                 </div>
               </v-row>
               <v-divider v-if="canEditPost"></v-divider>
@@ -263,8 +205,7 @@
               </v-toolbar> -->
               <div class="px-2 mt-1">
                 <span
-                  v-html="getHtml(popup.activeFeature.getProperties(), $appConfig.app.defaultLanguage, $i18n.locale)"
-                ></span>
+                  v-html="getHtml(popup.activeFeature.getProperties(), $appConfig.app.defaultLanguage, $i18n.locale)"></span>
               </div>
             </div>
           </v-col>
@@ -283,12 +224,8 @@
             </v-btn>
           </v-flex>
 
-          <v-flex
-            xs8
-            justify-center
-            align-center
-            style="border-left: 1px solid rgba(0, 0, 0, 0.12); border-right: 1px solid rgba(0, 0, 0, 0.12)"
-          >
+          <v-flex xs8 justify-center align-center
+            style="border-left: 1px solid rgba(0, 0, 0, 0.12); border-right: 1px solid rgba(0, 0, 0, 0.12)">
             <div class="sidepanel-header">
               <h1>
                 <span style="font-align: center; color: #c00">{{ selectedCoorpNetworkEntity }}</span>
@@ -302,44 +239,24 @@
             </v-btn>
           </v-flex>
         </v-layout>
-        <v-progress-linear
-          v-show="iframeUrl && isIframeLoading === true"
-          class="mt-n1"
-          indeterminate
-          height="5"
-          :color="color"
-        ></v-progress-linear>
+        <v-progress-linear v-show="iframeUrl && isIframeLoading === true" class="mt-n1" indeterminate height="5"
+          :color="color"></v-progress-linear>
         <vue-scroll>
           <v-container v-if="iframeUrl" style="overflow: hidden" class="pt-0 mt-0" fill-height>
             <v-row style="height: 100%" class="mr-6">
-              <iframe
-                @load="isIframeLoading = false"
-                style="overflow: hidden; position: absolute; border: none; margin-left: 11px"
-                height="95%"
-                width="100%"
-                :src="iframeUrl"
-              >
+              <iframe @load="isIframeLoading = false"
+                style="overflow: hidden; position: absolute; border: none; margin-left: 11px" height="95%" width="100%"
+                :src="iframeUrl">
               </iframe>
             </v-row>
           </v-container>
 
           <v-container class="pb-5 mb-3" v-if="!iframeUrl && popup.selectedCorpNetworkLayer">
-            <div
-              v-for="(feature, index) in popup.selectedCorpNetworkLayer.getSource().getFeatures()"
-              :key="index"
-              class="my-3"
-              @mouseover="mouseOver(feature)"
-              @mouseout="mouseOut()"
-            >
-              <div
-                class="body-2 my-1"
-                v-for="item in formatPopupRows(feature, popup.exludedProps)"
-                :key="item.property"
-              >
-                <span
-                  v-if="!hiddenProps.includes(item.property) && !['null', '---'].includes(item.value)"
-                  v-html="`<strong>${mapPopupPropName(item, popup.activeLayer)}: </strong>` + item.value"
-                ></span>
+            <div v-for="(feature, index) in popup.selectedCorpNetworkLayer.getSource().getFeatures()" :key="index"
+              class="my-3" @mouseover="mouseOver(feature)" @mouseout="mouseOut()">
+              <div class="body-2 my-1" v-for="item in formatPopupRows(feature, popup.exludedProps)" :key="item.property">
+                <span v-if="!hiddenProps.includes(item.property) && !['null', '---'].includes(item.value)"
+                  v-html="`<strong>${mapPopupPropName(item, popup.activeLayer)}: </strong>` + item.value"></span>
               </div>
               <v-divider></v-divider>
             </div>
@@ -349,48 +266,38 @@
     </v-layout>
 
     <!-- ADD OR EDIT POST-->
-    <v-layout
-      :style="`overflow:${$vuetify.breakpoint.smAndDown ? 'hidden' : 'unset'};`"
+    <v-layout :style="`overflow:${$vuetify.breakpoint.smAndDown ? 'hidden' : 'unset'};`"
       v-show="(isEditingPost && postEditLayer && postEditLayer.getSource().getFeatures().length > 0) || isEditingHtml"
-      fill-height
-    >
+      fill-height>
       <v-row align="start" justify="center" class="mx-0" style="width: 100%">
         <v-layout align-center class="elevation-0 mb-1" style="width: 100%">
-          <edit-html
-            v-show="
-              (isEditingPost && postEditLayer && postEditLayer.getSource().getFeatures().length > 0) || isEditingHtml
-            "
-          /> </v-layout
-      ></v-row>
+          <edit-html v-show="
+            (isEditingPost && postEditLayer && postEditLayer.getSource().getFeatures().length > 0) || isEditingHtml
+          " /> </v-layout></v-row>
     </v-layout>
 
     <!-- EDIT LAYER MOBILE -->
 
-    <v-layout
-      :style="`overflow:${$vuetify.breakpoint.smAndDown ? 'hidden' : 'unset'};`"
-      v-if="
-        ['addFeature', 'modifyAttributes'].includes(editType) &&
-        selectedLayer &&
-        highlightLayer.getSource().getFeatures().length > 0 &&
-        $vuetify.breakpoint.smAndDown
-      "
-      fill-height
-    >
+    <v-layout :style="`overflow:${$vuetify.breakpoint.smAndDown ? 'hidden' : 'unset'};`" v-if="
+      ['addFeature', 'modifyAttributes'].includes(editType) &&
+      selectedLayer &&
+      highlightLayer.getSource().getFeatures().length > 0 &&
+      $vuetify.breakpoint.smAndDown
+    " fill-height>
       <v-row align="start" justify="center" class="mx-0" style="width: 100%">
-        <layer-edit-form-mobile></layer-edit-form-mobile> </v-row
-    ></v-layout>
+        <layer-edit-form-mobile></layer-edit-form-mobile> </v-row></v-layout>
   </v-layout>
 </template>
 
 <script>
 // Store imports
-import {mapGetters} from 'vuex';
-import {mapFields} from 'vuex-map-fields';
+import { mapGetters } from 'vuex';
+import { mapFields } from 'vuex-map-fields';
 import UrlUtil from '../../utils/Url';
-import {getHtml} from '../../utils/Helpers';
-import {SharedMethods} from '../../mixins/SharedMethods';
-import {EventBus} from '../../EventBus';
-import {formatPopupRows, getIframeUrl} from '../../utils/Layer';
+import { getHtml } from '../../utils/Helpers';
+import { SharedMethods } from '../../mixins/SharedMethods';
+import { EventBus } from '../../EventBus';
+import { formatPopupRows, getIframeUrl } from '../../utils/Layer';
 import EditHtml from './EditHtml.vue';
 import LayerEditFormMobile from './LayerEditFormMobile.vue';
 
@@ -621,7 +528,7 @@ export default {
     mouseOut() {
       this.popup.highlightLayer.getSource().clear();
     },
-    storeMapPosition() {},
+    storeMapPosition() { },
     dive() {
       let center = this.map.getView().getCenter();
       const zoom = this.map.getView().getZoom();
@@ -647,7 +554,7 @@ export default {
     },
 
     back() {
-      const {zoom, center} = this.previousMapPosition;
+      const { zoom, center } = this.previousMapPosition;
       if (zoom && center) {
         this.map.getView().animate({
           center,
@@ -658,7 +565,7 @@ export default {
       this.previousMapPosition = null;
     },
     backCorpSearch() {
-      const {zoom, center} = this.previousMapPositionSearch;
+      const { zoom, center } = this.previousMapPositionSearch;
       if (zoom && center) {
         this.map.getView().animate({
           center,
@@ -724,14 +631,14 @@ export default {
   text-align: center;
 }
 
-.col >>> img {
+.col>>>img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   overflow: hidden;
 }
 
-.sidebar-content >>> h1 {
+.sidebar-content>>>h1 {
   font-size: 2em;
   margin-block-start: 0.67em;
   margin-block-end: 0.67em;

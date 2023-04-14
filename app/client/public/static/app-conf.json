@@ -33,10 +33,30 @@
     "zoom": 1,
     "geoserverWorkspace": "workspace1",
     "resolutions": [
-      156543.03, 78271.52, 39135.76, 19567.88, 9783.94, 4891.97, 2445.98, 1222.99, 611.5, 305.75, 152.87, 76.437,
-      38.219, 19.109, 9.5546, 4.7773, 2.3887, 1.1943, 0.5972
+      156543.03,
+      78271.52,
+      39135.76,
+      19567.88,
+      9783.94,
+      4891.97,
+      2445.98,
+      1222.99,
+      611.5,
+      305.75,
+      152.87,
+      76.437,
+      38.219,
+      19.109,
+      9.5546,
+      4.7773,
+      2.3887,
+      1.1943,
+      0.5972
     ],
-    "center": [0, 0],
+    "center": [
+      0,
+      0
+    ],
     "minResolution": 0.25,
     "maxResolution": 64000,
     "layers": [
@@ -153,7 +173,7 @@
           "hoverTextColor": "white",
           "hoverBackgroundColor": "#000000",
           "stylePropFnRef": {
-            "fillColor": "variable1" 
+            "fillColor": "variable1"
           },
           "strokeColor": "black",
           "strokeWidth": 1
@@ -203,7 +223,7 @@
           "type": "line",
           "stylePropFnRef": {
             "strokeColor": "variable1",
-            "strokeWidth": "variable2"  
+            "strokeWidth": "variable2"
           },
           "hoverTextColor": "white",
           "hoverBackgroundColor": "#000000"
@@ -294,7 +314,7 @@
           "type": "line",
           "stylePropFnRef": {
             "strokeColor": "variable1",
-            "strokeWidth": "variable2"  
+            "strokeWidth": "variable2"
           },
           "hoverTextColor": "white",
           "hoverBackgroundColor": "#000000"
@@ -1281,43 +1301,66 @@
     "flyToSlideshow": {
       "delayInSecondsForInitialStart": 900000000,
       "delayInSecondsBetweenFrames": 300000,
-      "maplinks": [""]
+      "maplinks": [
+        ""
+      ]
     },
     "groups": {
       "valle": {
-        "center": [-60.13, -27.126],
+        "center": [
+          -60.13,
+          -27.126
+        ],
         "resolution": 4500,
-        "mobileCenter": [-58.936, -28.151],
+        "mobileCenter": [
+          -58.936,
+          -28.151
+        ],
         "mobileResolution": 6200,
         "minResolution": 0.5,
         "maxResolution": 64000
       },
       "estuario": {
-        "center": [-57.835, -34.671],
+        "center": [
+          -57.835,
+          -34.671
+        ],
         "resolution": 200,
         "minResolution": 0.5,
         "maxResolution": 64000
       },
       "delta": {
-        "center": [-59.412, -33.091],
+        "center": [
+          -59.412,
+          -33.091
+        ],
         "resolution": 600,
         "minResolution": 0.5,
         "maxResolution": 64000
       },
       "parana_medio": {
-        "center": [-60.136, -30.315],
+        "center": [
+          -60.136,
+          -30.315
+        ],
         "resolution": 600,
         "minResolution": 0.5,
         "maxResolution": 64000
       },
       "esteros": {
-        "center": [-58.561, -27.366],
+        "center": [
+          -58.561,
+          -27.366
+        ],
         "resolution": 800,
         "minResolution": 0.5,
         "maxResolution": 64000
       },
       "pantanal": {
-        "center": [-58.061, -17.283],
+        "center": [
+          -58.061,
+          -17.283
+        ],
         "resolution": 800,
         "minResolution": 0.5,
         "maxResolution": 64000
@@ -1430,4 +1473,3 @@
     }
   }
 }
-
