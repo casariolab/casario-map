@@ -11,6 +11,10 @@
     "legend": {
       "isVisible": true
     },
+    "font": {
+      "url": "https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap",
+      "family": "Roboto"
+    },
     "controls": {
       "locate_me": true,
       "share_map": true,

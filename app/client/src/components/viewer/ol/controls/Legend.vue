@@ -40,13 +40,12 @@
         <v-icon class="ml-0" x-small>fas fa-chevron-up</v-icon></v-btn
       >
       <v-expansion-panel class="my-0" :style="`background-color: white;`">
-        <v-row class="my-1" justify="center">
-          <!-- 
-         <span class="grey--text text--darken-2 subtitle-2">
+        <!--<v-row class="my-1" justify="center">
+          <span class="grey--text text--darken-2 subtitle-2">
             <a @click="toggleAllLayersVisibility(true)">{{ $t(`form.legend.selectAll`) }}</a> |
             <a @click="toggleAllLayersVisibility(false)"> {{ $t(`form.legend.clearAll`) }}</a>
           </span>
-        </v-row>
+        </v-row> -->
         <v-divider class="mb-1"></v-divider>
         <v-expansion-panel-content style="max-height: 400px" v-show="isVisible" v-if="isReady">
           <vue-scroll style="height: calc(100% + 5px)">
@@ -116,14 +115,13 @@
               </v-row>
             </template>
           </vue-scroll>
-        </v-expansion-panel-content> -->
-          <!--
+        </v-expansion-panel-content>
         <v-divider></v-divider>
-        <v-row class="my-1" justify="center">
+       <!-- <v-row class="my-1" justify="center">
           <span class="black--text text--darken-2 subtitle-2">
             {{ title }}
-          </span> -->
-        </v-row>
+          </span>
+        </v-row> -->
       </v-expansion-panel>
     </v-expansion-panels>
   </div>
@@ -320,7 +318,6 @@ export default {
 .layer-input >>> .v-messages {
   min-height: 0px;
 }
-
 .legend-toggle-button {
   transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
