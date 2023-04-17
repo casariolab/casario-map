@@ -1325,7 +1325,7 @@
     "flyToSlideshow": {
       "delayInSecondsForInitialStart": 9000000,
       "delayInSecondsBetweenFrames": 9000000,
-      "maplinks": [ ]
+      "maplinks": []
     },
     "defaultActiveGroup": "valle",
     "groupTitles": {
