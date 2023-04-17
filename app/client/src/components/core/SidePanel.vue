@@ -67,7 +67,7 @@
                         <v-tooltip left>
                           <template v-slot:activator="{on}">
                             <v-btn v-on="on" @click="editHtml()" icon class="mr-3">
-                              <v-icon color="grey">edit</v-icon>
+                              <v-icon>edit</v-icon>
                             </v-btn> </template
                           ><span>{{ $t('general.edit') }}</span></v-tooltip
                         >
@@ -116,13 +116,12 @@
                         text
                         small
                         class="mb-2 mt-1 mr-2"
-                        color="grey"
                         v-if="
                           ['Point', 'MultiPoint'].includes(popup.activeFeature.getGeometry().getType()) &&
                           !previousMapPosition
                         "
                       >
-                        <v-icon small class="mr-1" color="grey">fas fa-search-plus</v-icon>
+                        <v-icon small class="mr-1">fas fa-search-plus</v-icon>
                         {{ $t('general.zoom') }}
                       </v-btn>
                       <v-btn
@@ -130,10 +129,9 @@
                         text
                         small
                         class="mb-2 mt-1 mr-2"
-                        color="grey"
                         v-if="previousMapPosition && previousMapPosition.zoom && previousMapPosition.center"
                       >
-                        <v-icon small class="mr-1" color="grey">fas fa-arrow-left</v-icon>
+                        <v-icon small class="mr-1">fas fa-arrow-left</v-icon>
                         {{ $t('general.back') }}
                       </v-btn>
                       <v-spacer></v-spacer>
@@ -147,15 +145,8 @@
                         <v-icon small class="mr-1">public</v-icon>
                         {{ searchLabel }}
                       </v-btn>
-                      <v-btn
-                        v-if="!$vuetify.breakpoint.smAndDown"
-                        @click="closePopupInfo"
-                        text
-                        small
-                        class="mb-2 mt-1"
-                        color="grey"
-                      >
-                        <v-icon small class="mr-1" color="grey">close</v-icon>
+                      <v-btn v-if="!$vuetify.breakpoint.smAndDown" @click="closePopupInfo" text small class="mb-2 mt-1">
+                        <v-icon small class="mr-1">close</v-icon>
                         {{ $t('general.close') }}
                       </v-btn>
                     </v-layout>
@@ -197,15 +188,6 @@
                       v-html="renderMediaHtml(popup.activeLayer.get('sidebarDefaultMedia').bottom)"
                     ></span>
                   </template>
-                  <div
-                    align="center"
-                    style="display: flex; justify-content: center; align-items: center; width: 100%"
-                    class="caption font-italic font-weight-medium"
-                    v-if="popup.showInSidePanel === true && popup.activeFeature && popup.activeFeature.get('caption2')"
-                    tabindex="0"
-                  >
-                    <span v-html="popup.activeFeature.get('caption2')"></span>
-                  </div>
                 </v-col>
               </v-row>
             </div>
@@ -216,14 +198,14 @@
                 <div v-if="canEditPost">
                   <v-tooltip left>
                     <template v-slot:activator="{on}">
-                      <v-btn v-on="on" @click="deletePost(popup.activeFeature)" icon class="mr-3" color="grey">
+                      <v-btn v-on="on" @click="deletePost(popup.activeFeature)" icon class="mr-3">
                         <v-icon>delete</v-icon>
                       </v-btn> </template
                     ><span>{{ $t('form.htmlPostEditor.deletePost') }}</span>
                   </v-tooltip>
                   <v-tooltip left>
                     <template v-slot:activator="{on}">
-                      <v-btn v-on="on" @click="editPost(popup.activeFeature)" icon class="mr-3" color="grey">
+                      <v-btn v-on="on" @click="editPost(popup.activeFeature)" icon class="mr-3">
                         <v-icon>edit</v-icon>
                       </v-btn> </template
                     ><span>{{ $t('form.htmlPostEditor.editPost') }}</span></v-tooltip
@@ -232,7 +214,7 @@
                 <div v-if="!$vuetify.breakpoint.smAndDown">
                   <v-tooltip left>
                     <template v-slot:activator="{on}">
-                      <v-btn v-on="on" @click="closePopupInfo" icon class="mr-3" color="grey">
+                      <v-btn v-on="on" @click="closePopupInfo" icon class="mr-3">
                         <v-icon>close</v-icon>
                       </v-btn> </template
                     ><span>{{ $t('general.close') }}</span></v-tooltip
@@ -421,6 +403,18 @@ export default {
       }
       if (this.isEditingPost && this.popup.activeFeature) {
         this.editPost(this.popup.activeFeature);
+      }
+    });
+    EventBus.$on('scrollSidePanelTop', () => {
+      const scrollEl = this.$refs.vs;
+      if (scrollEl && scrollEl.scrollTo) {
+        scrollEl.scrollTo(
+          {
+            y: 0,
+          },
+          100,
+          'easeInQuad'
+        );
       }
     });
   },
@@ -640,7 +634,7 @@ export default {
             : this.popup.activeFeature.getGeometry().getFirstCoordinate();
         this.map.getView().animate({
           center,
-          zoom: 13.5,
+          zoom: 15.5,
           duration: 800,
         });
       }

@@ -1282,11 +1282,6 @@
         "visible": true
       }
     ],
-    "flyToSlideshow": {
-      "delayInSecondsForInitialStart": 900000000,
-      "delayInSecondsBetweenFrames": 300000,
-      "maplinks": [""]
-    },
     "groups": {
       "valle": {
         "center": [-60.13, -27.126],
@@ -1326,6 +1321,11 @@
         "minResolution": 0.5,
         "maxResolution": 64000
       }
+    },
+    "flyToSlideshow": {
+      "delayInSecondsForInitialStart": 9000000,
+      "delayInSecondsBetweenFrames": 9000000,
+      "maplinks": [ ]
     },
     "defaultActiveGroup": "valle",
     "groupTitles": {
