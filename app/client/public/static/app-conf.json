@@ -5,8 +5,8 @@
     "projectWebsite": "casariolab.art",
     "defaultLanguage": "es",
     "color": {
-      "primary": "#00000e",
-      "secondary": "00000e"
+      "primary": "#020101",
+      "secondary": "#020101"
     },
     "legend": {
       "isVisible": true
@@ -525,6 +525,7 @@
             "queryable": true,
             "isInteractive": true,
             "displayInLegend": false,
+            "legendDisplayName": "Hidrovía3",
             "format": "GeoJSON",
             "visible": true,
             "zIndex": 1,

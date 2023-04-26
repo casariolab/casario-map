@@ -67,7 +67,7 @@
                         <v-tooltip left>
                           <template v-slot:activator="{on}">
                             <v-btn v-on="on" @click="editHtml()" icon class="mr-3">
-                              <v-icon>edit</v-icon>
+                              <v-icon color="grey">edit</v-icon>
                             </v-btn> </template
                           ><span>{{ $t('general.edit') }}</span></v-tooltip
                         >
@@ -116,6 +116,7 @@
                         text
                         small
                         class="mb-2 mt-1 mr-2"
+                        color="grey"
                         v-if="
                           ['Point', 'MultiPoint'].includes(popup.activeFeature.getGeometry().getType()) &&
                           !previousMapPosition
@@ -129,9 +130,10 @@
                         text
                         small
                         class="mb-2 mt-1 mr-2"
+                        color="grey"
                         v-if="previousMapPosition && previousMapPosition.zoom && previousMapPosition.center"
                       >
-                        <v-icon small class="mr-1">fas fa-arrow-left</v-icon>
+                        <v-icon small class="mr-1" color="grey">fas fa-arrow-left</v-icon>
                         {{ $t('general.back') }}
                       </v-btn>
                       <v-spacer></v-spacer>
@@ -140,13 +142,21 @@
                         text
                         small
                         class="mb-2 mt-1 mr-2"
+                        color="grey"
                         v-if="popup.activeFeature.get('entity') && popup.activeLayer.get('includeInSearch') !== false"
                       >
-                        <v-icon small class="mr-1">public</v-icon>
+                        <v-icon small class="mr-1" color="grey">public</v-icon>
                         {{ searchLabel }}
                       </v-btn>
-                      <v-btn v-if="!$vuetify.breakpoint.smAndDown" @click="closePopupInfo" text small class="mb-2 mt-1">
-                        <v-icon small class="mr-1">close</v-icon>
+                      <v-btn
+                        v-if="!$vuetify.breakpoint.smAndDown"
+                        @click="closePopupInfo"
+                        text
+                        small
+                        class="mb-2 mt-1"
+                        color="grey"
+                      >
+                        <v-icon small class="mr-1" color="grey">close</v-icon>
                         {{ $t('general.close') }}
                       </v-btn>
                     </v-layout>
@@ -214,8 +224,8 @@
                 <div v-if="!$vuetify.breakpoint.smAndDown">
                   <v-tooltip left>
                     <template v-slot:activator="{on}">
-                      <v-btn v-on="on" @click="closePopupInfo" icon class="mr-3">
-                        <v-icon>close</v-icon>
+                      <v-btn v-on="on" @click="closePopupInfo" icon class="mr-3" color="grey">
+                        <v-icon color="grey">close</v-icon>
                       </v-btn> </template
                     ><span>{{ $t('general.close') }}</span></v-tooltip
                   >
