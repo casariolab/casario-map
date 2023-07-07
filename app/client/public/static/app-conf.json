@@ -1408,7 +1408,8 @@
         "caption2": "LEYENDA ABAJO",
         "variable1": "COLOR",
         "variable2": "ANCHURA",
-        "videoSrc": "URL (VIMEO O YOUTUBE)"
+        "videoSrc": "URL (VIMEO O YOUTUBE)",
+        "country": "IMPORTING COUNTRY"
       }
     },
     "featureInfoHiddenProps": [
@@ -1428,7 +1429,8 @@
       "LONG EIXO",
       "UF_2",
       "UF_CF",
-      "MUNIC_CF"
+      "MUNIC_CF",
+      "toneladas_de_soja"
     ],
     "corporateEntitiesUrls": {
       "Enbridge": ""
