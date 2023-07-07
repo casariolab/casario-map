@@ -1273,6 +1273,73 @@
         "visible": false
       },
       {
+        "type": "GROUP",
+        "name": "exportacion_soja",
+        "minResolution": 1,
+        "maxResolution": 68000,
+        "displayInLegend": true,
+        "legendDisplayName": "Exportadores",
+        "visible": false,
+        "displaySidebarInfo": false,
+        "group": "valle",
+        "displaySeries": true,
+        "defaultSeriesLayerIndex": 0,
+        "layers": [
+          {
+            "type": "VECTOR",
+            "name": "Rosario",
+            "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:puerto_rosario&outputFormat=application/json&srsname=EPSG:3857",
+            "queryable": true,
+            "isInteractive": true,
+            "displayInLegend": true,
+            "legendDisplayName": "Rosario",
+            "format": "GeoJSON",
+            "visible": true,
+            "displaySidebarInfo": false,
+            "zIndex": 1,
+            "minResolution": 2,
+            "maxResolution": 64000,
+            "label": false,
+            "hoverable": true,
+            "style": {
+              "type": "line",
+              "stylePropFnRef": {
+                "strokeWidth": "variable1"
+              },
+              "strokeColor": "#7c2ca3",
+              "hoverTextColor": "white",
+              "hoverBackgroundColor": "#000000"
+            }
+          },
+          {
+            "type": "VECTOR",
+            "name": "San Lorenzo",
+            "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:puerto_san_lorenzo&outputFormat=application/json&srsname=EPSG:3857",
+            "queryable": true,
+            "isInteractive": true,
+            "displayInLegend": true,
+            "legendDisplayName": "San Lorenzo",
+            "format": "GeoJSON",
+            "visible": true,
+            "displaySidebarInfo": false,
+            "zIndex": 1,
+            "minResolution": 2,
+            "maxResolution": 64000,
+            "label": false,
+            "hoverable": true,
+            "style": {
+              "type": "line",
+              "stylePropFnRef": {
+                "strokeWidth": "variable1"
+              },
+              "strokeColor": "#7c2ca3",
+              "hoverTextColor": "white",
+              "hoverBackgroundColor": "#000000"
+            }
+          }
+        ]
+      },
+      {
         "type": "XYZ",
         "name": "ESRI-World-Imagery",
         "group": "backgroundLayers",
@@ -1321,6 +1388,12 @@
         "resolution": 800,
         "minResolution": 0.5,
         "maxResolution": 64000
+      },
+      "mundo": {
+        "center": [0, 0],
+        "resolution": 64000,
+        "minResolution": 0.5,
+        "maxResolution": 64000
       }
     },
     "flyToSlideshow": {
@@ -1335,7 +1408,8 @@
       "delta": "Delta",
       "parana_medio": "Paraná Medio",
       "esteros": "Esteros",
-      "pantanal": "Pantanal"
+      "pantanal": "Pantanal",
+      "mundo": "Mundo"
     },
     "buttons": {
       "biocultural": [
@@ -1386,7 +1460,8 @@
         "audios",
         "videos",
         "fotos",
-        "puertos"
+        "puertos",
+        "exportacion_soja"
       ]
     },
     "defaultActiveButton": "biocultural",
