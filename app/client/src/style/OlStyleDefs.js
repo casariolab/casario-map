@@ -670,4 +670,13 @@ export const layersStylePropFn = {
   oil: {
     circleRadiusFn: propertyValue => getRadiusValue(propertyValue, 0.3, 4, 50),
   },
+  Rosario: {
+    strokeWidth: propertyValue => propertyValue / 200000,
+  },
+  San_Lorenzo: {
+    strokeWidth: propertyValue => propertyValue / 200000,
+  },
+  Bahia_Blanca: {
+    strokeWidth: propertyValue => propertyValue / 200000,
+  },
 };
