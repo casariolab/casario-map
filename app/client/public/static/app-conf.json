@@ -492,7 +492,7 @@
         "displayInLegend": true,
         "legendDisplayName": "Hidrovía",
         "legendIcon": "https://casario-mapa.s3.sa-east-1.amazonaws.com/assets/icons/legends/leyenda_hidrovia.png",
-        "visible": false,
+        "visible": true,
         "displaySidebarInfo": true,
         "group": "valle",
         "attributions": "Test attributions",
@@ -550,7 +550,7 @@
         "group": "valle",
         "queryable": true,
         "displayInLegend": true,
-        "legendDisplayName": "Puertos",
+        "legendDisplayName": "Terminales",
         "format": "GeoJSON",
         "visible": false,
         "zIndex": 10000,
@@ -1278,13 +1278,40 @@
         "minResolution": 1,
         "maxResolution": 68000,
         "displayInLegend": true,
-        "legendDisplayName": "Exportadores",
+        "legendDisplayName": "Puertos sojeros",
         "visible": false,
         "displaySidebarInfo": false,
         "group": "valle",
         "displaySeries": true,
         "defaultSeriesLayerIndex": 0,
+        "legendIcon": "https://casario-mapa.s3.sa-east-1.amazonaws.com/assets/icons/legends/leyenda_exportacion.png",
         "layers": [
+          {
+            "type": "VECTOR",
+            "name": "San_Lorenzo",
+            "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:puerto_san_lorenzo&outputFormat=application/json&srsname=EPSG:3857",
+            "queryable": true,
+            "isInteractive": true,
+            "displayInLegend": true,
+            "legendDisplayName": "San Lorenzo",
+            "format": "GeoJSON",
+            "visible": true,
+            "displaySidebarInfo": false,
+            "zIndex": 1,
+            "minResolution": 2,
+            "maxResolution": 64000,
+            "label": false,
+            "hoverable": true,
+            "style": {
+              "type": "line",
+              "stylePropFnRef": {
+                "strokeWidth": "variable1"
+              },
+              "strokeColor": "#7c2ca3",
+              "hoverTextColor": "white",
+              "hoverBackgroundColor": "#000000"
+            }
+          },
           {
             "type": "VECTOR",
             "name": "Rosario",
@@ -1313,12 +1340,12 @@
           },
           {
             "type": "VECTOR",
-            "name": "San Lorenzo",
-            "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:puerto_san_lorenzo&outputFormat=application/json&srsname=EPSG:3857",
+            "name": "Bahia_Blanca",
+            "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:puerto_bahia_blanca&outputFormat=application/json&srsname=EPSG:3857",
             "queryable": true,
             "isInteractive": true,
             "displayInLegend": true,
-            "legendDisplayName": "San Lorenzo",
+            "legendDisplayName": "Bahía Blanca",
             "format": "GeoJSON",
             "visible": true,
             "displaySidebarInfo": false,
@@ -1403,7 +1430,7 @@
     },
     "defaultActiveGroup": "valle",
     "groupTitles": {
-      "valle": "Valle Central",
+      "valle": "Cuenca",
       "estuario": "Estuario",
       "delta": "Delta",
       "parana_medio": "Paraná Medio",
@@ -1484,7 +1511,7 @@
         "variable1": "COLOR",
         "variable2": "ANCHURA",
         "videoSrc": "URL (VIMEO O YOUTUBE)",
-        "country": "IMPORTING COUNTRY"
+        "soybean_importer": "IMPORTING COUNTRY"
       }
     },
     "featureInfoHiddenProps": [
@@ -1512,3 +1539,4 @@
     }
   }
 }
+
