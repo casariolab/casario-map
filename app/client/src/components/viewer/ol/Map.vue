@@ -721,7 +721,10 @@ export default {
             if (!feature) return;
             if (this.popup.activeFeature && this.popup.activeFeature.getId() === `clone.${feature.getId()}`) return;
             const attr =
-              feature.get('hoverAttribute') || feature.get('title') || feature.get('entity') || feature.get('NAME') ||
+              feature.get('hoverAttribute') ||
+              feature.get('title') ||
+              feature.get('entity') ||
+              feature.get('NAME') ||
               feature.get('soybean_importer');
             if (!attr) return;
             if (layer.get('styleObj')) {
