@@ -99,6 +99,7 @@ const state = {
   editType: null,
   editLayer: null,
   highlightLayer: null,
+  isTranslating: false,
 };
 
 const getters = {
@@ -112,11 +113,15 @@ const getters = {
   selectedLayer: state => state.selectedLayer,
   isEditingHtml: state => state.isEditingHtml,
   isEditingPost: state => state.isEditingPost,
-
   popupInfo: state => {
     const feature = state.popup.activeFeature;
     if (!feature) return;
     return formatPopupRows(feature, state.popup.exludedProps);
+  },
+  translations: state => {
+    const feature = state.popup.activeFeature;
+    if (!feature) return;
+    return feature.getProperties().translations ? JSON.parse(feature.getProperties().translations) : null;
   },
   splittedEntities: state => {
     if (state.selectedCoorpNetworkEntity) {
@@ -178,6 +183,7 @@ const getters = {
   imageUpload: state => state.imageUpload,
   highlightLayer: state => state.highlightLayer,
   getField,
+  isTranslating: state => state.isTranslating,
 };
 
 const actions = {

@@ -53,13 +53,23 @@
                     v-if="popup.showInSidePanel === true && popup.activeFeature && popup.activeFeature.get('caption')"
                     tabindex="0"
                   >
-                    <span v-html="popup.activeFeature.get('caption')"></span>
+                    <span
+                      v-html="
+                        translations && translations[$i18n.locale]
+                          ? translations[$i18n.locale]['caption'] || popup.activeFeature.get('caption')
+                          : popup.activeFeature.get('caption')
+                      "
+                    ></span>
                   </div>
                   <!-- HTML DISPLAY FOR GROUPS AND LAYERS -->
                   <template v-if="!popup.showInSidePanel">
                     <v-row>
                       <span class="ml-2 mt-1 subtitle" v-if="lastSelectedLayer">{{
-                        layers[lastSelectedLayer].get('legendDisplayName') || lastSelectedLayer
+                        layers[lastSelectedLayer].get('legendDisplayName')[$i18n.locale] ||
+                        (typeof layers[lastSelectedLayer].get('legendDisplayName') === 'object' &&
+                          Object.values(layers[lastSelectedLayer].get('legendDisplayName'))[0]) ||
+                        layers[lastSelectedLayer].get('legendDisplayName') ||
+                        lastSelectedLayer
                       }}</span>
                       <v-spacer></v-spacer>
                       <!-- EDIT SIDEBAR TEXT BUTTON -->
@@ -165,7 +175,16 @@
                     <div class="body-2" v-for="item in popupInfo" :key="item.property">
                       <span
                         v-if="!hiddenProps.includes(item.property) && !['null', '---'].includes(item.value)"
-                        v-html="`<strong>${mapPopupPropName(item, popup.activeLayer)}: </strong>` + item.value"
+                        v-html="
+                          `<strong>${mapPopupPropName(
+                            item,
+                            popup.activeLayer,
+                            translations && translations[$i18n.locale] && translations[$i18n.locale]['keys']
+                          )}: </strong>` +
+                          (translations && translations[$i18n.locale]
+                            ? translations[$i18n.locale][item.property] || item.value
+                            : item.value)
+                        "
                       ></span>
                     </div>
                     <v-divider class="mt-4"></v-divider>
@@ -505,6 +524,7 @@ export default {
       map: 'map',
       activeLayerGroup: 'activeLayerGroup',
       popupInfo: 'popupInfo',
+      translations: 'translations',
       splittedEntities: 'splittedEntities',
       isEditingLayer: 'isEditingLayer',
       isEditingPost: 'isEditingPost',

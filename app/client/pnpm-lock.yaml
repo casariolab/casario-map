@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 overrides:
   popper.js: '@popperjs/core@2.11.6'
 
@@ -19,6 +23,9 @@ dependencies:
   deps:
     specifier: ^1.0.0
     version: 1.0.0
+  dotenv:
+    specifier: ^16.0.2
+    version: 16.0.3
   jwt-decode:
     specifier: ^2.2.0
     version: 2.2.0
@@ -1330,6 +1337,12 @@ packages:
       is-obj: 2.0.0
     dev: true
 
+  /dotenv@16.0.3:
+    resolution:
+      {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
+    engines: {node: '>=12'}
+    dev: false
+
   /earcut@2.2.4:
     resolution:
       {integrity: sha512-/pjZsA1b4RPHbeWZQn66SWS8nZZWLQQ23oE3Eam7aroEFGEvwKAsJfZ9ytiEMycfzXWpca4FA9QIOehf7PocBQ==}
@@ -1349,6 +1362,7 @@ packages:
   /entities@2.1.0:
     resolution:
       {integrity: sha512-hCx1oky9PFrJ611mf0ifBLBRW8lUUVRlFolb5gWRfIELabBlbp9xZvrqZLZAs+NxFnbfQoeGd8wDkygjg7U85w==}
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -2603,6 +2617,7 @@ packages:
   /json-schema-traverse@1.0.0:
     resolution:
       {integrity: sha512-NM8/P9n3XjXhIZn1lLhkFaACTOURQXjWhV4BA/RnOv8xvgqtqpAX9IO4mRQxSx1Rlo4tqzeqb0sOlruaOy3dug==}
+    requiresBuild: true
 
   /json-source-map@0.6.1:
     resolution:
@@ -2700,6 +2715,7 @@ packages:
   /linkify-it@3.0.3:
     resolution:
       {integrity: sha512-ynTsyrFSdE5oZ/O9GEf00kPngmOfVwazR5GKDq6EYfhlpFug3J2zybX56a2PRRpc9P+FuSoGNAwjlbDs9jJBPQ==}
+    requiresBuild: true
     dependencies:
       uc.micro: 1.0.6
     dev: false
@@ -2860,6 +2876,7 @@ packages:
   /mdurl@1.0.1:
     resolution:
       {integrity: sha512-/sKlQJCBYVY9Ers9hqzKou4H6V5UWc/M59TH2dvkt+84itfnq7uFOMLpOiOS4ujvHP4etln18fmIxA5R5fll0g==}
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -3525,6 +3542,7 @@ packages:
     resolution:
       {integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==}
     engines: {node: '>=0.10.0'}
+    requiresBuild: true
 
   /resolve-from@4.0.0:
     resolution:
@@ -3730,6 +3748,7 @@ packages:
   /sortablejs@1.10.2:
     resolution:
       {integrity: sha512-YkPGufevysvfwn5rfdlGyrGjt7/CRHwvRPogD/lC+TnvcN29jDpCifKP+rBqf+LRldfXSTh+0CGLcSg0VIxq3A==}
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -4085,6 +4104,7 @@ packages:
   /uc.micro@1.0.6:
     resolution:
       {integrity: sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==}
+    requiresBuild: true
     dev: false
     optional: true
 

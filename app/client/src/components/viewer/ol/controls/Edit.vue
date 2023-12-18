@@ -23,10 +23,17 @@
           transition="slide-y-transition"
         >
           <template v-slot:activator="{on, attrs}">
-            <v-btn v-bind="attrs" v-on="on" class="edit-buttons" dark rounded :color="color.primary"
-              ><v-icon small left>far fa-edit</v-icon>
-              {{ selectedLayer ? selectedLayer.get('legendDisplayName') : '' }}</v-btn
-            >
+            <v-btn v-bind="attrs" v-on="on" class="edit-buttons" dark rounded :color="color.primary">
+              <v-icon small left>far fa-edit</v-icon>
+              {{
+                selectedLayer
+                  ? selectedLayer.get('legendDisplayName')[$i18n.locale] ||
+                    (typeof selectedLayer.get('legendDisplayName') === 'object' &&
+                      Object.values(selectedLayer.get('legendDisplayName'))[0]) ||
+                    selectedLayer.get('legendDisplayName')
+                  : ''
+              }}
+            </v-btn>
           </template>
 
           <v-list dense>
@@ -84,6 +91,7 @@
                 dark
                 right
                 x-small
+                v-if="!!item.enabled"
                 :color="isEditingPost ? color.activeButton : color.primary"
                 @click="edit(item.action)"
               >
@@ -121,10 +129,18 @@
           :label="$t(`general.layers`)"
         >
           <template slot="selection" slot-scope="{item}">
-            {{ item.get('legendDisplayName') }}
+            {{
+              item.get('legendDisplayName')[$i18n.locale] ||
+              (typeof item.get('legendDisplayName') === 'object' && Object.values(item.get('legendDisplayName'))[0]) ||
+              item.get('legendDisplayName')
+            }}
           </template>
           <template slot="item" slot-scope="{item}">
-            {{ item.get('legendDisplayName') }}
+            {{
+              item.get('legendDisplayName')[$i18n.locale] ||
+              (typeof item.get('legendDisplayName') === 'object' && Object.values(item.get('legendDisplayName'))[0]) ||
+              item.get('legendDisplayName')
+            }}
           </template>
         </v-select>
         <v-card-actions>
@@ -138,8 +154,8 @@
               selectedLayer = dialogSelectedLayer;
               layersDialog = false;
             "
-            >{{ $t('general.ok') }}</v-btn
-          >
+            >{{ $t('general.ok') }}
+          </v-btn>
           <v-btn :color="color.primary" text @click.native="layersDialog = false">{{ $t('general.cancel') }}</v-btn>
         </v-card-actions>
       </v-card>
@@ -170,6 +186,36 @@
         <div v-else-if="['addFeature', 'modifyAttributes'].includes(editType)">
           <vue-scroll ref="vs">
             <div style="max-height: 280px" class="pr-2">
+              <v-flex class="d-flex flex-row justify-space-between" v-if="isTranslatable">
+                <v-checkbox class="layer-input ml-0 pt-1 py-0 my-0" dense color="purple" v-model="showAllTranslations">
+                  <template v-slot:label>
+                    <span
+                      :class="{
+                        'text--darken-2 subtitle-2': true,
+                        'blue--text': false,
+                      }"
+                    >
+                      Show All Translations
+                    </span>
+                  </template>
+                </v-checkbox>
+                <v-tooltip top>
+                  <template v-slot:activator="{on}">
+                    <v-btn
+                      v-on="on"
+                      :class="{
+                        'tiptap-vuetify-editor__action-render-btn': true,
+                      }"
+                      small
+                      icon
+                      @click="translateAttributes"
+                    >
+                      <v-icon>translate</v-icon>
+                    </v-btn>
+                  </template>
+                  {{ $t(`form.htmlPostEditor.translateContent`) }}
+                </v-tooltip>
+              </v-flex>
               <v-form ref="edit-form" v-model="formValid">
                 <editor-form v-model="formData" :schema="formSchema" :options="formOptions">
                   <template slot="lightbox-append">
@@ -184,9 +230,10 @@
                           fab
                           small
                         >
-                          <v-icon> fas fa-image </v-icon>
-                        </v-btn> </template
-                      ><span>{{ $t('form.edit.lightBoxImagesPanel') }}</span>
+                          <v-icon> fas fa-image</v-icon>
+                        </v-btn>
+                      </template>
+                      <span>{{ $t('form.edit.lightBoxImagesPanel') }}</span>
                     </v-tooltip>
                   </template>
                 </editor-form>
@@ -201,7 +248,7 @@
             <v-tooltip top>
               <template v-slot:activator="{on}">
                 <v-btn v-on="on" rounded small depressed :loading="imageUpload.isSelecting" @click="openImageUpload">
-                  <v-icon left> insert_photo </v-icon>
+                  <v-icon left> insert_photo</v-icon>
                   <span class="image-upload-btn">
                     {{ imageUploadButtonText }}
                   </span>
@@ -240,9 +287,9 @@
                   "
                 >
                   <v-list-item-content>
-                    <v-list-item-title>{{
-                      imageUpload.position === 'sidebarMediaTop' ? $t(`general.bottom`) : $t(`general.top`)
-                    }}</v-list-item-title>
+                    <v-list-item-title
+                      >{{ imageUpload.position === 'sidebarMediaTop' ? $t(`general.bottom`) : $t(`general.top`) }}
+                    </v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
               </v-list>
@@ -256,9 +303,9 @@
           <v-btn color="grey" text @click="popupCancel">{{ $t(`general.cancel`) }}</v-btn>
         </template>
         <template v-else-if="['addFeature', 'modifyAttributes'].includes(editType)">
-          <v-btn color="primary darken-1" :disabled="formValid === false" @click="popupOk" text>{{
-            $t(`general.save`)
-          }}</v-btn>
+          <v-btn color="primary darken-1" :disabled="formValid === false" @click="popupOk" text
+            >{{ $t(`general.save`) }}
+          </v-btn>
 
           <v-btn color="grey" text @click="popupCancel">{{ $t(`general.cancel`) }}</v-btn>
         </template>
@@ -273,13 +320,15 @@
     >
       <v-card>
         <v-app-bar :color="color.primary" dark dense flat>
-          <v-app-bar-nav-icon><v-icon>delete</v-icon></v-app-bar-nav-icon>
+          <v-app-bar-nav-icon>
+            <v-icon>delete</v-icon>
+          </v-app-bar-nav-icon>
           <v-toolbar-title class="white--text">{{ $t(`general.confirm`) }}</v-toolbar-title>
         </v-app-bar>
 
-        <v-card-text class="body-1 font-weight-medium mt-3 mb-3 pb-0">{{
-          $t(`form.edit.confirmDeleteFeature`)
-        }}</v-card-text>
+        <v-card-text class="body-1 font-weight-medium mt-3 mb-3 pb-0"
+          >{{ $t(`form.edit.confirmDeleteFeature`) }}
+        </v-card-text>
         <v-divider></v-divider>
 
         <v-card-actions>
@@ -333,28 +382,6 @@ export default {
   },
   data: () => ({
     dialogSelectedLayer: null, // Temporary selection (not active if user doesn't press ok)
-    editButtons: [
-      {
-        icon: 'add',
-        action: 'addFeature',
-        tooltip: 'addFeature',
-      },
-      {
-        icon: 'edit',
-        action: 'modifyFeature',
-        tooltip: 'modifyGeometry',
-      },
-      {
-        icon: 'subject',
-        action: 'modifyAttributes',
-        tooltip: 'modifyAttributes',
-      },
-      {
-        icon: 'delete',
-        action: 'deleteFeature',
-        tooltip: 'deleteFeature',
-      },
-    ],
     layersDialog: false,
     // INTERACTION
     currentInteraction: null,
@@ -402,6 +429,8 @@ export default {
 
     postMapMarkerLayer_: null,
     showDeleteDialog: false,
+
+    showAllTranslations: false,
   }),
   name: 'edit-control',
   computed: {
@@ -413,7 +442,7 @@ export default {
       postEditType: 'postEditType',
       formValid: 'formValid',
       formSchema: 'formSchema',
-      formSchemaCache: 'formSchemaCache',
+      // formSchemaCache: 'formSchemaCache',
       formOptions: 'formOptions',
       formData: 'formData',
       imageUpload: 'imageUpload',
@@ -422,6 +451,7 @@ export default {
       lightboxDialogState: 'lightboxDialogState',
       editLayer: 'editLayer',
       highlightLayer: 'highlightLayer',
+      isTranslating: 'isTranslating',
     }),
     ...mapGetters('map', {
       layersMetadata: 'layersMetadata',
@@ -429,6 +459,9 @@ export default {
     }),
     ...mapGetters('auth', {
       loggedUser: 'loggedUser',
+    }),
+    ...mapGetters('app', {
+      serverConfig: 'serverConfig',
     }),
     flatLayers() {
       const layers = [];
@@ -443,6 +476,47 @@ export default {
           }
         });
       return layers;
+    },
+    isTranslatable() {
+      const isTranslationEnabled = this.serverConfig && !!this.serverConfig.isTranslationEnabled;
+      if (!isTranslationEnabled) return false;
+      const layerName = this.selectedLayer.get('name');
+      const layerMetadata = this.layersMetadata[layerName];
+      return layerMetadata && layerMetadata.properties.findIndex(property => property.name === 'translations') !== -1;
+    },
+    editButtons() {
+      return [
+        {
+          icon: 'add',
+          action: 'addFeature',
+          tooltip: 'addFeature',
+          enabled: true,
+        },
+        {
+          icon: 'edit',
+          action: 'modifyFeature',
+          tooltip: 'modifyGeometry',
+          enabled: true,
+        },
+        {
+          icon: 'subject',
+          action: 'modifyAttributes',
+          tooltip: 'modifyAttributes',
+          enabled: true,
+        },
+        {
+          icon: 'delete',
+          action: 'deleteFeature',
+          tooltip: 'deleteFeature',
+          enabled: true,
+        },
+        {
+          icon: 'translate',
+          action: 'translateAllFeatures',
+          tooltip: 'translateAllFeatures',
+          enabled: this.serverConfig && !!this.serverConfig.isTranslationEnabled,
+        },
+      ];
     },
   },
   methods: {
@@ -522,6 +596,35 @@ export default {
      * Main Edit function
      */
     edit(editType) {
+      if (editType === 'translateAllFeatures') {
+        const layerName = this.layersMetadata[this.selectedLayer.get('name')].typeName;
+        this.isTranslating = true;
+        axios
+          .get(`./api/translate/${layerName}?sourceLanguage=${this.$appConfig.app.defaultLanguage}`, {
+            headers: authHeader(),
+          })
+          .then(response => {
+            this.isTranslating = false;
+            this.toggleSnackbar({
+              type: 'success',
+              message: this.$t('translation.translateAllFeaturesSuccess'),
+              timeout: 2000,
+              state: true,
+            });
+          })
+          .catch(error => {
+            console.log('error', error);
+            this.isTranslating = false;
+            this.toggleSnackbar({
+              type: 'error',
+              message: this.$t('translation.translateAllFeaturesError'),
+              timeout: 2000,
+              state: true,
+            });
+          });
+        return;
+      }
+
       this.removeInteraction();
       this.editType = editType;
       if (!this.selectedLayer) return;
@@ -584,47 +687,117 @@ export default {
      * Transforms layer metadata into a json structure which can be used to render dynamic vuetify components
      */
     createSchemaFromLayerMetadata() {
-      this.formSchema = {
+      const formSchema = {
         type: 'object',
         required: [],
         properties: {},
       };
       const layerName = this.selectedLayer.get('name');
-      if (!this.formSchemaCache[layerName]) {
-        const layerMetadata = this.layersMetadata[layerName];
-        if (layerMetadata) {
-          layerMetadata.properties.forEach(property => {
-            const type = this.formTypesMapping[property.localType];
-            if (type) {
-              let title;
-              const fieldMapping = this.$appConfig.map.popupFieldsMapping;
-              if (fieldMapping) {
-                title =
-                  getNestedProperty(fieldMapping, `${layerName}.${property.name}`) ||
-                  fieldMapping.default[property.name] ||
-                  property.name;
-              }
-              title = title.toUpperCase();
-              this.formSchema.properties[property.name] = {
-                type,
-                title,
-              };
-              if (property.nillable === false) {
-                this.formSchema.required.push(property.name);
-              }
-              if (property.name === 'geom') {
-                this.formSchema[property.name]['x-display'] = 'hidden';
-              }
-              if (property.name === 'lightbox') {
-                this.formSchema.properties[property.name].readOnly = true;
-              }
+      // if (!this.formSchemaCache[layerName]) {
+      const layerMetadata = this.layersMetadata[layerName];
+      if (layerMetadata) {
+        layerMetadata.properties.forEach(property => {
+          const type = this.formTypesMapping[property.localType];
+          if (type) {
+            let title;
+            const fieldMapping = this.$appConfig.map.popupFieldsMapping;
+            if (fieldMapping) {
+              title =
+                getNestedProperty(fieldMapping, `${layerName}.${property.name}`) ||
+                fieldMapping.default[property.name] ||
+                property.name;
             }
-          });
-          this.formSchemaCache[layerName] = this.formSchema;
-        }
-      } else {
-        this.formSchema = this.formSchemaCache[layerName];
+            title = title.toUpperCase();
+            formSchema.properties[property.name] = {
+              type,
+              title,
+            };
+            if (property.nillable === false) {
+              formSchema.required.push(property.name);
+            }
+            if (property.name === 'geom') {
+              formSchema[property.name]['x-display'] = 'hidden';
+            }
+            if (property.name === 'lightbox') {
+              formSchema.properties[property.name].readOnly = true;
+            }
+            if (property.name === 'translations') {
+              formSchema.properties[property.name]['x-display'] = 'hidden';
+            }
+          }
+        });
+        // this.formSchemaCache[layerName] = this.formSchema;
       }
+      // } else {
+      // this.formSchema = this.formSchemaCache[layerName];
+      // }
+      this.formSchema = formSchema;
+    },
+
+    createSchemaWithTranslations() {
+      const formSchema = {
+        type: 'object',
+        required: [],
+        properties: {},
+      };
+      const layerName = this.selectedLayer.get('name');
+      const layerMetadata = this.layersMetadata[layerName];
+
+      if (layerMetadata) {
+        // parse translations field
+
+        const translations = this.formData.translations;
+
+        layerMetadata.properties.forEach(property => {
+          const type = this.formTypesMapping[property.localType];
+          if (type) {
+            let title;
+            const fieldMapping = this.$appConfig.map.popupFieldsMapping;
+            if (fieldMapping) {
+              title =
+                getNestedProperty(fieldMapping, `${layerName}.${property.name}`) ||
+                fieldMapping.default[property.name] ||
+                property.name;
+            }
+            formSchema.properties[property.name] = {
+              type,
+              title: title.toUpperCase(),
+            };
+
+            // populate translated fields
+            if (this.$appConfig.map.featureInfoHiddenProps.indexOf(property.name) === -1) {
+              this.$i18n.availableLocales
+                .filter(l => l !== this.$appConfig.app.defaultLanguage)
+                .forEach(language => {
+                  formSchema.properties[`${language}:${property.name}`] = {
+                    type,
+                    title: `${language}:${property.name.toUpperCase()}`,
+                  };
+                  if (translations && translations[language]) {
+                    this.formData[`${language}:${property.name}`] = translations[language][property.name];
+                  } else {
+                    this.formData[`${language}:${property.name}`] = '';
+                  }
+                });
+            }
+
+            if (property.nillable === false) {
+              formSchema.required.push(property.name);
+            }
+            if (property.name === 'geom') {
+              formSchema[property.name]['x-display'] = 'hidden';
+            }
+            if (property.name === 'lightbox') {
+              formSchema.properties[property.name].readOnly = true;
+            }
+            if (property.name === 'translations') {
+              formSchema.properties[property.name]['x-display'] = 'hidden';
+            }
+          }
+        });
+      }
+
+      this.formSchema = formSchema;
     },
 
     /**
@@ -749,7 +922,22 @@ export default {
                 }, 100);
               } else if (this.editType === 'modifyAttributes') {
                 this.popup.title = 'Modify Attributes';
-                this.formData = feature.getProperties();
+
+                const properties = feature.getProperties();
+
+                if (properties.translations) {
+                  properties.translations = JSON.parse(properties.translations);
+                  this.formData = {
+                    ...properties,
+                    ...(properties.translations[this.$appConfig.app.defaultLanguage]
+                      ? properties.translations[this.$appConfig.app.defaultLanguage]
+                      : {}),
+                  };
+                } else {
+                  this.formData = properties;
+                  this.formData.translations = {};
+                }
+
                 if (this.$vuetify.breakpoint.smAndDown) {
                   this.mobilePanelState = true;
                   // this.map.getView().setCenter(closestPoint);
@@ -819,6 +1007,7 @@ export default {
       }
       // Commit change in db
       this.transact();
+
       // Close popup and clear previous interactions.
       this.popupCancel();
       this.showDeleteDialog = false;
@@ -840,6 +1029,7 @@ export default {
       }
       this.mobilePanelState = false;
       this.showDeleteDialog = false;
+      this.showAllTranslations = false;
     },
 
     /**
@@ -953,13 +1143,33 @@ export default {
         return;
       }
 
-      const {
+      let {
         // eslint-disable-next-line no-unused-vars
         geometry,
         // eslint-disable-next-line no-unused-vars
         geom,
         ...propsWithNoGeometry
       } = this.selectedFeature.getProperties();
+
+      // update translations if they have been edited manually
+      const propsWithTranslations = Object.fromEntries(
+        Object.entries(propsWithNoGeometry).filter(([key]) => key.includes(':'))
+      );
+
+      // eslint-disable-next-line guard-for-in
+      for (const propName in propsWithTranslations) {
+        const [lang, propVakue] = propName.split(':');
+        propsWithNoGeometry.translations[lang][propVakue] = propsWithTranslations[propName];
+      }
+
+      // filter out properties that have semicolon, that is, are temporary translations
+      propsWithNoGeometry = Object.fromEntries(
+        Object.entries(propsWithNoGeometry).filter(([key]) => !key.includes(':'))
+      );
+
+      if (propsWithNoGeometry?.translations?.length === 0) {
+        propsWithNoGeometry.translations = {};
+      }
 
       // Transform Video Url if exists
       const videoPossibilities = ['youtube-nocookie.com', 'youtube.com', 'vimeo.com'];
@@ -1017,12 +1227,14 @@ export default {
           payload.sidebarPosition = this.imageUpload.position;
         }
       }
+
       formData.append('payload', JSON.stringify(payload));
       axios
         .post('api/layer', formData, {
           headers: authHeader(),
         })
         .then(() => {
+          this.showAllTranslations = false;
           if (this.editType !== 'modifyFeature') {
             this.editLayer.getSource().clear();
           }
@@ -1036,7 +1248,7 @@ export default {
               // this.selectedLayer.getSource().tileCache.clear();
               this.selectedLayer.getSource().clear();
               this.selectedLayer.getSource().refresh({force: true});
-              this.selectedLayer.redraw();
+              this.selectedLayer.redraw?.();
             }
             this.toggleSnackbar({
               type: 'success',
@@ -1047,6 +1259,98 @@ export default {
           }
         });
     },
+
+    translateAttributes() {
+      const layerName = this.selectedLayer.get('name');
+      const layerMetadata = this.layersMetadata[layerName];
+      const translations = this.formData.translations ? this.formData.translations : {};
+
+      const promises = [];
+      const promisesParams = [];
+      this.$i18n.availableLocales
+        .filter(l => l !== this.$appConfig.app.defaultLanguage)
+        .forEach(language => {
+          const propertyFields = [];
+          const propertyValues = [];
+          layerMetadata.properties.forEach(property => {
+            if (
+              this.$appConfig.map.featureInfoHiddenProps.indexOf(property.name) === -1 &&
+              this.formData[property.name] &&
+              translations &&
+              (!translations[language] || // a form is translated for the first time
+                !translations[language][property.name] || // a previously empty field has been filled in and needs to be translated
+                (translations[language][property.name] &&
+                  this.showAllTranslations &&
+                  !this.formData[`${language}:${property.name}`])) // an existing translation needs to be re-translated
+            ) {
+              propertyFields.push(property.name);
+              propertyValues.push(this.formData[property.name].toString());
+            }
+          });
+
+          if (propertyFields.length > 0) {
+            promisesParams.push({language, propertyFields, propertyValues});
+            promises.push(
+              axios.post(
+                './api/translate',
+                {content: propertyValues, targetLanguage: language},
+                {
+                  headers: authHeader(),
+                }
+              )
+            );
+          }
+        });
+
+      if (promises.length > 0) {
+        // show progress spinner
+        this.isTranslating = true;
+
+        Promise.all(promises)
+          .then(results => {
+            // hide progress spinner
+            this.isTranslating = false;
+
+            // show success message
+            this.toggleSnackbar({
+              type: 'success',
+              message: this.$t('translation.translateAllFeaturesSuccess'),
+              timeout: 2000,
+              state: true,
+            });
+
+            for (let i = 0; i < results.length; i += 1) {
+              if (!translations[promisesParams[i].language]) {
+                // if a form is translated for the first time
+                translations[promisesParams[i].language] = {};
+              }
+              for (let j = 0; j < promisesParams[i].propertyFields.length; j += 1) {
+                translations[promisesParams[i].language][promisesParams[i].propertyFields[j]] = results[i].data[j];
+                // populate a form field with translation
+                this.formData[`${promisesParams[i].language}:${promisesParams[i].propertyFields[j]}`] =
+                  results[i].data[j];
+              }
+            }
+
+            // populate translations field with updated translations
+            this.formData.translations = translations;
+          })
+          .catch(error => {
+            console.log('error', error);
+            // hide progress spinner
+            this.isTranslating = false;
+
+            // show error message
+            this.toggleSnackbar({
+              type: 'error',
+              message: this.$t('translation.translateAllFeaturesError'),
+              timeout: 2000,
+              state: true,
+            });
+          });
+      }
+    },
+
     ...mapMutations('map', {
       toggleSnackbar: 'TOGGLE_SNACKBAR',
     }),
@@ -1120,6 +1424,13 @@ export default {
       } else {
         this.map.removeLayer(this.postMapMarkerLayer_);
         this.postMapMarkerLayer_.setFlashlightVisible(false);
+      }
+    },
+    showAllTranslations(newValue) {
+      if (newValue) {
+        this.createSchemaWithTranslations();
+      } else {
+        this.createSchemaFromLayerMetadata();
       }
     },
   },
