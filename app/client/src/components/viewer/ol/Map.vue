@@ -55,7 +55,6 @@
     >
       {{ $t('tooltip.changeSpotlight') }}
     </div>
-    -->
 
     <!-- Popup overlay  -->
     <overlay-popup

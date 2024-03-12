@@ -19,10 +19,6 @@
     "legend": {
       "isVisible": true
     },
-    "font": {
-      "url": "https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap",
-      "family": "Roboto"
-    },
     "controls": {
       "locate_me": true,
       "share_map": true,
@@ -410,6 +406,37 @@
       },
       {
         "type": "VECTOR",
+        "name": "coal_ash",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:coal_ash&outputFormat=application/json&srsname=EPSG:3857",
+        "group": "media",
+        "queryable": true,
+        "format": "GeoJSON",
+        "legendDisplayName": {
+          "en": "Coal ash",
+          "es": "Cenizas de carbón",
+          "pt": "Cenizas de carbón"
+        },
+        "visible": true,
+        "displayInLegend": true,
+        "displaySidebarInfo": true,
+        "zIndex": 1000,
+        "minResolution": 0,
+        "maxResolution": 64000,
+        "label": true,
+        "hoverable": true,
+        "legendIcon": "",
+        "style": {
+          "type": "circle",
+          "radius": 6,
+          "strokeWidth": 1,
+          "strokeColor": "black",
+          "fillColor": "purple",
+          "hoverTextColor": "white",
+          "hoverBackgroundColor": "#000000"
+        }
+      },
+      {
+        "type": "VECTOR",
         "name": "videos",
         "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:videos&outputFormat=application/json&srsname=EPSG:3857",
         "group": "valle",
@@ -653,7 +680,6 @@
         "queryable": false,
         "displayInLegend": true,
         "displaySidebarInfo": true,
-        "renderMode": "image",
         "legendDisplayName": {
           "en": "Wetlands corridor",
           "es": "Corredor de humedales",
