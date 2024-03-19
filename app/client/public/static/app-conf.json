@@ -406,15 +406,15 @@
       },
       {
         "type": "VECTOR",
-        "name": "coal_ash",
-        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:coal_ash&outputFormat=application/json&srsname=EPSG:3857",
+        "name": "colaboradores",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:colaboradores&outputFormat=application/json&srsname=EPSG:3857",
         "group": "media",
         "queryable": true,
         "format": "GeoJSON",
         "legendDisplayName": {
-          "en": "Coal ash",
-          "es": "Cenizas de carbón",
-          "pt": "Cenizas de carbón"
+          "en": "HsF",
+          "es": "HsF",
+          "pt": "HsF"
         },
         "visible": true,
         "displayInLegend": true,
@@ -427,12 +427,87 @@
         "legendIcon": "",
         "style": {
           "type": "circle",
-          "radius": 6,
-          "strokeWidth": 1,
-          "strokeColor": "black",
-          "fillColor": "purple",
+          "radius": 8,
+          "strokeWidth": 2,
+          "stylePropFnRef": {
+            "fillColor": "variable1"
+          },
           "hoverTextColor": "white",
-          "hoverBackgroundColor": "#000000"
+          "hoverBackgroundColor": "#000000",
+          "cluster": {
+            "options": {
+              "distance": 20,
+              "minDistance": 0
+            },
+            "style": {
+              "innerCircle": {
+                "radius": 14,
+                "fillColor": "rgba(255, 165, 0, 0.7)",
+                "text": {
+                  "fillColor": "#fff",
+                  "strokeColor": "rgba(0, 0, 0, 0.6)",
+                  "strokeWidth": 3
+                }
+              },
+              "outerCircle": {
+                "radius": 20,
+                "fillColor": "rgba(255, 153, 102, 0.3)"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "VECTOR",
+        "name": "chi_test",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:chi_test&outputFormat=application/json&srsname=EPSG:3857",
+        "group": "media",
+        "queryable": true,
+        "format": "GeoJSON",
+        "legendDisplayName": {
+          "en": "Coal Ash",
+          "es": "Coal Ash",
+          "pt": "Coal Ash"
+        },
+        "visible": true,
+        "displayInLegend": true,
+        "displaySidebarInfo": true,
+        "zIndex": 1000,
+        "minResolution": 0,
+        "maxResolution": 64000,
+        "label": true,
+        "hoverable": true,
+        "style": {
+          "type": "circle",
+          "radius": 8,
+          "strokeWidth": 1,
+          "strokeColor": "red",
+          "stylePropFnRef": {
+            "fillColor": "variable1"
+          },
+          "hoverTextColor": "white",
+          "hoverBackgroundColor": "#000000",
+          "cluster": {
+            "options": {
+              "distance": 20,
+              "minDistance": 0
+            },
+            "style": {
+              "innerCircle": {
+                "radius": 14,
+                "fillColor": "rgba(255, 165, 0, 0.7)",
+                "text": {
+                  "fillColor": "#fff",
+                  "strokeColor": "rgba(0, 0, 0, 0.6)",
+                  "strokeWidth": 3
+                }
+              },
+              "outerCircle": {
+                "radius": 20,
+                "fillColor": "rgba(255, 153, 102, 0.3)"
+              }
+            }
+          }
         }
       },
       {

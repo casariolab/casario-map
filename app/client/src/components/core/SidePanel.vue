@@ -102,7 +102,7 @@
                     <!-- <p v-html="visibleGroup.sidePanel.bodyText1"></p>
                 <p v-html="visibleGroup.sidePanel.bodyText2"></p> -->
                     <v-row>
-                      <v-col>
+                      <v-col class="html-viewer">
                         <p
                           v-if="lastSelectedLayer && sidebarHtml.layers"
                           v-html="
@@ -418,6 +418,7 @@ export default {
     return {
       isIframeLoading: true,
       color: this.$appConfig.app.color.primary,
+      preventSidebarScroll: false, // Add this flag
     };
   },
   created() {
@@ -435,17 +436,29 @@ export default {
       }
     });
     EventBus.$on('scrollSidePanelTop', () => {
-      const scrollEl = this.$refs.vs;
-      if (scrollEl && scrollEl.scrollTo) {
-        scrollEl.scrollTo(
-          {
-            y: 0,
-          },
-          100,
-          'easeInQuad'
-        );
+      if (!this.preventSidebarScroll) {
+        const scrollEl = this.$refs.vs;
+        if (scrollEl && scrollEl.scrollTo) {
+          scrollEl.scrollTo({y: 0}, 100, 'easeInQuad');
+        }
       }
     });
+  },
+  mounted() {
+    document.addEventListener(
+      'click',
+      e => {
+        if (e.target.closest('.map-link')) {
+          // Update the flag instead of preventing the default action
+          this.preventSidebarScroll = true;
+          // Reset the flag after a short delay to allow for normal operations afterwards
+          setTimeout(() => {
+            this.preventSidebarScroll = false;
+          }, 100); // Adjust the timeout as needed based on your application's behavior
+        }
+      },
+      false
+    );
   },
   computed: {
     isFeatureGetInfo() {
@@ -763,4 +776,10 @@ export default {
   margin-block-start: 0.67em;
   margin-block-end: 0.67em;
 }
+
+.html-viewer >>> p:empty::before {
+  content: '';
+  display: inline-block;
+}
+
 </style>
