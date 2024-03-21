@@ -1,9 +1,9 @@
 {
   "app": {
     "title": {
-      "es": "C o r r e d o r e s ",
-      "en": "C o r r i d o r s ",
-      "pt": "C o r r e d o r e s "
+      "es": "Corredores",
+      "en": "Corridors",
+      "pt": "Corredores"
     },
     "tagline": "",
     "projectWebsite": "casariolab.art",
@@ -1701,7 +1701,8 @@
       "UF_2",
       "UF_CF",
       "MUNIC_CF",
-      "toneladas_de_soja"
+      "toneladas_de_soja",
+      "translations"
     ],
     "corporateEntitiesUrls": {
       "Enbridge": ""
