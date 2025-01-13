@@ -74,7 +74,8 @@
         </template>
         <span>{{ isEditingPost ? $t('general.close') : $t('tooltip.addPost') }}</span>
       </v-tooltip>
-    </div> -->
+    </div>
+    -->
     <div v-if="selectedLayer">
       <div v-for="(item, index) in editButtons" :key="index">
         <v-layout>
