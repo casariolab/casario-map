@@ -57,10 +57,7 @@
         </v-menu>
       </v-layout>
     </div>
-
-    <!-- TO RESTORE POST ICON UNCOMMENT DIV BELOW -->
-
-    <!-- <div v-if>="!selectedLayer">
+    <div v-if="!selectedLayer && visibleGroup.layers && visibleGroup.layers.includes('html_posts')">
       <v-tooltip left>
         <template v-slot:activator="{on}">
           <v-btn
@@ -456,6 +453,7 @@ export default {
     ...mapGetters('map', {
       layersMetadata: 'layersMetadata',
       imageUploadButtonText: 'imageUploadButtonText',
+      visibleGroup: 'visibleGroup',
     }),
     ...mapGetters('auth', {
       loggedUser: 'loggedUser',
@@ -464,17 +462,7 @@ export default {
       serverConfig: 'serverConfig',
     }),
     flatLayers() {
-      const layers = [];
-      this.map
-        .getLayers()
-        .getArray()
-        .forEach(layer => {
-          if (layer.get('type') === 'GROUP') {
-            layers.push(...layer.getLayers().getArray());
-          } else {
-            layers.push(layer);
-          }
-        });
+      const layers = this.map.getAllLayers();
       return layers;
     },
     isTranslatable() {
@@ -1148,6 +1136,8 @@ export default {
         geometry,
         // eslint-disable-next-line no-unused-vars
         geom,
+        // eslint-disable-next-line no-unused-vars
+        keys,
         ...propsWithNoGeometry
       } = this.selectedFeature.getProperties();
 

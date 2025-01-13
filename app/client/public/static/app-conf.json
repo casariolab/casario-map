@@ -10,7 +10,9 @@
     "defaultLanguage": "es",
     "color": {
       "primary": "#020101",
-      "secondary": "#020101"
+      "secondary": "#020101",
+      "link": "#ff0000",
+      "mapLink": "#7C2CA3"
     },
     "font": {
       "url": "https://fonts.googleapis.com/css2?family=Roboto&display=swap",
@@ -32,7 +34,10 @@
     "navbar": {
       "dropdownMenu": true
     },
-    "customNavigationScheme": "2"
+    "customNavigationScheme": "2",
+    "spotlightMessage": {
+      "isVisible": false
+    }
   },
   "map": {
     "projectionCode": "EPSG:3857",
@@ -427,87 +432,12 @@
         "legendIcon": "",
         "style": {
           "type": "circle",
-          "radius": 8,
-          "strokeWidth": 2,
-          "stylePropFnRef": {
-            "fillColor": "variable1"
-          },
-          "hoverTextColor": "white",
-          "hoverBackgroundColor": "#000000",
-          "cluster": {
-            "options": {
-              "distance": 20,
-              "minDistance": 0
-            },
-            "style": {
-              "innerCircle": {
-                "radius": 14,
-                "fillColor": "rgba(255, 165, 0, 0.7)",
-                "text": {
-                  "fillColor": "#fff",
-                  "strokeColor": "rgba(0, 0, 0, 0.6)",
-                  "strokeWidth": 3
-                }
-              },
-              "outerCircle": {
-                "radius": 20,
-                "fillColor": "rgba(255, 153, 102, 0.3)"
-              }
-            }
-          }
-        }
-      },
-      {
-        "type": "VECTOR",
-        "name": "chi_test",
-        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:chi_test&outputFormat=application/json&srsname=EPSG:3857",
-        "group": "media",
-        "queryable": true,
-        "format": "GeoJSON",
-        "legendDisplayName": {
-          "en": "Coal Ash",
-          "es": "Coal Ash",
-          "pt": "Coal Ash"
-        },
-        "visible": true,
-        "displayInLegend": true,
-        "displaySidebarInfo": true,
-        "zIndex": 1000,
-        "minResolution": 0,
-        "maxResolution": 64000,
-        "label": true,
-        "hoverable": true,
-        "style": {
-          "type": "circle",
-          "radius": 8,
+          "radius": 6,
           "strokeWidth": 1,
-          "strokeColor": "red",
-          "stylePropFnRef": {
-            "fillColor": "variable1"
-          },
+          "strokeColor": "black",
+          "fillColor": "purple",
           "hoverTextColor": "white",
-          "hoverBackgroundColor": "#000000",
-          "cluster": {
-            "options": {
-              "distance": 20,
-              "minDistance": 0
-            },
-            "style": {
-              "innerCircle": {
-                "radius": 14,
-                "fillColor": "rgba(255, 165, 0, 0.7)",
-                "text": {
-                  "fillColor": "#fff",
-                  "strokeColor": "rgba(0, 0, 0, 0.6)",
-                  "strokeWidth": 3
-                }
-              },
-              "outerCircle": {
-                "radius": 20,
-                "fillColor": "rgba(255, 153, 102, 0.3)"
-              }
-            }
-          }
+          "hoverBackgroundColor": "#000000"
         }
       },
       {

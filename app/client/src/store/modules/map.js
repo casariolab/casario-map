@@ -2,7 +2,8 @@
 import {getField, updateField} from 'vuex-map-fields';
 import axios from 'axios';
 import colormap from 'colormap';
-import {formatPopupRows, getLayerSourceUrl, extractGeoserverLayerNames} from '../../utils/Layer';
+import {Group as LayerGroup} from 'ol/layer';
+import {formatPopupRows, getLayerSourceUrl, extractGeoserverLayerNames, getAllChildLayers} from '../../utils/Layer';
 import http from '../../services/http';
 
 const state = {
@@ -47,31 +48,10 @@ const state = {
   isEditingPost: false,
   isEditingHtml: false,
   htmlContent: '',
-  htmlPostLayerConf: {
-    type: 'VECTOR',
-    name: 'html_posts',
-    queryable: true,
-    displayInLegend: false,
-    legendDisplayName: 'Posts',
-    format: 'GeoJSON',
-    visible: true,
-    zIndex: 1000,
-    minResolution: 0.5,
-    maxResolution: 1200,
-    label: null,
-    hoverable: true,
-    canEdit: false,
-    style: {
-      styleRef: 'htmlLayerStyle',
-      hoverTextColor: 'white',
-      hoverBackgroundColor: '#000000',
-    },
-  },
   postEditLayer: null, // user for
   postFeature: null,
   postEditType: null,
   lastSelectedLayer: null, // triggered from layer or group change
-  persistentLayers: {},
   currentResolution: null,
   mobilePanelState: true,
   lightboxDialogState: false,
@@ -141,12 +121,6 @@ const getters = {
   regions: state => state.regions,
   layersMetadata: state => state.layersMetadata,
   htmlContent: state => state.htmlContent,
-  htmlPostLayerConf: state => {
-    const config = state.htmlPostLayerConf;
-    config.url = `./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=${state.geoserverWorkspace}:html_posts&outputFormat=application/json&srsname=EPSG:3857`;
-    return config;
-  },
-  persistentLayers: state => state.persistentLayers,
   postEditLayer: state => state.postEditLayer,
   lastSelectedLayer: state => state.lastSelectedLayer,
   appConfGroups_: state => state.appConfGroups_,
@@ -192,14 +166,36 @@ const actions = {
     if (!rootState.map.colorMapEntities) {
       return;
     }
-    const layers = rootState.map.layers;
+    const layers = {};
+    Object.keys(rootState.map.layers).forEach(key => {
+      const layer = rootState.map.layers[key];
+      if (layer instanceof LayerGroup) {
+        const layersArray = layer.getLayers().getArray();
+        layersArray.forEach(l => {
+          if (l instanceof LayerGroup) {
+            const subLayers = l.getLayers().getArray();
+            subLayers.forEach(subLayer => {
+              layers[subLayer.get('name')] = subLayer;
+            });
+          } else {
+            layers[l.get('name')] = l;
+          }
+        });
+      } else {
+        layers[layer.get('name')] = layer;
+      }
+    });
     const promiseArray = [];
     Object.keys(layers).forEach(key => {
       const layer = layers[key];
       if (layer.get('styleObj')) {
         const styleObj = JSON.parse(layer.get('styleObj'));
-        if (styleObj.styleRef !== 'colorMapStyle' || rootState.map.colorMapEntities[layer.get('name')]) return;
-
+        if (!styleObj.stylePropFnRef) return;
+        if (
+          styleObj.stylePropFnRef.fillColorFn !== 'colorMapStyle' ||
+          rootState.map.colorMapEntities[layer.get('name')]
+        )
+          return;
         const tableName =
           styleObj.tableName ||
           extractGeoserverLayerNames([
@@ -209,15 +205,16 @@ const actions = {
             },
           ])[rootState.map.geoserverWorkspace].names[0];
         let viewParams = `viewparams=table:${tableName}`;
-        if (styleObj.colorField) {
-          viewParams += `;field:${styleObj.colorField}`;
+        if (styleObj.stylePropFnRef.fillColor) {
+          viewParams += `;field:${styleObj.stylePropFnRef.fillColor}`;
         }
         const url = `./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=${rootState.map.geoserverWorkspace}:colormap&srsname=EPSG:4326&${viewParams}&outputFormat=json`;
         promiseArray.push(
           http.get(url, {
             data: {
               layerName: layer.get('name'),
-              colormap: styleObj.colormap || 'portland',
+              colormap: styleObj.stylePropFnRef.fillColorMap || 'portland',
+              nshades: styleObj.stylePropFnRef.fillColorMapNshades,
             },
           })
         );
@@ -234,20 +231,28 @@ const actions = {
             if (features && features.length === 0) {
               return;
             }
-            const nshades = features.length < 5 ? 5 : features.length; // 5 is the minimun of the shades
+            const nshades = configData.nshades || features.length;
             const entities = {};
-            console.log(configData.colormap);
             const colors = colormap({
               colormap: configData.colormap,
               nshades,
               format: 'hex',
               alpha: 1,
             });
+
+            const ratio = Math.ceil(features.length / nshades);
             features.forEach((feature, index) => {
               const entity = feature.properties.entity;
-              entities[entity] = colors[index];
+              entities[entity] = colors[Math.floor(index / ratio)];
             });
+
             commit('SET_COLORMAP_VALUES', {layerName, entities});
+            const layers = getAllChildLayers(state.map);
+            layers.forEach(layer => {
+              if (layer.get('name') === layerName) {
+                layer.changed();
+              }
+            });
           });
         })
         .catch(err => {
@@ -269,12 +274,6 @@ const mutations = {
       state.layers[layer.get('name')] = layer;
     }
   },
-  SET_PERSISTENT_LAYER(state, layer) {
-    if (layer.get('name')) {
-      state.persistentLayers[layer.get('name')] = layer;
-      state.map.addLayer(layer);
-    }
-  },
   SET_MAP(state, map) {
     state.map = map;
   },
@@ -285,7 +284,7 @@ const mutations = {
     const layers = [...state.map.getLayers().getArray()];
     layers.forEach(layer => {
       // Doesn't remove edit layer but clears it instead. .
-      if (!['edit_layer', 'highlight_layer', 'post_edit_layer', 'html_posts'].includes(layer.get('name'))) {
+      if (!['edit_layer', 'highlight_layer', 'post_edit_layer'].includes(layer.get('name'))) {
         state.map.removeLayer(layer);
       } else if (layer.getSource().clear) {
         layer.getSource().clear();

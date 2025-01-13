@@ -2,6 +2,7 @@
   <div id="ol-map-container" @click="$event => resetAfterSlide()" @mousemove="resetAfterSlide()">
     <!-- Map Controls -->
     <map-legend :color="color.primary" />
+    <time-slider :color="color.primary" />
     <div style="position: absolute; left: 20px; top: 10px">
       <login-button :color="color.primary"></login-button>
       <search-map
@@ -187,6 +188,7 @@ import Locate from './controls/Locate.vue';
 import Search from './controls/Search.vue';
 import RouteControls from './controls/RouteControls.vue';
 import Legend from './controls/Legend.vue';
+import TimeSlider from './controls/TimeSlider.vue';
 import Login from './controls/Login.vue';
 import Edit from './controls/Edit.vue';
 import ShareMap from './controls/ShareMap.vue';
@@ -217,6 +219,7 @@ export default {
     'add-post': AddPost,
     'overlay-popup': OverlayPopup,
     'map-legend': Legend,
+    'time-slider': TimeSlider,
     'login-button': Login,
     'zoom-control': ZoomControl,
     'full-screen': FullScreen,
@@ -248,7 +251,7 @@ export default {
       getInfoResult: [],
       radius: 130,
       mousePosition: undefined,
-      spotlightMessage: false,
+      spotlightMessage: this.$appConfig?.spotlightMessage?.isVisible || false,
       lightBoxImages: [],
       progressLoading: {
         message: 'Fetching Corporate Network',
@@ -365,7 +368,6 @@ export default {
     // Create layers from config and add them to map
     me.resetMap();
     me.createLayers();
-    me.createHtmlPostLayer();
     // Event bus setup for managing interactions
     EventBus.$on('ol-interaction-activated', startedInteraction => {
       me.activeInteractions.push(startedInteraction);
@@ -397,7 +399,7 @@ export default {
       // World Overlay Layer and selected features layer for corporate network
       me.createWorldExtentOverlayLayer();
       me.createSelectedCorpNetworkLayer();
-
+      // Create layers from config
       this.$appConfig.map.layers.forEach(lConf => {
         const layerIndex = visibleLayers.indexOf(lConf.name);
         if (layerIndex === -1) return;
@@ -420,6 +422,8 @@ export default {
           me.setLayer(layer);
         }
       });
+      const backgroundColor = this.visibleGroup?.backgroundColor || '#ffffff';
+      document.documentElement.style.setProperty('--viewer-background-color', backgroundColor);
     },
     resetLayersVisibility() {
       const visibleLayers = this.visibleGroup.layers;
@@ -432,10 +436,6 @@ export default {
           }
         });
       });
-    },
-    createHtmlPostLayer() {
-      const layer = LayerFactory.getInstance(this.htmlPostLayerConf);
-      this.setPersistentLayer(layer);
     },
     /**
      * Creates a layer to visualize selected GetInfo features.
@@ -708,7 +708,7 @@ export default {
           this.map.forEachFeatureAtPixel(
             evt.pixel,
             (f, l) => {
-              // Order of features is based is based on zIndex.
+              // Order of features is based is based on zIndex.x
               // First feature is on top, last feature is on bottom.
               if (!feature && l.get('isInteractive') !== false) {
                 feature = f;
@@ -773,9 +773,10 @@ export default {
             ) {
               return;
             }
-
-            overlayEl.innerHTML = attr;
-            this.overlay.setPosition(evt.coordinate);
+            if (attr && attr !== ' ') {
+              overlayEl.innerHTML = attr;
+              this.overlay.setPosition(evt.coordinate);
+            }
           }
         }
         this.mousePosition = this.map.getEventPixel(evt.originalEvent);
@@ -851,6 +852,11 @@ export default {
         if (me.isEditingLayer) {
           return;
         }
+
+        if (me.lastSelectedLayer) {
+          me.lastSelectedLayer = undefined;
+        }
+
         let feature;
         let layer;
         this.map.forEachFeatureAtPixel(
@@ -870,6 +876,10 @@ export default {
             hitTolerance: 3,
           }
         );
+
+        if (feature && me.sidebarState === false) {
+          me.sidebarState = true;
+        }
 
         // For cluster features
         if (feature && Array.isArray(feature.get('features'))) {
@@ -1159,17 +1169,8 @@ export default {
       this.popup.highlightLayer.getSource().clear();
       this.popup.worldExtentLayer.getSource().clear();
       this.popup.selectedCorpNetworkLayer.getSource().clear();
-      const mapLayers = [];
-      this.map
-        .getLayers()
-        .getArray()
-        .forEach(layer => {
-          if (layer.get('type') === 'GROUP') {
-            mapLayers.push(...layer.getLayers().getArray());
-          } else {
-            mapLayers.push(layer);
-          }
-        });
+      const mapLayers = this.map.getAllLayers();
+
       axios
         .all(promiseArray)
         .then(results => {
@@ -1343,9 +1344,7 @@ export default {
       activeLayerGroup: 'activeLayerGroup',
       popupInfo: 'popupInfo',
       splittedEntities: 'splittedEntities',
-      htmlPostLayerConf: 'htmlPostLayerConf',
       geoserverWorkspace: 'geoserverWorkspace',
-      persistentLayers: 'persistentLayers',
       mobilePanelState: 'mobilePanelState',
       visibleGroup: 'visibleGroup',
       isTranslating: 'isTranslating',
@@ -1368,6 +1367,7 @@ export default {
       layersWithEntityField: 'layersWithEntityField',
       selectedCoorpNetworkEntity: 'selectedCoorpNetworkEntity',
       currentResolution: 'currentResolution',
+      lastSelectedLayer: 'lastSelectedLayer',
     }),
     hiddenProps() {
       const hiddenProps = this.$appConfig.map.featureInfoHiddenProps;
@@ -1438,9 +1438,6 @@ export default {
       EventBus.$emit('group-changed');
       EventBus.$emit('clearEditHtml');
 
-      if (this.persistentLayers.html_posts) {
-        this.persistentLayers.html_posts.getSource().refresh();
-      }
       // Reset fromEvent to false
       setTimeout(() => {
         this.$route.meta.fromEvent = false;
