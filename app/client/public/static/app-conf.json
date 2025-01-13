@@ -61,11 +61,7 @@
         "queryable": true,
         "format": "GeoJSON",
         "visible": true,
-        "legendDisplayName": {
-          "en": "Extraction polygons",
-          "es": "Polígonos extractivistas",
-          "pt": "Polígonos extrativistas"
-        },
+        "legendDisplayName": "Polígonos extractivistas",
         "zIndex": 100,
         "opacity": 0.5,
         "minResolution": 1,
@@ -88,11 +84,7 @@
         "queryable": true,
         "displayInLegend": false,
         "format": "GeoJSON",
-        "legendDisplayName": {
-          "en": "Extraction points",
-          "es": "Puntos extractivistas",
-          "pt": "Pontos extrativistas"
-        },
+        "legendDisplayName": "Puntos extractivistas",
         "visible": true,
         "zIndex": 100,
         "minResolution": 0,
@@ -116,11 +108,7 @@
         "group": "valle",
         "queryable": true,
         "displayInLegend": false,
-        "legendDisplayName": {
-          "en": "Extraction lines",
-          "es": "Líneas extractivistas",
-          "pt": "Linhas extrativistas"
-        },
+        "legendDisplayName": "Líneas extractivistas",
         "format": "GeoJSON",
         "visible": true,
         "zIndex": 100,
@@ -143,11 +131,7 @@
         "group": "valle",
         "queryable": true,
         "displayInLegend": true,
-        "legendDisplayName": {
-          "en": "Biocultures",
-          "es": "Bioculturas",
-          "pt": "Bioculturas"
-        },
+        "legendDisplayName": "Bioculturas",
         "displaySidebarInfo": true,
         "format": "GeoJSON",
         "visible": true,
@@ -170,11 +154,7 @@
         "queryable": true,
         "format": "GeoJSON",
         "visible": true,
-        "legendDisplayName": {
-          "en": "Biocultural polygons",
-          "es": "Polígonos bioculturales",
-          "pt": "Polígonos bioculturais"
-        },
+        "legendDisplayName": "Polígonos bioculturales",
         "zIndex": 100,
         "minResolution": 1,
         "maxResolution": 120,
@@ -199,11 +179,7 @@
         "queryable": true,
         "displayInLegend": false,
         "format": "GeoJSON",
-        "legendDisplayName": {
-          "en": "Biocultural dots",
-          "es": "Polígonos bioculturales",
-          "pt": "Polígonos bioculturais"
-        },
+        "legendDisplayName": "Puntos bioculturales",
         "visible": true,
         "zIndex": 100,
         "minResolution": 0,
@@ -227,11 +203,7 @@
         "group": "valle",
         "queryable": true,
         "displayInLegend": false,
-        "legendDisplayName": {
-          "en": "Biocultural lines",
-          "es": "Líneas bioculturales",
-          "pt": "Linhas bioculturais"
-        },
+        "legendDisplayName": "Líneas bioculturales",
         "format": "GeoJSON",
         "visible": true,
         "zIndex": 100,
@@ -256,11 +228,7 @@
         "group": "valle",
         "queryable": true,
         "displayInLegend": false,
-        "legendDisplayName": {
-          "en": "Biocultural photos",
-          "es": "Fotos bioculturales",
-          "pt": "Fotos bioculturais"
-        },
+        "legendDisplayName": "Fotos bioculturales",
         "format": "GeoJSON",
         "visible": true,
         "zIndex": 10000,
@@ -282,11 +250,7 @@
         "group": "valle",
         "queryable": true,
         "displayInLegend": false,
-        "legendDisplayName": {
-          "en": "Biocultural videos",
-          "es": "Videos bioculturales",
-          "pt": "Vídeos bioculturais"
-        },
+        "legendDisplayName": "Videos bioculturales",
         "format": "GeoJSON",
         "visible": true,
         "zIndex": 10000,
@@ -308,11 +272,7 @@
         "group": "valle",
         "queryable": true,
         "displayInLegend": false,
-        "legendDisplayName": {
-          "en": "Biocultural audios",
-          "es": "Audios bioculturales",
-          "pt": "Áudios bioculturais"
-        },
+        "legendDisplayName": "Audios bioculturales",
         "format": "GeoJSON",
         "visible": true,
         "zIndex": 10000,
@@ -334,11 +294,7 @@
         "group": "valle",
         "queryable": true,
         "displayInLegend": false,
-        "legendDisplayName": {
-          "en": "Hydrography",
-          "es": "Hidrografía",
-          "pt": "Hidrografía"
-        },
+        "legendDisplayName": "Hidrografia",
         "format": "GeoJSON",
         "visible": true,
         "zIndex": 100,
@@ -363,11 +319,7 @@
         "group": "valle",
         "queryable": false,
         "displayInLegend": false,
-        "legendDisplayName": {
-          "en": "Hydrography 2",
-          "es": "Hidrografía 2",
-          "pt": "Hidrografía 2"
-        },
+        "legendDisplayName": "Hidrografia2",
         "format": "GeoJSON",
         "visible": true,
         "zIndex": 100,
@@ -390,11 +342,7 @@
         "group": "valle",
         "queryable": true,
         "displayInLegend": false,
-        "legendDisplayName": {
-          "en": "Audios",
-          "es": "Audios",
-          "pt": "Áudios"
-        },
+        "legendDisplayName": "Audios",
         "format": "GeoJSON",
         "visible": true,
         "zIndex": 10000,
@@ -411,47 +359,12 @@
       },
       {
         "type": "VECTOR",
-        "name": "colaboradores",
-        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:colaboradores&outputFormat=application/json&srsname=EPSG:3857",
-        "group": "media",
-        "queryable": true,
-        "format": "GeoJSON",
-        "legendDisplayName": {
-          "en": "HsF",
-          "es": "HsF",
-          "pt": "HsF"
-        },
-        "visible": true,
-        "displayInLegend": true,
-        "displaySidebarInfo": true,
-        "zIndex": 1000,
-        "minResolution": 0,
-        "maxResolution": 64000,
-        "label": true,
-        "hoverable": true,
-        "legendIcon": "",
-        "style": {
-          "type": "circle",
-          "radius": 6,
-          "strokeWidth": 1,
-          "strokeColor": "black",
-          "fillColor": "purple",
-          "hoverTextColor": "white",
-          "hoverBackgroundColor": "#000000"
-        }
-      },
-      {
-        "type": "VECTOR",
         "name": "videos",
         "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:videos&outputFormat=application/json&srsname=EPSG:3857",
         "group": "valle",
         "queryable": true,
         "displayInLegend": false,
-        "legendDisplayName": {
-          "en": "Videos",
-          "es": "Vídeos",
-          "pt": "Vídeos"
-        },
+        "legendDisplayName": "Videos",
         "format": "GeoJSON",
         "visible": true,
         "zIndex": 10000,
@@ -473,11 +386,7 @@
         "group": "valle",
         "queryable": true,
         "displayInLegend": false,
-        "legendDisplayName": {
-          "en": "Photos",
-          "es": "Fotos",
-          "pt": "Fotos"
-        },
+        "legendDisplayName": "Fotos",
         "format": "GeoJSON",
         "visible": true,
         "zIndex": 10000,
@@ -519,11 +428,7 @@
         "group": "valle",
         "queryable": true,
         "displayInLegend": true,
-        "legendDisplayName": {
-          "en": "Wetlands Network",
-          "es": "Red HsF",
-          "pt": "Rede HsF"
-        },
+        "legendDisplayName": "Red HsF",
         "displaySidebarInfo": true,
         "format": "GeoJSON",
         "visible": false,
@@ -534,10 +439,10 @@
         "hoverable": true,
         "style": {
           "type": "circle",
-          "radius": 5,
-          "fillColor": "#4990ba",
-          "strokeColor": "rgba( 255,255,255, 0.80 )",
-          "strokeWidth": 2,
+          "radius": 6,
+          "fillColor": "black",
+          "strokeColor": "white",
+          "strokeWidth": 1,
           "hoverTextColor": "white",
           "hoverBackgroundColor": "#000000"
         }
@@ -593,11 +498,7 @@
         "minResolution": 1,
         "maxResolution": 68000,
         "displayInLegend": true,
-        "legendDisplayName": {
-          "en": "Hydro Highway",
-          "es": "Hidrovía",
-          "pt": "Hidrovia"
-        },
+        "legendDisplayName": "Hidrovía",
         "legendIcon": "https://casario-mapa.s3.sa-east-1.amazonaws.com/assets/icons/legends/leyenda_hidrovia.png",
         "visible": true,
         "displaySidebarInfo": true,
@@ -657,13 +558,9 @@
         "group": "valle",
         "queryable": true,
         "displayInLegend": true,
-        "legendDisplayName": {
-          "en": "Terminals",
-          "es": "Terminales",
-          "pt": "Terminales"
-        },
+        "legendDisplayName": "Terminales",
         "format": "GeoJSON",
-        "visible": false,
+        "visible": true,
         "zIndex": 10000,
         "minResolution": 1,
         "maxResolution": 64000,
@@ -685,14 +582,116 @@
         "queryable": false,
         "displayInLegend": true,
         "displaySidebarInfo": true,
-        "legendDisplayName": {
-          "en": "Wetlands corridor",
-          "es": "Corredor de humedales",
-          "pt": "Corredor zonas húmidas"
-        },
+        "renderMode": "image",
+        "legendDisplayName": "Corredor de Humedales",
         "format": "MVT",
-        "renderMode": "hybrid",
         "visible": false,
+        "zIndex": 20000,
+        "opacity": 1,
+        "minResolution": 800,
+        "maxResolution": 64000,
+        "label": false,
+        "hoverable": false,
+        "style": {
+          "hoverTextColor": "white",
+          "hoverBackgroundColor": "#000000",
+          "fillColor": "rgba( 137, 175, 28, 0.10 )",
+          "strokeColor": "rgba( 137, 175, 28, 1.0 )",
+          "strokeWidth": 0.3
+        }
+      },
+      {
+        "type": "VECTORTILE",
+        "name": "gran_valle",
+        "url": "./geoserver/gwc/service/tms/1.0.0/workspace1:gran_valle@EPSG%3A900913@pbf/{z}/{x}/{-y}.pbf",
+        "group": "one",
+        "queryable": false,
+        "displayInLegend": true,
+        "legendDisplayName": "Valle Central",
+        "displaySidebarInfo": true,
+        "renderMode": "vector",
+        "format": "MVT",
+        "visible": false,
+        "zIndex": 20000,
+        "opacity": 1,
+        "minResolution": 800,
+        "maxResolution": 64000,
+        "label": false,
+        "hoverable": false,
+        "legendIcon": "https://casario-mapa.s3.sa-east-1.amazonaws.com/assets/icons/legends/leyenda_gran_valle.png",
+        "style": {
+          "hoverTextColor": "white",
+          "hoverBackgroundColor": "#000000",
+          "featureStyles": [
+            {
+              "fillColor": "rgba( 255, 255, 255, 0.02 )"
+            },
+            {
+              "strokeColor": "rgba( 255,255,255, 0.90 )",
+              "strokeWidth": 4
+            },
+            {
+              "strokeColor": "rgba( 31, 96, 140, 0.70 )",
+              "strokeWidth": 2
+            }
+          ]
+        }
+      },
+      {
+        "type": "VECTOR",
+        "name": "humedales",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:humedales&outputFormat=application/json&srsname=EPSG:3857",
+        "group": "two",
+        "queryable": false,
+        "displayInLegend": true,
+        "displaySidebarInfo": true,
+        "legendDisplayName": "Humedales",
+        "format": "GeoJSON",
+        "visible": false,
+        "zIndex": 10000,
+        "minResolution": 800,
+        "maxResolution": 64000,
+        "label": false,
+        "hoverable": false,
+        "style": {
+          "fillColor": "rgba( 185, 143, 215, 0.80 )",
+          "strokeColor": "rgba( 185, 143, 215, 1.0 )",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "type": "VECTOR",
+        "name": "cuenca_plata",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:cuenca_plata&outputFormat=application/json&srsname=EPSG:3857",
+        "group": "two",
+        "queryable": false,
+        "displayInLegend": false,
+        "displaySidebarInfo": false,
+        "legendDisplayName": "cuenca_plata",
+        "format": "GeoJSON",
+        "visible": true,
+        "zIndex": 10000,
+        "minResolution": 16,
+        "maxResolution": 800,
+        "label": false,
+        "hoverable": false,
+        "style": {
+          "fillColor": "rgba( 185, 143, 215, 0.0 )",
+          "strokeColor": "#434C1A",
+          "strokeWidth": 2
+        }
+      },
+      {
+        "type": "VECTOR",
+        "name": "glp_componentes",
+        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:glp_componentes&outputFormat=application/json&srsname=EPSG:3857",
+        "group": "valle",
+        "queryable": true,
+        "displayInLegend": false,
+        "displaySidebarInfo": true,
+        "legendDisplayName": "CB Gran La Plata",
+        "format": "GeoJSON",
+        "visible": true,
         "zIndex": 100,
         "minResolution": 1,
         "maxResolution": 120,
@@ -867,11 +866,7 @@
         "group": "valle",
         "queryable": true,
         "displayInLegend": true,
-        "legendDisplayName": {
-          "en": "Protected areas",
-          "es": "Áreas protegidas",
-          "pt": "Áreas protegidas"
-        },
+        "legendDisplayName": "Áreas protegidas",
         "displaySidebarInfo": true,
         "format": "GeoJSON",
         "visible": false,
@@ -992,12 +987,8 @@
         "minResolution": 2,
         "maxResolution": 60000,
         "displayInLegend": true,
-        "legendDisplayName": {
-          "en": "Soybeans",
-          "es": "Soja",
-          "pt": "Soja"
-        },
-        "visible": false,
+        "legendDisplayName": "Soja",
+        "visible": true,
         "displaySidebarInfo": true,
         "group": "valle",
         "attributions": "Test attributions",
@@ -1077,11 +1068,7 @@
         "maxResolution": 64000,
         "displayInLegend": true,
         "displaySidebarInfo": true,
-        "legendDisplayName": {
-          "en": "Flood and drought",
-          "es": "Agua y sequía",
-          "pt": "Água e seca"
-        },
+        "legendDisplayName": "Agua y sequía",
         "legendIcon": "https://casario-mapa.s3.sa-east-1.amazonaws.com/assets/icons/legends/leyenda_transiciones.png",
         "opacity": 0.99,
         "visible": false,
@@ -1096,11 +1083,7 @@
         "maxResolution": 64000,
         "displayInLegend": true,
         "displaySidebarInfo": true,
-        "legendDisplayName": {
-          "en": "Deforestation 2001-20",
-          "es": "Desmonte 2001-20",
-          "pt": "Desflorestamento 2001-2020"
-        },
+        "legendDisplayName": "Desmonte 2001-20",
         "legendIcon": "https://casario-mapa.s3.sa-east-1.amazonaws.com/assets/icons/legends/leyenda_desmonte.png",
         "opacity": 0.99,
         "visible": false,
@@ -1113,11 +1096,7 @@
         "minResolution": 1,
         "maxResolution": 60000,
         "displayInLegend": true,
-        "legendDisplayName": {
-          "en": "Fires",
-          "es": "Quemas",
-          "pt": "Queimas"
-        },
+        "legendDisplayName": "Quemas",
         "visible": false,
         "displaySidebarInfo": true,
         "group": "valle",
@@ -1245,11 +1224,7 @@
         "maxResolution": 1600,
         "displayInLegend": true,
         "legendIcon": "https://casario-mapa.s3.sa-east-1.amazonaws.com/assets/icons/legends/leyenda_red_urbana.png",
-        "legendDisplayName": {
-          "en": "Streets",
-          "es": "Red vial",
-          "pt": "Rede viária"
-        },
+        "legendDisplayName": "Red vial",
         "opacity": 0.99,
         "visible": true,
         "updatewhileanimating": true
@@ -1298,13 +1273,9 @@
         "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
         "minResolution": 0.5,
         "maxResolution": 40,
-        "displayInLegend": false,
+        "displayInLegend": true,
         "legendIcon": "https://casario-mapa.s3.sa-east-1.amazonaws.com/assets/icons/legends/leyenda_aerial.png",
-        "legendDisplayName": {
-          "en": "Satellite image",
-          "es": "Imagen satelital",
-          "pt": "Imagem de satélite"
-        },
+        "legendDisplayName": "Imagen satelital",
         "opacity": 0.6,
         "queryable": false,
         "visible": false
@@ -1315,11 +1286,7 @@
         "minResolution": 1,
         "maxResolution": 68000,
         "displayInLegend": true,
-        "legendDisplayName": {
-          "en": "Soy exporting ports",
-          "es": "Puertos sojeros",
-          "pt": "Portos de soja"
-        },
+        "legendDisplayName": "Puertos sojeros",
         "visible": false,
         "displaySidebarInfo": false,
         "group": "valle",
@@ -1381,6 +1348,32 @@
           },
           {
             "type": "VECTOR",
+            "name": "Necochea",
+            "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:puerto_neocochea&outputFormat=application/json&srsname=EPSG:3857",
+            "queryable": true,
+            "isInteractive": true,
+            "displayInLegend": true,
+            "legendDisplayName": "Necochea",
+            "format": "GeoJSON",
+            "visible": true,
+            "displaySidebarInfo": false,
+            "zIndex": 1,
+            "minResolution": 2,
+            "maxResolution": 64000,
+            "label": false,
+            "hoverable": true,
+            "style": {
+              "type": "line",
+              "stylePropFnRef": {
+                "strokeWidth": "variable1"
+              },
+              "strokeColor": "#7c2ca3",
+              "hoverTextColor": "white",
+              "hoverBackgroundColor": "#000000"
+            }
+          },
+          {
+            "type": "VECTOR",
             "name": "Bahia_Blanca",
             "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:puerto_bahia_blanca&outputFormat=application/json&srsname=EPSG:3857",
             "queryable": true,
@@ -1408,32 +1401,6 @@
         ]
       },
       {
-        "type": "VECTOR",
-        "name": "export_rosario",
-        "url": "./geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=workspace1:export_rosario&outputFormat=application/json&srsname=EPSG:3857",
-        "queryable": true,
-        "isInteractive": true,
-        "displayInLegend": true,
-        "legendDisplayName": "Exports from Rosario",
-        "format": "GeoJSON",
-        "visible": true,
-        "displaySidebarInfo": false,
-        "zIndex": 1000,
-        "minResolution": 2,
-        "maxResolution": 64000,
-        "label": false,
-        "hoverable": true,
-        "style": {
-          "type": "line",
-          "stylePropFnRef": {
-            "strokeWidth": "variable1"
-          },
-          "strokeColor": "#7c2ca3",
-          "hoverTextColor": "white",
-          "hoverBackgroundColor": "#000000"
-        }
-      },
-      {
         "type": "XYZ",
         "name": "ESRI-World-Imagery",
         "group": "backgroundLayers",
@@ -1451,43 +1418,50 @@
         "mobileCenter": [-58.936, -28.151],
         "mobileResolution": 6200,
         "minResolution": 0.5,
-        "maxResolution": 64000
+        "maxResolution": 64000,
+        "backgroundColor": "#A0794A"
       },
       "estuario": {
         "center": [-57.835, -34.671],
         "resolution": 200,
         "minResolution": 0.5,
-        "maxResolution": 64000
+        "maxResolution": 64000,
+        "backgroundColor": "#A0794A"
       },
       "delta": {
         "center": [-59.412, -33.091],
         "resolution": 600,
         "minResolution": 0.5,
-        "maxResolution": 64000
+        "maxResolution": 64000,
+        "backgroundColor": "#A0794A"
       },
       "parana_medio": {
         "center": [-60.136, -30.315],
         "resolution": 600,
         "minResolution": 0.5,
-        "maxResolution": 64000
+        "maxResolution": 64000,
+        "backgroundColor": "#A0794A"
       },
       "esteros": {
         "center": [-58.561, -27.366],
         "resolution": 800,
         "minResolution": 0.5,
-        "maxResolution": 64000
+        "maxResolution": 64000,
+        "backgroundColor": "#A0794A"
       },
       "pantanal": {
         "center": [-58.061, -17.283],
         "resolution": 800,
         "minResolution": 0.5,
-        "maxResolution": 64000
+        "maxResolution": 64000,
+        "backgroundColor": "#A0794A"
       },
       "mundo": {
         "center": [0, 0],
         "resolution": 64000,
         "minResolution": 0.5,
-        "maxResolution": 64000
+        "maxResolution": 64000,
+        "backgroundColor": "#A0794A"
       }
     },
     "flyToSlideshow": {
@@ -1497,41 +1471,13 @@
     },
     "defaultActiveGroup": "valle",
     "groupTitles": {
-      "valle": {
-        "en": "Watershed",
-        "es": "Cuenca",
-        "pt": "Bacia"
-      },
-      "estuario": {
-        "en": "Estuary",
-        "es": "Estuario",
-        "pt": "Estuário"
-      },
-      "delta": {
-        "en": "Delta",
-        "es": "Delta",
-        "pt": "Delta"
-      },
-      "parana_medio": {
-        "en": "Middle Paraná",
-        "es": "Paraná Medio",
-        "pt": "Paraná Medio"
-      },
-      "esteros": {
-        "en": "Marshlands",
-        "es": "Esteros",
-        "pt": "Esteiros"
-      },
-      "pantanal": {
-        "en": "Pantanal",
-        "es": "Pantanal",
-        "pt": "Pantanal"
-      },
-      "mundo": {
-        "en": "World",
-        "es": "Mundo",
-        "pt": "Mundo"
-      }
+      "valle": "Cuenca",
+      "estuario": "Estuario",
+      "delta": "Delta",
+      "parana_medio": "Paraná Medio",
+      "esteros": "Esteros",
+      "pantanal": "Pantanal",
+      "mundo": "Mundo"
     },
     "buttons": {
       "biocultural": [
@@ -1589,11 +1535,7 @@
     "defaultActiveButton": "biocultural",
     "buttonTitles": {
       "biocultural": "biocultural",
-      "extractivista": {
-        "en": "Extractivist",
-        "es": "Extractivista",
-        "pt": "Extractivista"
-      }
+      "extractivista": "extractivista"
     },
     "popupFieldsMapping": {
       "default": {
@@ -1609,8 +1551,7 @@
         "caption2": "LEYENDA ABAJO",
         "variable1": "COLOR",
         "variable2": "ANCHURA",
-        "videoSrc": "URL (VIMEO O YOUTUBE)",
-        "soybean_importer": "IMPORTING COUNTRY"
+        "videoSrc": "URL (VIMEO O YOUTUBE)"
       }
     },
     "featureInfoHiddenProps": [
@@ -1632,6 +1573,9 @@
       "UF_CF",
       "MUNIC_CF",
       "toneladas_de_soja",
+      "tonealdas_de_soja",
+      "soybean_importer",
+      "port",
       "translations"
     ],
     "corporateEntitiesUrls": {
@@ -1639,3 +1583,4 @@
     }
   }
 }
+
