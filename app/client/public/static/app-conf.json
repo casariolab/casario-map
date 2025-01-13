@@ -943,9 +943,9 @@
       },
       {
         "type": "XYZ",
-        "name": "cuenca_extractivista",
+        "name": "worldphys_clipped",
         "group": "valle",
-        "url": "https://geo.timetochange.today/geoserver/gwc/service/tms/1.0.0/osm%3Acuenca_extractivista@EPSG%3A900913@png/{z}/{x}/{-y}.png",
+        "url": "./geoserver/gwc/service/tms/1.0.0/workspace1%3Aworldphys_clipped@EPSG%3A900913@png/{z}/{x}/{-y}.png",
         "minResolution": 0.5,
         "maxResolution": 64000,
         "displayInLegend": false,
@@ -1178,9 +1178,9 @@
       },
       {
         "type": "XYZ",
-        "name": "osm_cuenca",
+        "name": "worldphys_clipped_trans",
         "group": "backgroundLayers",
-        "url": "https://geo.timetochange.today/geoserver/gwc/service/tms/1.0.0/osm%3Aosm_cuenca@EPSG%3A900913@png/{z}/{x}/{-y}.png",
+        "url": "./geoserver/gwc/service/tms/1.0.0/workspace1%3Aworldphys_clipped_trans@EPSG%3A900913@png/{z}/{x}/{-y}.png",
         "minResolution": 0.5,
         "maxResolution": 64000,
         "displayInLegend": false,
@@ -1484,7 +1484,7 @@
         "aerial",
         "mapaverde",
         "cuenca_plata",
-        "osm_cuenca",
+        "worldphys_clipped_trans",
         "gran_valle",
         "humedales",
         "areas_protegidas",
@@ -1510,7 +1510,7 @@
         "audios_bioculturales"
       ],
       "extractivista": [
-        "cuenca_extractivista",
+        "worldphys_clipped",
         "extractivista",
         "aerial2",
         "republica_soja",

@@ -14,9 +14,9 @@ layers:
     title: GLRI Projects
     sources: [glri_projects_cache]
     
-  - name: osm_bright
-    title: OpenStreetMap Bright Layer
-    sources: [osm_bright_cache]
+  - name: world_phys_clipped_trans
+    title: world_phys_clipped_trans Layer
+    sources: [world_phys_clipped_trans_cache]
 
   - name: luftbild
     title: Aktuelle Luftbild
@@ -25,17 +25,17 @@ layers:
 caches:
   # Sets up how to cache the source data
   glri_projects_cache:
-    grids: [osm_bright_grid]
+    grids: [world_phys_clipped_trans_grid]
     sources: [glri_projects_source]
 
   luftbild_cache:
-    grids: [osm_bright_grid]
+    grids: [world_phys_clipped_trans_grid]
     sources: [luftbild_source]
     format: image/png
 
-  osm_bright_cache:
-    grids: [osm_bright_grid]
-    sources: [osm_bright_source]
+  world_phys_clipped_trans_cache:
+    grids: [world_phys_clipped_trans_grid]
+    sources: [world_phys_clipped_trans_source]
     format: image/png
 
 
@@ -58,18 +58,18 @@ sources:
       layers: Base:A62_Luftbild_aktuell_EPSG25832
       transparent: true
 
-  osm_bright_source:
+  world_phys_clipped_trans_source:
     type: tile
-    url: https://geo.timetochange.today/geoserver/gwc/service/tms/1.0.0/osm:osm_bright@EPSG:900913@png/%(z)s/%(x)s/%(y)s.png
-    grid: osm_bright_grid_reverse
+    url: https://map.casariolab.art/geoserver/gwc/service/tms/1.0.0/osm:world_phys_clipped_trans@EPSG:900913@png/%(z)s/%(x)s/%(y)s.png
+    grid: world_phys_clipped_trans_grid_reverse
 
 grids:
-  osm_bright_grid:
+  world_phys_clipped_trans_grid:
     base: GLOBAL_MERCATOR
     srs: 'EPSG:3857'
     origin: nw
 
-  osm_bright_grid_reverse:
+  world_phys_clipped_trans_grid_reverse:
     base: GLOBAL_MERCATOR
     srs: 'EPSG:3857'
     origin: sw

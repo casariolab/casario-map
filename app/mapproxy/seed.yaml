@@ -1,9 +1,12 @@
 seeds:
-  luftbild_seed:
-    caches: [luftbild_cache]
-    grids: [osm_bright_grid]
+  world_phys_clipped_trans_seed:
+    caches: [world_phys_clipped_trans_cache]
+    grids: [world_phys_clipped_trans_grid]
     coverages:
-      full_extent:
-        bbox: [9.20741548563305, 48.75054038456195, 9.266308128682422, 48.84671133605059]
-        srs: 'EPSG:4326'
-    levels: [19,20]
+      bbox: [-180, -90, 180, 90]
+      srs: 'EPSG:3857'
+    levels: [0, 10]
+
+cleanups:
+  everything:
+    caches: [world_phys_clipped_trans_cache]
