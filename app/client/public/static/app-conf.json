@@ -15,11 +15,11 @@
       "mapLink": "#7C2CA3"
     },
     "font": {
-      "url": "https://fonts.googleapis.com/css2?family=Roboto&display=swap",
-      "family": "Roboto"
+      "url": "https://fonts.googleapis.com/css2?family=Merriweather&display=swap",
+      "family": "Merriweather"
     },
     "legend": {
-      "isVisible": true
+      "isVisible": false
     },
     "controls": {
       "locate_me": true,
@@ -42,12 +42,11 @@
   "map": {
     "projectionCode": "EPSG:3857",
     "minZoom": 1,
-    "maxZoom": 21,
+    "maxZoom": 19,
     "zoom": 1,
     "geoserverWorkspace": "workspace1",
     "resolutions": [
-      156543.03, 78271.52, 39135.76, 19567.88, 9783.94, 4891.97, 2445.98, 1222.99, 611.5, 305.75, 152.87, 76.437,
-      38.219, 19.109, 9.5546, 4.7773, 2.3887, 1.1943, 0.5972
+      156543.03, 78271.52, 39135.76, 19567.88, 9783.94, 4891.97, 2445.98, 1222.99, 611.5, 305.75, 152.87, 76.437, 38.219, 19.109, 9.5546, 4.7773, 2.3887, 1.1943, 0.5972
     ],
     "center": [0, 0],
     "minResolution": 0.25,
@@ -212,13 +211,9 @@
         "label": false,
         "hoverable": true,
         "style": {
-          "type": "line",
-          "stylePropFnRef": {
-            "strokeColor": "variable1",
-            "strokeWidth": "variable2"
-          },
-          "hoverTextColor": "white",
-          "hoverBackgroundColor": "#000000"
+          "fillColor": "#2CB8D7",
+          "strokeColor": "#2CB8D7",
+          "strokeWidth": 0.3
         }
       },
       {
@@ -1091,7 +1086,7 @@
         "attributions": "Test attributions",
         "displaySeries": true,
         "largeSlider": true,
-        "defaultSeriesLayerIndex": 0,
+        "defaultSeriesLayerIndex": 2,
         "layers": [
           {
             "type": "XYZ",
@@ -1213,7 +1208,8 @@
         "maxResolution": 30,
         "opacity": 1,
         "queryable": false,
-        "visible": true
+        "visible": true,
+        "attributions": "Sources: Esri, DigitalGlobe, GeoEye, i-cubed, USDA FSA, USGS, AEX, Getmapping, Aerogrid, IGN, IGP, swisstopo, and the GIS User Community"
       },
       {
         "type": "XYZ",
@@ -1237,7 +1233,7 @@
         "displayInLegend": true,
         "legendDisplayName": "Puertos sojeros",
         "visible": false,
-        "displaySidebarInfo": false,
+        "displaySidebarInfo": true,
         "group": "valle",
         "displaySeries": true,
         "largeSlider": true,
@@ -1358,7 +1354,19 @@
         "minResolution": 0.5,
         "maxResolution": 40,
         "queryable": false,
-        "visible": true
+        "visible": false
+      },
+      {
+        "type": "XYZ",
+        "name": "ESRI-World-Imagery4",
+        "group": "backgroundLayers",
+        "url": "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+        "minResolution": 0,
+        "maxResolution": 8000,
+        "queryable": false,
+        "visible": true,
+        "opacity": 0.9,
+        "attributions": "Sources: Esri, DigitalGlobe, GeoEye, i-cubed, USDA FSA, USGS, AEX, Getmapping, Aerogrid, IGN, IGP, swisstopo, and the GIS User Community"
       }
     ],
     "groups": {
@@ -1532,3 +1540,4 @@
     }
   }
 }
+
