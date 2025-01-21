@@ -19,7 +19,7 @@
       "family": "Merriweather"
     },
     "legend": {
-      "isVisible": false
+      "isVisible": true
     },
     "controls": {
       "locate_me": true,
