@@ -977,6 +977,7 @@
         "attributions": "Test attributions",
         "displaySeries": true,
         "largeSlider": true,
+        "playButton": false,
         "defaultSeriesLayerIndex": 0,
         "layers": [
           {
@@ -1087,6 +1088,7 @@
         "attributions": "Test attributions",
         "displaySeries": true,
         "largeSlider": true,
+        "playButton": false,
         "defaultSeriesLayerIndex": 2,
         "layers": [
           {
@@ -1238,6 +1240,7 @@
         "group": "valle",
         "displaySeries": true,
         "largeSlider": true,
+        "playButton": false,
         "defaultSeriesLayerIndex": 0,
         "legendIcon": "https://casario-mapa.s3.sa-east-1.amazonaws.com/assets/icons/legends/leyenda_exportacion.png",
         "layers": [
