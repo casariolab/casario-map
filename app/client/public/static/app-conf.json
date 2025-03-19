@@ -572,32 +572,6 @@
       },
       {
         "type": "VECTORTILE",
-        "name": "humedales_granvalle",
-        "url": "./geoserver/gwc/service/tms/1.0.0/workspace1:humedales_granvalle@EPSG%3A900913@pbf/{z}/{x}/{-y}.pbf",
-        "group": "one",
-        "queryable": false,
-        "displayInLegend": true,
-        "displaySidebarInfo": true,
-        "renderMode": "image",
-        "legendDisplayName": "Corredor de Humedales",
-        "format": "MVT",
-        "visible": false,
-        "zIndex": 20000,
-        "opacity": 1,
-        "minResolution": 800,
-        "maxResolution": 64000,
-        "label": false,
-        "hoverable": false,
-        "style": {
-          "hoverTextColor": "white",
-          "hoverBackgroundColor": "#000000",
-          "fillColor": "rgba( 137, 175, 28, 0.10 )",
-          "strokeColor": "rgba( 137, 175, 28, 1.0 )",
-          "strokeWidth": 0.3
-        }
-      },
-      {
-        "type": "VECTORTILE",
         "name": "gran_valle",
         "url": "./geoserver/gwc/service/tms/1.0.0/workspace1:gran_valle@EPSG%3A900913@pbf/{z}/{x}/{-y}.pbf",
         "group": "one",
