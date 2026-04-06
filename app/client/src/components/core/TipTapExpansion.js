@@ -1,4 +1,4 @@
-import { Node } from 'tiptap';
+import {Node} from 'tiptap';
 
 function makeUid() {
   return `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
@@ -95,9 +95,9 @@ export default class Expansion extends Node {
     };
   }
 
-  commands({ type, schema }) {
+  commands({type, schema}) {
     return attrs => (state, dispatch) => {
-      const { from, to } = state.selection;
+      const {from, to} = state.selection;
 
       const paragraphType = schema.nodes.paragraph;
       const content = paragraphType ? paragraphType.create() : null;
@@ -118,11 +118,11 @@ export default class Expansion extends Node {
     };
   }
 
-  keys({ type, schema }) {
+  keys({type, schema}) {
     return {
       Enter: (state, dispatch) => {
-        const { selection } = state;
-        const { $from, empty } = selection;
+        const {selection} = state;
+        const {$from, empty} = selection;
 
         if (!empty) return false;
 
@@ -146,9 +146,7 @@ export default class Expansion extends Node {
 
         if (dispatch) {
           let tr = state.tr.insert(insertPos, paragraph);
-          tr = tr.setSelection(
-            state.selection.constructor.near(tr.doc.resolve(insertPos + 1))
-          );
+          tr = tr.setSelection(state.selection.constructor.near(tr.doc.resolve(insertPos + 1)));
           dispatch(tr.scrollIntoView());
         }
 
@@ -156,8 +154,8 @@ export default class Expansion extends Node {
       },
 
       Backspace: (state, dispatch) => {
-        const { selection } = state;
-        const { $from, empty } = selection;
+        const {selection} = state;
+        const {$from, empty} = selection;
 
         if (!empty) return false;
 
